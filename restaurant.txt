@@ -1,0 +1,1001 @@
+# <Name> <Dietary> <Alcohol> <Wheelchair_Access> <Free_WiFi>
+"Jack's Sandwich" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Donna's Dumplings" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Jesse's Chinese Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Ethan's American Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Stephen's Seafood" [] False True True
+"Jonathan's Malaysian Brunch" [Kosher, Hindu, Vegan] False False False
+"Michael's Ice Cream" [Kosher, Hindu] False False True
+"Justin's Australian Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Madison's French Dessert" [] True True False
+"Laura's Singaporean Brunch" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Alice's Fish and Chips" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Jack's Teriyaki" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Amy's Sushi Train" [Kosher, Hindu, Vegan] False True True
+"Laura's Korean Breakfast" [Kosher, Hindu] True False False
+"Patrick's Turkish Breakfast" [Kosher, Hindu, Vegan] True True True
+"Cynthia's Moroccan Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Louis' Ice Cream" [Kosher, Hindu, Vegan] False False True
+"Jack's Malaysian Dessert" [] False True False
+"Jane's Charcoal Chicken" [Kosher] True False True
+"Joseph's French Dessert" [Kosher, Hindu] False True True
+"Susan's Pizza" [Kosher, Hindu, Vegan] False True False
+"Ruth's Oriental Lunch" [Kosher, Hindu, Vegan] False True False
+"Diana's Arabian Dinner" [Kosher, Hindu] False True False
+"Matthew's Malaysian Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Roger's Steakhouse" [] False False False
+"Russell's Oriental Dessert" [] True True False
+"Denise's Singaporean Dinner" [] True True True
+"Alexander's Teriyaki" [Kosher, Hindu, Vegan] True False True
+"Madison's Ice Cream" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Joyce's Juice" [Kosher, Hindu] False False True
+"Scott's Italian Dessert" [] False False True
+"Carolyn's Sandwich" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Sandra's Australian Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Alice's Seafood" [] False True False
+"Douglas' Noodles" [Kosher] True False False
+"Christine's Coffee" [] True False True
+"Aaron's Ramen" [Kosher, Hindu, Vegan] False True True
+"Scott's Tapas" [] True True True
+"Amy's Teppanyaki" [Kosher, Hindu, Vegan] True False True
+"Jason's Healthy Food" [Kosher, Hindu, Vegan] False True True
+"Rose's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Richard's Dumplings" [Kosher, Hindu] True False True
+"Kathy's Sushi Train" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Madison's Bubble Tea" [Kosher] True False True
+"Jean's Kebabs" [] False True True
+"Donald's Arabian Breakfast" [Kosher] False False False
+"Joe's Australian Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Patricia's Moroccan Dinner" [] False True False
+"Virginia's Juice" [] True False False
+"Catherine's Sushi Train" [] True False True
+"Jose's Bubble Tea" [Kosher] True True False
+"Alexander's Sushi Train" [Kosher, Hindu] False True False
+"Mildred's Yum Cha" [Kosher, Hindu] True True False
+"Diane's Mediterranean Lunch" [] True False False
+"Arthur's BBQ" [Kosher, Hindu, Vegan] True True False
+"Natalie's Sri Lankan Lunch" [Kosher, Hindu, Vegan] True True True
+"Debra's Soul Food" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Arthur's Korean Brunch" [] False True True
+"Joan's Pakistani Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Lisa's Thai Lunch" [] False False True
+"John's American Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Cynthia's Seafood" [] True True True
+"Julia's Healthy Food" [Kosher, Hindu, Vegan] False False True
+"Frances' Healthy Food" [Kosher] False True False
+"Cynthia's Turkish Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Harry's Drink" [] True False False
+"Joseph's Noodles" [Kosher, Hindu, Vegan] True False True
+"Heather's Portuguese Brunch" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Stephen's BBQ" [Kosher, Hindu, Vegan] False False True
+"Madison's Yum Cha" [Kosher, Hindu, Vegan] False False True
+"Abigail's Soul Food" [] True False True
+"Denise's Thai Breakfast" [Kosher, Hindu, Vegan] False False False
+"Frank's Arabian Brunch" [] True True False
+"Harold's Noodles" [] True True True
+"Joshua's Greek Dessert" [Kosher] False False True
+"Beverly's Frozen Yogurt" [Kosher] True True True
+"Jack's Mexican Dinner" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Zachary's Eastern European Dessert" [] False False False
+"James' Thai Dinner" [] False False False
+"Alexander's Portuguese Dessert" [] False False True
+"Alan's Portuguese Breakfast" [Kosher, Hindu] True False True
+"Joseph's Arabian Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False False
+"Arthur's Noodles" [Kosher, Hindu, Vegan] False False True
+"Scott's Malaysian Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"William's American Dinner" [Kosher, Hindu, Vegan] True False False
+"Emily's Yum Cha" [] False False True
+"Hannah's Arabian Dinner" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Madison's Oriental Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Austin's American Dessert" [] False True True
+"Teresa's Burgers" [] True True False
+"William's Mediterranean Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Maria's Moroccan Brunch" [] True False False
+"Laura's American Lunch" [Kosher, Hindu, Vegan] False False True
+"Margaret's Vietnamese Brunch" [Kosher, Hindu] True True False
+"Aaron's Thai Lunch" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Mildred's Thai Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Sandra's American Dinner" [] True False True
+"Douglas' Thai Brunch" [Kosher] True False True
+"Julie's Ramen" [] True False False
+"Dylan's Portuguese Lunch" [Kosher, Hindu] False True True
+"Judy's Italian Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Judith's Oriental Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Harold's Middle eastern Breakfast" [Kosher] False False True
+"Roger's Australian Lunch" [Kosher] True True True
+"Joyce's Mexican Brunch" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Elizabeth's Singaporean Lunch" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Roy's Lebanese Dinner" [] True False True
+"Paul's Singaporean Breakfast" [Kosher] False False True
+"Christine's Moroccan Lunch" [] False True False
+"Aaron's Juice" [] True False False
+"Melissa's American Lunch" [Kosher] True True True
+"Kathleen's Fast Food" [Kosher, Hindu, Vegan] False False False
+"Frances' Healthy Food" [] False True False
+"Russell's Arabian Dinner" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Randy's Singaporean Lunch" [] False False True
+"Karen's Japanese Lunch" [Kosher] True False True
+"Samantha's Pub Food" [Kosher, Hindu, Vegan] False True True
+"Larry's Moroccan Breakfast" [Kosher, Hindu] True False False
+"Kevin's Bubble Tea" [] True False True
+"Donna's Middle eastern Brunch" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Rebecca's Thai Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Donna's Thai Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Kimberly's Seafood" [Kosher, Hindu] True True True
+"Anthony's Mexican Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Michael's Pub Food" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Kathleen's Arabian Brunch" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Justin's Bubble Tea" [Kosher, Hindu, Vegan] True True True
+"Gabriel's Teriyaki" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Grace's Indian Lunch" [] True False False
+"Kimberly's Arabian Breakfast" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Sean's Turkish Dessert" [Kosher, Hindu, Vegan] False False True
+"Judith's Oriental Dinner" [Kosher, Hindu] True True True
+"Jacob's Mexican Dessert" [] False True True
+"Linda's Charcoal Chicken" [Kosher, Hindu] False True True
+"Carl's Fish and Chips" [] True True False
+"Sarah's Kebabs" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Amy's Tea House" [Kosher] True True False
+"Jesse's Eastern European Lunch" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Nicole's Fast Food" [] False False False
+"Tyler's Tapas" [] False True True
+"Jacqueline's Korean Breakfast" [] True True True
+"Natalie's Ice Cream" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Doris' Teriyaki" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Christopher's Frozen Yogurt" [] True False True
+"John's Moroccan Dinner" [] True False True
+"Cynthia's Chinese Brunch" [] False True False
+"Gregory's Lebanese Dinner" [] False False False
+"Abigail's Pizza" [Kosher, Hindu, Vegan] True True False
+"Emma's French Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Vincent's Fish and Chips" [Kosher] False True True
+"Walter's Portuguese Dinner" [Kosher, Hindu, Vegan] True True False
+"Walter's Singaporean Brunch" [] True False False
+"Sara's American Dessert" [Kosher, Hindu, Vegan] True False True
+"Evelyn's Scandinavian Brunch" [Kosher, Hindu] True True False
+"Debra's Japanese Dessert" [Kosher] False False True
+"Ethan's Charcoal Chicken" [Kosher, Hindu, Vegan] True True False
+"Lori's American Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Judith's Seafood" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Roger's Pizza" [Kosher, Hindu, Vegan] True True True
+"Judith's Ice Cream" [Kosher, Hindu, Vegan] True True True
+"Joyce's Singaporean Dessert" [] False False True
+"Joseph's Fish and Chips" [] False True False
+"Raymond's Singaporean Lunch" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Andrew's Tea House" [] True False True
+"Alan's Pub Food" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Lawrence's Malaysian Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Tyler's Mediterranean Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Dylan's Moroccan Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Ethan's Fast Food" [Kosher, Hindu] False True True
+"Joyce's Indian Breakfast" [Kosher, Hindu] False True False
+"Deborah's Australian Brunch" [] False False False
+"Jeffrey's Mexican Brunch" [Kosher, Hindu] True False False
+"Diana's Mexican Dinner" [Kosher, Hindu, Vegan] False False True
+"Gary's Sri Lankan Dessert" [Kosher, Hindu] False True False
+"Shirley's Tea House" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Sarah's Charcoal Chicken" [] True False False
+"Diana's Burgers" [] True False False
+"Judy's Vietnamese Lunch" [Kosher, Hindu] False True True
+"Betty's Fast Food" [Kosher, Hindu, Vegan] False False True
+"Jean's Fish and Chips" [Kosher, Hindu] False False False
+"Bruce's Thai Dessert" [Kosher, Hindu] True True True
+"Ethan's Indian Dinner" [Kosher] True False False
+"Christina's Charcoal Chicken" [Kosher, Hindu, Vegan] False False True
+"Hannah's Spanish Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Gregory's Vietnamese Lunch" [] False False True
+"Carolyn's Fast Food" [Kosher, Hindu] True False True
+"Natalie's Eastern European Dessert" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Amy's Pub Food" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Charles' Pub Food" [Kosher] False False False
+"Philip's Frozen Yogurt" [] False False True
+"Sharon's Ice Cream" [] True True True
+"Edward's Korean Dessert" [Kosher] True False True
+"Keith's Seafood" [Kosher] True True False
+"Aaron's Noodles" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Brittany's Turkish Dessert" [] False False False
+"Eric's Thai Dessert" [] True True True
+"Albert's Ice Cream" [] True False True
+"Benjamin's Teppanyaki" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Roy's Spanish Dessert" [Kosher, Hindu, Vegan] True True False
+"Cheryl's Moroccan Dinner" [] False False False
+"Melissa's Ramen" [Kosher, Hindu] True False False
+"Roy's Teppanyaki" [Kosher, Hindu] False False False
+"Nancy's Dumplings" [Kosher] True True False
+"Amy's Portuguese Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"James' Korean Lunch" [] False False False
+"Bryan's French Lunch" [Kosher, Hindu] False True True
+"Karen's Sri Lankan Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Frances' Pakistani Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False False
+"Dylan's BBQ" [Kosher] True False True
+"Marilyn's Japanese Brunch" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Sara's Teriyaki" [] True False False
+"Virginia's Malaysian Lunch" [Kosher, Hindu] True False True
+"Stephanie's Tapas" [] False False True
+"Jacqueline's Frozen Yogurt" [Kosher] False True True
+"Amy's Yum Cha" [] True False True
+"Zachary's Yum Cha" [] True True True
+"Adam's Indian Dinner" [] False True False
+"Diana's Chinese Lunch" [] True False True
+"Nicholas' Mediterranean Brunch" [Kosher, Hindu, Vegan] True False False
+"Danielle's Fast Food" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Anthony's Pub Food" [] False True False
+"Megan's Drink" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False False
+"Nicole's Sri Lankan Dessert" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Debra's Japanese Brunch" [] False True False
+"Louis' Pho" [Kosher] False False False
+"Bobby's Eastern European Breakfast" [Kosher] False False True
+"Joyce's American Dessert" [Kosher] True False False
+"Terry's Ramen" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Stephen's Thai Dessert" [Kosher, Hindu] True False True
+"Evelyn's Middle eastern Breakfast" [] False False True
+"Olivia's French Brunch" [Kosher] True True True
+"Betty's Noodles" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Samantha's Ramen" [] False False True
+"Jose's Noodles" [Kosher, Hindu] False False True
+"Roger's Fast Food" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Robert's Pastry" [] True False True
+"Mark's Sandwich" [] False True False
+"Harold's Juice" [Kosher, Hindu, Vegan] False True False
+"Elizabeth's American Lunch" [Kosher, Hindu, Vegan] False False True
+"Megan's Pastry" [Kosher, Hindu] False True False
+"Steven's Eastern European Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Deborah's French Breakfast" [Kosher, Hindu] True True False
+"Theresa's Singaporean Brunch" [Kosher] False False True
+"Bruce's Grill" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Lisa's Tea House" [Kosher, Hindu, Vegan] True False False
+"Judy's Pastry" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Susan's American Dinner" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Sara's Spanish Dinner" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Sandra's Spanish Brunch" [] False False False
+"Abigail's Sandwich" [Kosher] False True True
+"Olivia's Dumplings" [] True False True
+"Melissa's Italian Dessert" [] True True False
+"Austin's Juice" [Kosher, Hindu] True True True
+"Nathan's Pakistani Breakfast" [] True True False
+"Zachary's Seafood" [] False True False
+"Carolyn's Drink" [Kosher, Hindu] False False True
+"Thomas' Bubble Tea" [Kosher] True True True
+"Abigail's French Brunch" [Kosher, Hindu] False False True
+"Jeffrey's Pizza" [] False True False
+"Olivia's Charcoal Chicken" [] False False False
+"Brittany's Sri Lankan Brunch" [] False True True
+"Bruce's Australian Breakfast" [Kosher, Hindu] True False False
+"Janice's Fish and Chips" [] True False True
+"Eric's Australian Dinner" [] False False True
+"Jerry's Spanish Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Alexander's Juice" [] True False False
+"Patrick's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Thomas' Sandwich" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Melissa's Burgers" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Peter's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Jonathan's Oriental Dessert" [Kosher] False False True
+"Jean's Vietnamese Brunch" [Kosher, Hindu, Vegan] True True True
+"Carolyn's Sushi Train" [Kosher, Hindu] False True False
+"Eugene's Greek Breakfast" [Kosher, Hindu, Vegan] True True False
+"Michael's American Dinner" [Kosher] False True True
+"Ryan's Italian Breakfast" [] True True False
+"Elizabeth's Pub Food" [Kosher, Hindu] True False True
+"Kevin's Singaporean Dessert" [Kosher] True True False
+"Frances' Indian Dessert" [Kosher, Hindu, Vegan] True True True
+"Christian's Steakhouse" [] False False True
+"Wayne's Portuguese Brunch" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Frank's Burgers" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Kenneth's Sushi Train" [Kosher] True True True
+"Betty's Indian Lunch" [] True False True
+"Nicole's Singaporean Brunch" [Kosher, Hindu] False False True
+"Hannah's Arabian Brunch" [] True True True
+"Lori's Tea House" [Kosher] True False True
+"Karen's Soul Food" [] True False False
+"Beverly's Tapas" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Nicholas' Coffee" [Kosher, Hindu, Vegan] True True True
+"Tiffany's Spanish Dinner" [Kosher, Hindu, Vegan] False False True
+"Judy's Mexican Dinner" [Kosher, Hindu] False True True
+"Jose's Japanese Dessert" [] True False True
+"Sarah's Moroccan Lunch" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Amanda's Sushi Train" [Kosher, Hindu, Vegan] False False True
+"Steven's Fast Food" [Kosher, Hindu, Vegan] True False False
+"Sean's Tapas" [Kosher, Hindu, Vegan] True False False
+"Carolyn's Bubble Tea" [] True False False
+"Cheryl's Steakhouse" [Kosher, Hindu] True False False
+"Peter's Sandwich" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Olivia's Soul Food" [] False True True
+"Terry's Pho" [] True True False
+"Kevin's Ramen" [] True False True
+"Ann's Bubble Tea" [Kosher] True False True
+"Samuel's Soul Food" [Kosher, Hindu] True True True
+"Virginia's Coffee" [] False True False
+"Timothy's Seafood" [Kosher] False True True
+"Edward's Japanese Lunch" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Christine's Frozen Yogurt" [Kosher] True True True
+"Judy's Fast Food" [Kosher, Hindu, Vegan] False False False
+"Pamela's Vietnamese Breakfast" [Kosher, Hindu, Vegan] True True False
+"Harold's Bubble Tea" [Kosher, Hindu, Vegan] True True True
+"Paul's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Kenneth's Burgers" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Samantha's Teriyaki" [Kosher, Hindu] False False False
+"Joyce's Japanese Brunch" [] False False True
+"Terry's Coffee" [Kosher, Hindu] False True False
+"Christina's Yum Cha" [] True True False
+"Christina's Thai Dessert" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Carol's Lebanese Lunch" [] True True True
+"Joan's Sandwich" [Kosher] False False True
+"Philip's Noodles" [] True False True
+"Nicole's Portuguese Breakfast" [] False False True
+"Alice's Steakhouse" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Kathy's Greek Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Mark's French Brunch" [] True True False
+"Donna's American Brunch" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Frances' Fish and Chips" [Kosher, Hindu, Vegan] False True True
+"Theresa's Indian Lunch" [Kosher, Hindu, Vegan] True False False
+"Anna's Eastern European Brunch" [Kosher, Hindu, Vegan] False False False
+"Daniel's Vietnamese Breakfast" [Kosher, Hindu] True False True
+"David's Frozen Yogurt" [Kosher] True False False
+"Olivia's Tea House" [] False True False
+"Jacqueline's Dumplings" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Harry's French Dinner" [] True True False
+"Daniel's Ice Cream" [Kosher, Hindu] True True True
+"Brenda's Ice Cream" [] True True True
+"Ryan's Portuguese Dinner" [] False True False
+"Jason's Steakhouse" [] True True False
+"Sara's Eastern European Dessert" [Kosher, Hindu] False True False
+"Joe's Arabian Breakfast" [Kosher, Hindu, Vegan] True False False
+"Keith's Indian Dinner" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Diane's Mexican Dinner" [] False True False
+"Daniel's Mexican Breakfast" [Kosher, Hindu] True False False
+"Joshua's Korean Dinner" [Kosher, Hindu, Vegan] True False True
+"Jason's Coffee" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Diane's Arabian Dinner" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Martha's BBQ" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Jesse's Vietnamese Dessert" [Kosher, Hindu] False True True
+"Carol's Chinese Lunch" [Kosher, Hindu, Vegan] False False False
+"Ethan's Middle eastern Brunch" [Kosher, Hindu, Vegan] False False True
+"Nancy's Spanish Breakfast" [] True False False
+"Patricia's Scandinavian Breakfast" [Kosher, Hindu] True False True
+"Larry's Drink" [Kosher] True True True
+"Diane's Juice" [Kosher, Hindu] False True False
+"Lisa's Ramen" [Kosher] False False True
+"Adam's Vietnamese Dessert" [Kosher, Hindu, Vegan] False False True
+"Kevin's Seafood" [Kosher, Hindu, Vegan] False False True
+"James' Malaysian Dessert" [] False True True
+"Kyle's Japanese Lunch" [Kosher] False True False
+"Jane's Kebabs" [Kosher, Hindu] False True False
+"Diane's Ramen" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Joyce's Malaysian Lunch" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Gabriel's Thai Brunch" [Kosher, Hindu, Vegan] False True False
+"Gregory's Middle eastern Dinner" [Kosher, Hindu, Vegan] True True False
+"Jason's Korean Dessert" [Kosher, Hindu] True True True
+"Aaron's Juice" [] False False True
+"Peter's Thai Breakfast" [] True False False
+"Martha's Pho" [] True False True
+"Frances' Portuguese Dessert" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Michael's American Dinner" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Andrea's Ramen" [] True False True
+"Larry's Tapas" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Lawrence's Teriyaki" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Bobby's Dumplings" [] False True True
+"Alan's Fish and Chips" [Kosher, Hindu, Vegan] True False True
+"Brian's Yum Cha" [] True False True
+"Zachary's Soul Food" [] False True True
+"Sean's Korean Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Howard's Oriental Lunch" [] True True False
+"Rachel's Mexican Dessert" [Kosher, Hindu, Vegan] False False False
+"Melissa's Bubble Tea" [] True True True
+"Madison's Turkish Breakfast" [] False False False
+"Virginia's Chinese Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Lisa's Pakistani Dessert" [Kosher] False True True
+"Barbara's Pizza" [Kosher, Hindu] False True False
+"Olivia's Soul Food" [] False True True
+"Anthony's Charcoal Chicken" [] False True False
+"Jacqueline's Portuguese Dessert" [Kosher] True True True
+"Brittany's Dumplings" [Kosher, Hindu, Vegan] False True True
+"Arthur's American Dessert" [Kosher, Hindu] True False False
+"Stephen's Chinese Dinner" [] False False True
+"Joe's Arabian Brunch" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Judy's Burgers" [] True True True
+"Justin's Greek Breakfast" [] False False True
+"Anna's Vietnamese Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Stephanie's Sushi Train" [] True True False
+"Evelyn's Yum Cha" [] True False True
+"Amanda's Drink" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Samantha's Oriental Dinner" [Kosher, Hindu] True False True
+"Brenda's Seafood" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Carol's Japanese Dinner" [Kosher] True False True
+"Nathan's Drink" [Kosher] True False False
+"Michelle's American Dessert" [] True False True
+"Kelly's French Breakfast" [Kosher, Hindu] False False False
+"Walter's Eastern European Dessert" [Kosher, Hindu] True False False
+"Pamela's American Brunch" [Kosher, Hindu] False True False
+"Michael's Oriental Dessert" [Kosher, Hindu, Vegan] False True True
+"Kathleen's Kebabs" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Marie's Chinese Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Jesse's Scandinavian Dessert" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Randy's Coffee" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Anthony's Sushi Train" [Kosher] True True False
+"Beverly's Drink" [Kosher, Hindu] True True True
+"Barbara's Moroccan Lunch" [Kosher, Hindu] True True True
+"Kyle's Turkish Dessert" [] False False True
+"Samantha's Chinese Breakfast" [Kosher] False True True
+"Joseph's Japanese Brunch" [Kosher] False True False
+"Joshua's Turkish Lunch" [Kosher] True True False
+"John's Fish and Chips" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Helen's Fish and Chips" [Kosher] False False True
+"Scott's Thai Dinner" [Kosher, Hindu, Vegan] False True False
+"Alan's Chinese Brunch" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Diane's Teppanyaki" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Victoria's Drink" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Harry's Seafood" [Kosher, Hindu, Vegan] False False False
+"Nancy's Oriental Breakfast" [] True True False
+"Brittany's Malaysian Dinner" [] True False True
+"Kyle's Charcoal Chicken" [Kosher, Hindu, Vegan] True True False
+"Barbara's Noodles" [Kosher, Hindu] True False False
+"Deborah's Eastern European Dinner" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Richard's Tea House" [] False True False
+"Louis' Pakistani Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Russell's Noodles" [] False True True
+"Carl's Seafood" [] False True True
+"Rose's Soul Food" [Kosher] True False False
+"Mildred's Italian Dinner" [Kosher, Hindu] True True True
+"Marilyn's Teppanyaki" [Kosher, Hindu] False True True
+"Douglas' Soul Food" [Kosher] False False True
+"Jacqueline's Burgers" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Madison's Japanese Breakfast" [] True False False
+"Bryan's Sri Lankan Dessert" [] True False False
+"Ethan's Seafood" [Kosher, Hindu, Vegan] False False False
+"Nathan's Grill" [Kosher, Hindu] False False True
+"Jessica's Soul Food" [] True True True
+"Jeremy's Coffee" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Cheryl's Sri Lankan Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Emily's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Rachel's Ramen" [Kosher] True False False
+"William's Indian Dessert" [] True True False
+"Walter's Pub Food" [Kosher] False True True
+"Bryan's Burgers" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Christine's Ramen" [Kosher, Hindu] True False True
+"Roger's Sandwich" [Kosher, Hindu] True False False
+"Kyle's Pub Food" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Alan's Ramen" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Margaret's Dumplings" [Kosher, Hindu] False False True
+"Anna's Drink" [Kosher, Hindu] False False False
+"Christina's Tapas" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Bruce's Burgers" [Kosher, Hindu, Vegan] True False True
+"Joan's Middle eastern Dinner" [] True True True
+"Wayne's Korean Dinner" [] False True False
+"Samantha's Spanish Lunch" [] True False True
+"Bryan's Noodles" [] True True False
+"Patricia's Moroccan Dessert" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Joe's Noodles" [Kosher, Hindu] True True True
+"Frank's BBQ" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Angela's Indian Brunch" [] True False True
+"Harold's Yum Cha" [] False False True
+"Patrick's Mexican Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Karen's Tapas" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Shirley's Pho" [Kosher, Hindu] True True True
+"Kathryn's Korean Dessert" [] False False True
+"Douglas' Charcoal Chicken" [Kosher, Hindu] False True True
+"Rebecca's Noodles" [Kosher] False False False
+"Elizabeth's Seafood" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Douglas' Italian Lunch" [Kosher] True False True
+"Bobby's Pakistani Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Brittany's Pakistani Lunch" [Kosher] False False True
+"Russell's Oriental Breakfast" [Kosher, Hindu, Vegan] False False False
+"Jennifer's Thai Brunch" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Robert's Grill" [Kosher, Hindu, Vegan] False True False
+"Justin's Thai Dessert" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Megan's Ice Cream" [] True False False
+"Randy's Teriyaki" [] True True True
+"Madison's Tea House" [Kosher, Hindu] True False True
+"Carol's Spanish Brunch" [] False False True
+"Martha's Eastern European Dinner" [Kosher] True True True
+"Kenneth's American Breakfast" [] False False False
+"Abigail's Dumplings" [] True True False
+"Melissa's Mexican Breakfast" [] True False False
+"Lauren's Seafood" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Juan's Sushi Train" [Kosher, Hindu, Vegan] False False True
+"Brandon's Bubble Tea" [Kosher, Hindu] True False False
+"Arthur's Pho" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Nathan's Teriyaki" [Kosher] True True True
+"Douglas' Pho" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Johnny's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Cynthia's Coffee" [] True True False
+"Deborah's Moroccan Dinner" [Kosher, Hindu, Vegan] False True True
+"Christine's Tea House" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Theresa's Yum Cha" [Kosher] True True False
+"Patrick's Sandwich" [Kosher, Hindu, Vegan] True False True
+"Janet's Singaporean Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Johnny's Spanish Dessert" [] True False False
+"Nicole's Sandwich" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Kimberly's Sandwich" [] True True False
+"Brian's Sushi Train" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Michelle's BBQ" [Kosher, Hindu, Vegan] False False True
+"Megan's Drink" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Melissa's Tea House" [Kosher] True False True
+"Brandon's Teriyaki" [Kosher] False True False
+"Heather's Greek Dessert" [Kosher, Hindu, Vegan] False False False
+"Scott's Lebanese Lunch" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Jose's Italian Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Jason's Pho" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Brian's Chinese Dinner" [] False True False
+"Anna's Middle eastern Dessert" [] True True True
+"Nicholas' Thai Dinner" [Kosher, Hindu] True False True
+"Andrew's Teriyaki" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Sandra's Ramen" [Kosher] False False False
+"Mark's Juice" [Kosher, Hindu, Vegan] True True False
+"Justin's BBQ" [] True False False
+"William's Bubble Tea" [Kosher] True True False
+"Martha's Drink" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Sandra's Bubble Tea" [] False True False
+"Shirley's Yum Cha" [Kosher, Hindu, Vegan] True False True
+"Dylan's Drink" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Gloria's BBQ" [Kosher, Hindu] False True False
+"Juan's Scandinavian Dessert" [] False False True
+"Vincent's Seafood" [] False False True
+"Lawrence's Sri Lankan Dinner" [] True True True
+"Brenda's Oriental Dessert" [] True True True
+"Timothy's Juice" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Emma's Noodles" [] True True False
+"Jessica's Pakistani Lunch" [Kosher, Hindu, Vegan] False True False
+"Harry's Australian Dessert" [Kosher] True False False
+"Scott's Ice Cream" [] False False False
+"Marie's Soul Food" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Vincent's Ice Cream" [Kosher, Hindu, Vegan] True False False
+"Juan's Seafood" [Kosher, Hindu] True False True
+"Ethan's Tapas" [Kosher, Hindu] True True False
+"John's Korean Dessert" [] False True False
+"Douglas' Italian Dessert" [] False True False
+"Frank's Thai Lunch" [Kosher, Hindu, Vegan] False True False
+"Michael's Arabian Brunch" [] False True False
+"Russell's Oriental Dessert" [Kosher] True True False
+"Mildred's Ice Cream" [] True True False
+"Albert's BBQ" [] False True False
+"Danielle's American Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Roy's Scandinavian Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Megan's Yum Cha" [] False True True
+"Peter's Malaysian Lunch" [Kosher, Hindu, Vegan] True False True
+"Nancy's Tea House" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Marie's American Dinner" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Cheryl's French Breakfast" [Kosher, Hindu, Vegan] True False True
+"Terry's Pastry" [Kosher, Hindu, Vegan] True True True
+"Susan's Moroccan Lunch" [] False True True
+"Stephanie's Eastern European Breakfast" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Ralph's Tapas" [] True False False
+"Paul's Middle eastern Breakfast" [Kosher, Hindu] False True True
+"Danielle's Middle eastern Dessert" [Kosher, Hindu, Vegan] False False True
+"Frances' Bubble Tea" [] True True True
+"Karen's Greek Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Ethan's Fish and Chips" [] False True True
+"Jessica's French Brunch" [] False False False
+"Adam's Australian Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Evelyn's Drink" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Patrick's Coffee" [Kosher] True False False
+"Ronald's Arabian Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Patrick's Vietnamese Brunch" [Kosher, Hindu, Vegan] True True True
+"Donald's Oriental Dessert" [] True True False
+"Timothy's Yum Cha" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Austin's Fish and Chips" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Lisa's Indian Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Angela's Tea House" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Henry's Lebanese Brunch" [Kosher, Hindu, Vegan] True False False
+"Wayne's Moroccan Brunch" [Kosher, Hindu] True True False
+"Ruth's Thai Brunch" [Kosher, Hindu, Vegan] True True True
+"Beverly's Yum Cha" [Kosher] False True False
+"Anna's Sri Lankan Brunch" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Louis' Pakistani Dessert" [] False False True
+"Albert's Bubble Tea" [Kosher] False True True
+"Abigail's Mexican Dessert" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Noah's Singaporean Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Debra's Moroccan Brunch" [] False False True
+"Raymond's Japanese Brunch" [] True True False
+"Noah's Kebabs" [] True True False
+"Christina's Dumplings" [Kosher] False False True
+"Maria's Juice" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Mary's Juice" [Kosher, Hindu, Vegan] False True False
+"Louis' Pakistani Dessert" [] True False False
+"Ashley's Japanese Dessert" [Kosher] False False True
+"Michael's French Dinner" [Kosher] False False True
+"Olivia's Pub Food" [Kosher] True False False
+"Nicole's Chinese Brunch" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Timothy's Sri Lankan Brunch" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Frances' Ice Cream" [Kosher, Hindu] False False False
+"Denise's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Jeremy's Oriental Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Jane's Pakistani Breakfast" [Kosher, Hindu] False True True
+"Jack's Japanese Breakfast" [] False False False
+"Nicholas' American Brunch" [Kosher] True False True
+"Nathan's Pho" [] True True True
+"Ronald's Italian Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False False
+"Grace's Charcoal Chicken" [] False False False
+"Walter's Chinese Lunch" [Kosher, Hindu] True False False
+"Eugene's Malaysian Dessert" [] True True False
+"Gary's Middle eastern Breakfast" [Kosher] True True False
+"Brittany's Tea House" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Jeremy's Oriental Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"David's Juice" [Kosher] False False False
+"Keith's Teriyaki" [Kosher, Hindu, Vegan] False False True
+"Anna's Spanish Dinner" [] True True True
+"Kevin's Pizza" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Cheryl's Noodles" [Kosher, Hindu, Vegan] True True True
+"Gerald's Vietnamese Dessert" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Maria's Lebanese Breakfast" [] True True True
+"Ryan's Pakistani Brunch" [Kosher] False False False
+"Gary's Tapas" [] True False False
+"Janet's Turkish Brunch" [Kosher, Hindu] False True True
+"Samuel's Portuguese Dessert" [Kosher, Hindu, Vegan] False True True
+"Juan's Bubble Tea" [] False False False
+"Jacqueline's Portuguese Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Martha's Noodles" [] True True False
+"Charles' Steakhouse" [Kosher, Hindu] False True True
+"Samuel's Oriental Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Jonathan's Malaysian Brunch" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Jessica's Tapas" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Peter's Drink" [Kosher, Hindu] True False True
+"Dorothy's Pakistani Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Dennis' Bubble Tea" [] False True True
+"Tiffany's Portuguese Dessert" [] True True True
+"Betty's Fast Food" [Kosher, Hindu] True True False
+"Kyle's Burgers" [Kosher, Hindu] False False True
+"Shirley's Pizza" [] True False False
+"Marie's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Austin's Steakhouse" [Kosher] False False False
+"Stephen's Ramen" [Kosher, Hindu] True True False
+"Bryan's Mexican Breakfast" [Kosher, Hindu] False True True
+"Harold's Steakhouse" [Kosher, Hindu, Vegan] False True False
+"Rachel's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Hannah's Bubble Tea" [Kosher, Hindu] True True True
+"Cheryl's Pub Food" [Kosher] True True True
+"Ruth's Arabian Breakfast" [] True False True
+"Roy's Pakistani Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Diana's Spanish Dessert" [Kosher, Hindu, Vegan] False False False
+"Nathan's Noodles" [] True False False
+"Karen's Fish and Chips" [Kosher, Hindu, Vegan] False True False
+"Judy's Ice Cream" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Tiffany's Noodles" [Kosher, Hindu] True True False
+"Kathleen's Oriental Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Marilyn's Japanese Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Betty's Turkish Dinner" [] False False False
+"Lisa's Malaysian Brunch" [Kosher, Hindu, Vegan] False False False
+"Howard's Oriental Brunch" [Kosher, Hindu] False False False
+"Joyce's Sandwich" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Frances' Lebanese Dessert" [Kosher, Hindu] True True False
+"Helen's Juice" [Kosher, Hindu, Vegan] True True True
+"Abigail's Australian Dinner" [Kosher, Hindu] False False False
+"Beverly's Lebanese Dessert" [Kosher, Hindu, Vegan] False True False
+"Edward's Thai Brunch" [Kosher] True True True
+"Randy's Teppanyaki" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Jerry's Thai Lunch" [] True True True
+"Brandon's Frozen Yogurt" [Kosher] False True True
+"Nicholas' Mexican Dessert" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Benjamin's Bubble Tea" [Kosher] True False False
+"Beverly's Indian Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Deborah's Greek Brunch" [Kosher, Hindu, Vegan] False False False
+"Theresa's Charcoal Chicken" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Virginia's Ice Cream" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Donald's Soul Food" [Kosher] True False False
+"Margaret's Turkish Dinner" [Kosher, Hindu] False True False
+"Brenda's Spanish Lunch" [Kosher] True False True
+"Justin's Thai Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Edward's Drink" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Christine's Turkish Dinner" [] True True False
+"Teresa's Middle eastern Breakfast" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Amber's Dumplings" [Kosher, Hindu, Vegan] True False True
+"Jerry's Pho" [] False True False
+"Susan's Pakistani Dessert" [Kosher] True False False
+"Debra's Fish and Chips" [Kosher] True True False
+"Bruce's French Lunch" [] False True True
+"Nancy's Juice" [Kosher] False False True
+"Justin's Arabian Breakfast" [Kosher, Hindu, Vegan] True True False
+"Barbara's Pub Food" [Kosher] True False False
+"Timothy's American Dessert" [Kosher] False False False
+"Sharon's Burgers" [Kosher] False True False
+"Terry's Frozen Yogurt" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Robert's Coffee" [] True False False
+"Brian's Vietnamese Brunch" [Kosher, Hindu, Vegan] True True False
+"Ethan's American Breakfast" [Kosher, Hindu, Vegan] True False False
+"Doris' Pizza" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Lisa's Juice" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Gerald's Fish and Chips" [] False True True
+"George's Mediterranean Brunch" [] True True False
+"Frank's American Dinner" [Kosher, Hindu, Vegan] True True True
+"Michelle's Singaporean Breakfast" [] False False False
+"Susan's French Dessert" [] False False True
+"Kenneth's Singaporean Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Carol's Sandwich" [Kosher] True False False
+"Joan's Sri Lankan Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Emma's Sushi Train" [Kosher, Hindu, Vegan] True True True
+"Kathryn's Mexican Dessert" [Kosher] True False True
+"Brenda's Italian Dinner" [] True False True
+"Joshua's Turkish Dessert" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Joan's Lebanese Dessert" [Kosher] False True False
+"Michael's Seafood" [] True True True
+"Carolyn's Turkish Brunch" [] False False True
+"Wayne's Healthy Food" [Kosher] False True True
+"Julie's Turkish Breakfast" [] False False False
+"Ralph's Tapas" [Kosher, Hindu, Vegan] True True True
+"Theresa's Middle eastern Dinner" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"John's Ramen" [Kosher, Hindu, Vegan] True True True
+"Diana's Drink" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Eugene's Japanese Brunch" [] False True True
+"Olivia's Malaysian Breakfast" [] True False False
+"Victoria's Teriyaki" [Kosher] False False True
+"Richard's Burgers" [Kosher, Hindu] True True True
+"Hannah's Greek Dessert" [Kosher] True True True
+"Robert's Italian Dinner" [Kosher] True True False
+"Russell's Spanish Lunch" [Kosher] False True True
+"Cheryl's Juice" [] True False False
+"Ronald's Thai Brunch" [Kosher, Hindu, Vegan] False True False
+"Sean's Oriental Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Louis' BBQ" [Kosher] False True True
+"Diana's BBQ" [Kosher, Hindu, Vegan] True False True
+"Carl's Soul Food" [Kosher] True False True
+"Evelyn's Steakhouse" [Kosher, Hindu] False True True
+"Jacqueline's Portuguese Breakfast" [Kosher] True False False
+"Benjamin's Mexican Breakfast" [] True True False
+"Danielle's French Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Paul's Australian Dinner" [] False False True
+"Amanda's Malaysian Dessert" [] True True False
+"Deborah's Spanish Dessert" [] False True True
+"Cynthia's Vietnamese Lunch" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Helen's Spanish Dessert" [Kosher, Hindu] True False False
+"Alexander's Fast Food" [Kosher, Hindu] False True True
+"Timothy's French Lunch" [] True True True
+"Sean's Charcoal Chicken" [Kosher, Hindu, Vegan] False False False
+"Betty's Pastry" [Kosher, Hindu] True True True
+"Patrick's Singaporean Breakfast" [Kosher, Hindu] True False True
+"Nancy's Korean Dessert" [Kosher, Hindu] True False True
+"Peter's Thai Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Mark's Pho" [Kosher, Hindu, Vegan] False False True
+"Kelly's Fish and Chips" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Martha's Mexican Breakfast" [] True False True
+"Janet's Korean Dessert" [] True False True
+"Austin's Greek Brunch" [Kosher, Hindu, Vegan] False True True
+"Ruth's Pakistani Dinner" [Kosher, Hindu] True False False
+"Adam's Healthy Food" [Kosher, Hindu] True True True
+"Laura's Pho" [] False False True
+"Amber's Healthy Food" [Kosher, Hindu, Vegan] True False False
+"Christopher's Japanese Lunch" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Robert's Ice Cream" [] True True False
+"Terry's Mediterranean Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Denise's Yum Cha" [Kosher] True False False
+"Russell's Scandinavian Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Howard's Turkish Dessert" [Kosher, Hindu, Vegan] False True False
+"Julia's Spanish Dinner" [Kosher, Hindu] False True False
+"Scott's Dumplings" [Kosher, Hindu] False True False
+"Vincent's Ramen" [] True False False
+"Danielle's American Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Larry's Tea House" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Sean's Steakhouse" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Joyce's Korean Brunch" [] True True True
+"Melissa's Tea House" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Jason's Coffee" [Kosher] False False False
+"Zachary's Steakhouse" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Angela's Ramen" [Kosher, Hindu] True True False
+"Anthony's Pub Food" [] False True False
+"Laura's Sandwich" [Kosher] False False True
+"Deborah's Moroccan Breakfast" [Kosher, Hindu] False True False
+"Lawrence's Pizza" [] True False True
+"Marilyn's Yum Cha" [] False True False
+"Eric's Grill" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False False
+"Melissa's Noodles" [Kosher, Hindu, Vegan] True True False
+"Nathan's Middle eastern Breakfast" [] False True True
+"Samantha's Arabian Dinner" [] True False True
+"Donald's Malaysian Dinner" [] False True True
+"Jessica's BBQ" [] True False False
+"Steven's Oriental Brunch" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Tiffany's Sushi Train" [] True False True
+"Madison's Pakistani Breakfast" [] False False True
+"Jeffrey's Singaporean Lunch" [Kosher] True False False
+"Jordan's Sushi Train" [Kosher] False True True
+"Michael's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Benjamin's Korean Dinner" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Anna's Spanish Dinner" [Kosher, Hindu] True True False
+"Nicole's Sri Lankan Dessert" [Kosher, Hindu, Vegan] False True True
+"Roger's Moroccan Dessert" [] False False True
+"Brian's Sushi Train" [Kosher, Hindu, Vegan] False False True
+"Olivia's Chinese Dessert" [] False False False
+"Lisa's Healthy Food" [] True False False
+"Nicole's Arabian Dinner" [Kosher, Hindu, Vegan] False False False
+"Betty's Burgers" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Jose's Scandinavian Brunch" [Kosher, Hindu] False True False
+"Anna's Tapas" [Kosher, Hindu] True True True
+"Ann's Ice Cream" [] False True False
+"Patrick's Seafood" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Lawrence's Charcoal Chicken" [Kosher, Hindu] False True True
+"Karen's Vietnamese Brunch" [] True False True
+"Jordan's BBQ" [Kosher] False True False
+"Jesse's Juice" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Robert's Portuguese Dinner" [Kosher] False True True
+"Donald's Lebanese Lunch" [] False True True
+"Danielle's American Brunch" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Margaret's Pizza" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Betty's American Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Kelly's Juice" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Roy's Korean Lunch" [Kosher] False False False
+"Andrew's Sri Lankan Brunch" [Kosher] False False True
+"Kathleen's Kebabs" [] False False False
+"Stephanie's Scandinavian Brunch" [Kosher, Hindu, Vegan] False True False
+"Zachary's Middle eastern Breakfast" [] True False True
+"Richard's Singaporean Dessert" [Kosher] True False False
+"Carl's Pakistani Breakfast" [] False True True
+"Gary's Singaporean Brunch" [] False True False
+"Betty's Greek Breakfast" [Kosher, Hindu] True True True
+"Sara's Thai Dinner" [] False True True
+"Michael's Spanish Dessert" [Kosher, Hindu] True True True
+"Donna's Ice Cream" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Helen's Sandwich" [Kosher, Hindu, Vegan] True True False
+"Zachary's Greek Brunch" [] False True True
+"Christian's Healthy Food" [Kosher] False True True
+"Charles' Pastry" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Linda's Ramen" [Kosher, Hindu] False True False
+"Keith's Turkish Dessert" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Sandra's Malaysian Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Gregory's Ice Cream" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Sarah's Charcoal Chicken" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Martha's Middle eastern Dessert" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Elizabeth's Scandinavian Lunch" [Kosher, Hindu] False True False
+"Alan's Middle eastern Lunch" [Kosher, Hindu, Vegan] False True False
+"Amy's Burgers" [] True False True
+"Christine's Fish and Chips" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Benjamin's Australian Dessert" [] False False True
+"Natalie's Middle eastern Dinner" [Kosher, Hindu] True False True
+"Diana's Noodles" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Anna's Vietnamese Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Susan's Dumplings" [] True False False
+"Mildred's Pub Food" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Julie's Spanish Dessert" [] True False True
+"Jean's Fish and Chips" [Kosher] True False False
+"Johnny's Fast Food" [] False False True
+"Catherine's Italian Breakfast" [] True True True
+"Howard's Frozen Yogurt" [Kosher] True True True
+"Judith's Portuguese Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Frank's Tapas" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Nicole's Tapas" [Kosher, Hindu, Vegan] True False False
+"Frank's Australian Dessert" [Kosher, Hindu, Vegan] True True False
+"Jennifer's Sushi Train" [Kosher] False False False
+"Noah's Middle eastern Brunch" [Kosher, Hindu, Vegan] False True False
+"Rebecca's Greek Dinner" [] True True False
+"Donald's Sandwich" [] True True True
+"Russell's Greek Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True True
+"Christian's Indian Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"Laura's Healthy Food" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Cheryl's Singaporean Brunch" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Lawrence's Pho" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Beverly's Pub Food" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Melissa's Burgers" [] False False True
+"Edward's Australian Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True True True
+"Danielle's Sri Lankan Breakfast" [Kosher] True False False
+"Danielle's Noodles" [Kosher] False False False
+"Jeffrey's Kebabs" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Jeffrey's Mediterranean Dessert" [Kosher, Hindu, Vegan] True True False
+"Marie's Pastry" [] False False False
+"Danielle's Spanish Breakfast" [] True False True
+"Brian's Eastern European Breakfast" [] False False False
+"Peter's Oriental Breakfast" [Kosher] False True True
+"Mark's Teppanyaki" [Kosher] False True False
+"Roger's Drink" [Kosher, Hindu, Vegan] True True True
+"Jose's Chinese Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False True
+"George's Pub Food" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Aaron's Japanese Breakfast" [Kosher] False False True
+"Harold's Dumplings" [] False True True
+"Andrew's Pho" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Austin's Fast Food" [Kosher] True True True
+"William's Teriyaki" [Kosher] True True False
+"Juan's Malaysian Breakfast" [Kosher, Hindu] False True False
+"Beverly's Italian Breakfast" [Kosher, Hindu] False True True
+"Benjamin's Noodles" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Carl's American Lunch" [Kosher, Hindu, Vegan] False True False
+"Dorothy's Pakistani Brunch" [Kosher, Hindu, Vegan] False False True
+"Harry's Coffee" [] False False False
+"Philip's Greek Lunch" [Kosher, Hindu] False False False
+"Stephanie's Malaysian Brunch" [Kosher, Hindu, Vegan] True True True
+"Matthew's Steakhouse" [] True False True
+"Cheryl's Oriental Brunch" [] False False False
+"Raymond's Sandwich" [Kosher, Hindu, Vegan] True False True
+"Willie's Scandinavian Brunch" [Kosher, Hindu, Vegan] True True False
+"Evelyn's Korean Dinner" [Kosher, Hindu] True False False
+"Daniel's Noodles" [Kosher, Hindu, Vegan] False True False
+"Emily's Japanese Dessert" [Kosher, Hindu] False True True
+"Carolyn's Sri Lankan Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Barbara's Portuguese Brunch" [] False True False
+"Stephanie's Burgers" [] True False False
+"Jose's Yum Cha" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False False
+"Karen's Australian Dessert" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Ashley's French Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Wayne's American Lunch" [] False True False
+"Jordan's Bubble Tea" [] True False True
+"Carolyn's Spanish Brunch" [] False True False
+"Nathan's Oriental Dessert" [] False True False
+"Cynthia's Spanish Breakfast" [Kosher, Hindu] True False True
+"Jacqueline's French Dinner" [] True True True
+"Joe's Malaysian Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Brian's Indian Brunch" [] False False False
+"Evelyn's Drink" [Kosher, Hindu] True True True
+"Samuel's Thai Brunch" [Kosher] False False False
+"Mildred's Yum Cha" [] False True True
+"Kathy's Portuguese Dessert" [] True True True
+"Olivia's Mexican Breakfast" [] False True True
+"Ronald's Australian Breakfast" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Daniel's Vietnamese Lunch" [Kosher] True False True
+"Lawrence's Mediterranean Lunch" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Alice's Italian Dessert" [] True True True
+"Steven's Teriyaki" [Kosher] True False False
+"Jack's Australian Lunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False False
+"Denise's Turkish Dessert" [Kosher] True True True
+"Evelyn's Scandinavian Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Linda's Mexican Breakfast" [] False True False
+"Deborah's Ice Cream" [Kosher, Hindu, Vegan] False False False
+"Hannah's Spanish Dinner" [Kosher] False False False
+"Nicole's Malaysian Dinner" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Brandon's Korean Brunch" [Kosher] True True False
+"Patricia's Frozen Yogurt" [Kosher] True True False
+"Gerald's Turkish Brunch" [Kosher, Hindu, Vegan] False True False
+"Walter's Indian Breakfast" [] False True False
+"Daniel's Eastern European Dinner" [Kosher, Hindu] False True True
+"Kathryn's Turkish Breakfast" [] True False False
+"Philip's Ramen" [] True False False
+"Sandra's Coffee" [] True False False
+"Jacqueline's Korean Brunch" [Kosher, Hindu, Vegan, Vegetarian] True True False
+"Kathleen's Singaporean Breakfast" [] False False True
+"Betty's Noodles" [] False True False
+"Ryan's Pho" [] False True False
+"Eric's Portuguese Lunch" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Wayne's Thai Breakfast" [Kosher, Hindu, Vegan] False True True
+"Sara's Ice Cream" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Raymond's Mediterranean Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Ann's Eastern European Dessert" [] True False True
+"Catherine's Tea House" [Kosher] False True True
+"Lisa's Japanese Brunch" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"John's Sri Lankan Dessert" [] False False True
+"Joseph's Japanese Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True False
+"Joyce's Seafood" [Kosher, Hindu, Vegan, Vegetarian] False True True
+"Beverly's Ice Cream" [Kosher, Hindu, Vegan] False True True
+"Kimberly's Japanese Dinner" [] True False False
+"Justin's French Breakfast" [Kosher] False True True
+"Keith's BBQ" [] True False True
+"Donna's Teppanyaki" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Andrew's Soul Food" [] True True True
+"Noah's Singaporean Lunch" [Kosher] False False True
+"Jack's Juice" [Kosher, Hindu, Vegan, Vegetarian] False False True
+"Terry's Vietnamese Breakfast" [] False False False
+"Patrick's Eastern European Brunch" [Kosher] True False True
+"Harry's Ramen" [Kosher, Hindu, Vegan] False True False
+"Emily's Italian Brunch" [] False True True
+"Roger's Ice Cream" [Kosher, Hindu, Vegan] False True True
+"Doris' Frozen Yogurt" [] True False False
+"Michael's Dumplings" [Kosher, Hindu, Vegan] True False True
+"Lawrence's Sandwich" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False True
+"Brandon's Burgers" [Kosher] False False False
+"Janet's Juice" [Kosher, Hindu] False False True
+"Danielle's Turkish Breakfast" [Kosher] False False False
+"Justin's Pizza" [] False True False
+"Timothy's Turkish Brunch" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Ralph's Chinese Breakfast" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False False False
+"Lisa's Tapas" [] False False True
+"James' Soul Food" [] False True True
+"Matthew's Noodles" [Kosher] False True True
+"Kathy's Fish and Chips" [Kosher, Hindu, Vegan] False False False
+"Judith's Teppanyaki" [Kosher, Hindu, Vegan] True True True
+"Stephen's Tea House" [Kosher] True False True
+"Larry's Fish and Chips" [] False True True
+"Stephanie's Bubble Tea" [Kosher, Hindu, Vegan] True True False
+"Sean's Juice" [Kosher] True False False
+"Michelle's Frozen Yogurt" [Kosher, Hindu] True False False
+"Mary's Bubble Tea" [Kosher, Hindu] True False False
+"Sean's Tea House" [] False False False
+"Brittany's Moroccan Breakfast" [Kosher, Hindu, Vegan, Vegetarian] True False False
+"Carl's Thai Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True True False
+"Anna's Tapas" [Kosher, Hindu] False True True
+"Samuel's Japanese Dessert" [Kosher, Hindu, Vegan, Vegetarian] False True False
+"Charles' Arabian Brunch" [Kosher, Hindu] False True True
+"Bruce's Chinese Dessert" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] True False False
+"Bryan's Steakhouse" [] False False True
+"Amber's Seafood" [Kosher, Hindu, Vegan, Vegetarian] False False False
+"Virginia's Kebabs" [Kosher, Hindu, Vegan] True True False
+"Russell's Pub Food" [] True True False
+"Tyler's Coffee" [Kosher, Hindu] True False False
+"Madison's Bubble Tea" [Kosher, Hindu, Vegan, Vegetarian] True False True
+"Mary's Scandinavian Dinner" [] True True False
+"Joseph's Portuguese Dinner" [Kosher, Hindu, Vegan, Vegetarian, Lactose intolerant] False True True
+"Katherine's BBQ" [Kosher, Hindu] True True True
+"Noah's Japanese Dessert" [Kosher] True True True
+"Philip's Teriyaki" [Kosher] True False True
+"Hannah's Eastern European Brunch" [Kosher, Hindu, Vegan, Vegetarian] True False True
