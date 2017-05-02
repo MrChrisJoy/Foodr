@@ -21,12 +21,13 @@ Meal = ["BBQ", "Bubble Tea", "Burgers", "Charcoal Chicken",
 
 Names = []
 
+
 def genString(name, restaurant, diet):
     if name.endswith('s'):
-        string = '"' + name + "' " + restaurant + '" '
+        string = '<' + name + "' " + restaurant + '> '
     else:
-        string = '"' + name + "'s " + restaurant + '" '
-    string += '['
+        string = '<' + name + "'s " + restaurant + '> '
+    string += '<'
     first = True
     for i in range(0, 10):
         if diet[i]:
@@ -34,19 +35,19 @@ def genString(name, restaurant, diet):
                 string += ", "
             first = False
             string += Dietary[i]
-    string += '] '
+    string += '> '
     if random.randint(0,1):
-        string += 'True '
+        string += '<True> '
     else:
-        string += 'False '
+        string += '<False> '
     if random.randint(0, 1):
-        string += 'True '
+        string += '<True> '
     else:
-        string += 'False '
+        string += '<False> '
     if random.randint(0, 1):
-        string += 'True'
+        string += '<True>'
     else:
-        string += 'False'
+        string += '<False>'
 
     string += '\n'
     return string
