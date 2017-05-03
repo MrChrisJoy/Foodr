@@ -39,12 +39,12 @@ def main():
     bubble_sort("Ascending", "name")
     for r in Restaurants:
         print r.to_string()
-    filtered = filter(["Vegetarian", "Vegan", "Halal"])
+    filtered = filter_diet(["Vegetarian", "Vegan", "Halal"])
     for f in filtered:
         print f.to_string()
 
 
-def filter(arg):
+def filter_diet(arg):
     #arg is an array containing the dietary requirements to match
     filtered = []
     for r in Restaurants:
