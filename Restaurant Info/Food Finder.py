@@ -17,6 +17,18 @@ class Restaurant:
         else:
             self.wifi = False
 
+    def get_field(self, field):
+        if field == "name":
+            return self.name
+        if field == "dietary":
+            return self.dietary
+        if field == "alcohol":
+            return self.alcohol
+        if field == "wheelchair":
+            return self.wheelchair
+        if field == "wifi":
+            return self.wifi
+
     def to_string(self):
         return "name: %s, dietary: %s, alcohol: %s, wheel: %s, wifi: %s" % (self.name, self.dietary, self.alcohol, self.wheelchair, self.wifi)
 
@@ -37,15 +49,13 @@ def main():
             new = Restaurant(name, dietary.split(', '), alcohol, wheelchair, wifi)
             Restaurants.append(new)
     bubble_sort("Ascending", "name")
-    for r in Restaurants:
-        print r.to_string()
-    filtered = filter_diet(["Vegetarian", "Vegan", "Halal"])
+    filtered = filter(["Vegetarian", "Vegan", "Halal"])
     for f in filtered:
         print f.to_string()
 
 
-def filter_diet(arg):
-    #arg is an array containing the dietary requirements to match
+def filter(arg):
+    # arg is an array containing the dietary requirements to match
     filtered = []
     for r in Restaurants:
         match = True
@@ -56,6 +66,7 @@ def filter_diet(arg):
         if match:
             filtered.append(r)
     return filtered
+
 
 def bubble_sort(direction, field):
     for i in range(len(Restaurants)):
@@ -70,34 +81,12 @@ def bubble_sort(direction, field):
 
 
 def compare(left, right, field):
-    if field == "name":
-        if left.name < right.name:
-            return -1
-        elif left.name > right.name:
-            return 1
-        else:
-            return 0
-    elif field == "alcohol":
-        if left.alcohol < right.alcohol:
-            return -1
-        elif left.alcohol > right.alcohol:
-            return 1
-        else:
-            return 0
-    elif field == "wheelchair":
-        if left.wheelchair < right.wheelchair:
-            return -1
-        elif left.wheelchair > right.wheelchair:
-            return 1
-        else:
-            return 0
-    elif field == "wifi":
-        if left.wifi < right.wifi:
-            return -1
-        elif left.wifi > right.wifi:
-            return 1
-        else:
-            return 0
+    if left.get_field(field) < right.get_field(field):
+        return -1
+    elif left.get_field(field) > right.get_field(field):
+        return 1
+    else:
+        return 0
 
 if __name__ == '__main__':
     main()
