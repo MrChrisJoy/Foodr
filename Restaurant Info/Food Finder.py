@@ -1,18 +1,20 @@
-import re
+import json
+from pprint import pprint
 
 class Restaurant:
-    def __init__(self, name, dietary, alcohol, wheelchair, wifi):
+    def __init__(self, name, dietary, deals, alcohol, wheelchair, wifi):
         self.name = name
         self.dietary = dietary
-        if alcohol == "True":
+        self.deals = deals
+        if alcohol == "true":
             self.alcohol = True
         else:
             self.alcohol = False
-        if wheelchair == "True":
+        if wheelchair == "true":
             self.wheelchair = True
         else:
             self.wheelchair = False
-        if wifi == "True":
+        if wifi == "true":
             self.wifi = True
         else:
             self.wifi = False
@@ -22,6 +24,8 @@ class Restaurant:
             return self.name
         if field == "dietary":
             return self.dietary
+        if field == "deals":
+            return self.deals
         if field == "alcohol":
             return self.alcohol
         if field == "wheelchair":
@@ -30,28 +34,22 @@ class Restaurant:
             return self.wifi
 
     def to_string(self):
-        return "name: %s, dietary: %s, alcohol: %s, wheel: %s, wifi: %s" % (self.name, self.dietary, self.alcohol, self.wheelchair, self.wifi)
+        return "name: %s, dietary: %s, deals: %s, alcohol: %s, wheel: %s, wifi: %s" % (self.name, self.dietary, self.deals, self.alcohol, self.wheelchair, self.wifi)
 
 Restaurants = []
 
+
 def main():
 
-    with open("restaurant.txt", "r") as f:
-        for line in f.readlines():
-            if line.startswith('#'):
-                continue
-            find = re.findall(r"<[\w,' ]*>", line)
-            name = find[0].strip("<").strip(">")
-            dietary = find[1].strip("<").strip(">")
-            alcohol = find[2].strip("<").strip(">")
-            wheelchair = find[3].strip("<").strip(">")
-            wifi = find[4].strip("<").strip(">")
-            new = Restaurant(name, dietary.split(', '), alcohol, wheelchair, wifi)
-            Restaurants.append(new)
+    with open("restaurant.json") as f:
+        lines = json.load(f)
+        testArr = lines["Restaurants"]
+        for r in testArr:
+            Restaurants.append(Restaurant(str(r["name"]), str(" ".join(r["dietary"])).split(" "), str(" ".join(r["deals"])).split(','), str(r["alcohol"]), str(r["wheelchair"]), str(r["wifi"])))
     bubble_sort("Ascending", "name")
-    filtered = filter_diet(["Vegetarian", "Vegan", "Halal"])
-    for f in filtered:
-        print f.to_string()
+    f = filter_diet(["Halal", "Vegan", "Kosher"])
+    for r in f:
+        print r.to_string()
 
 
 def filter_diet(arg):
