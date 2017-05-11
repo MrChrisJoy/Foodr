@@ -1,5 +1,4 @@
 import json
-from pprint import pprint
 
 class Restaurant:
     def __init__(self, name, dietary, deals, alcohol, wheelchair, wifi):
@@ -85,6 +84,7 @@ def compare(left, right, field):
         return 1
     else:
         return 0
+
 
 if __name__ == '__main__':
     main()
