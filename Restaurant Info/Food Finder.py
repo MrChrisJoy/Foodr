@@ -42,8 +42,8 @@ def main():
 
     with open("restaurant.json") as f:
         lines = json.load(f)
-        testArr = lines["Restaurants"]
-        for r in testArr:
+        data = lines["Restaurants"]
+        for r in data:
             Restaurants.append(Restaurant(str(r["name"]), str(" ".join(r["dietary"])).split(" "), str(" ".join(r["deals"])).split(','), str(r["alcohol"]), str(r["wheelchair"]), str(r["wifi"])))
     bubble_sort("Ascending", "name")
     f = filter_diet(["Halal", "Vegan", "Kosher"])
