@@ -19,46 +19,61 @@ Meal = ["BBQ", "Bubble Tea", "Burgers", "Charcoal Chicken",
         "Sandwich", "Seafood", "Soul Food", "Steakhouse", "Sushi Train", "Tapas",
         "Tea House", "Teppanyaki", "Teriyaki", "Yum Cha"]
 
+Deals = ["$5 off", "$10 off", "$5 off if you spend over $20", "$10 off if you spend over $50", "Free drink with any meal",
+         "Free drink with any purchase", "Buy one get one free", "All you can eat for $20pp", "All you can eat for $25pp",
+         "10% off", "15% off"]
+
 Names = []
 
 
 def genString(name, restaurant, diet):
+    string = '\t{\n\t\t"name":'
     if name.endswith('s'):
-        string = '<' + name + "' " + restaurant + '> '
+        string += '"' + name + "' " + restaurant + '",\n'
     else:
-        string = '<' + name + "'s " + restaurant + '> '
-    string += '<'
+        string += '"' + name + "'s " + restaurant + '",\n'
+    string += '\t\t"dietary":[ '
     first = True
     for i in range(0, 10):
         if diet[i]:
             if not first:
                 string += ", "
             first = False
-            string += Dietary[i]
-    string += '> '
-    if random.randint(0,1):
-        string += '<True> '
-    else:
-        string += '<False> '
-    if random.randint(0, 1):
-        string += '<True> '
-    else:
-        string += '<False> '
-    if random.randint(0, 1):
-        string += '<True>'
-    else:
-        string += '<False>'
+            string += '"' + Dietary[i] + '"'
+    string += ' ],\n'
 
-    string += '\n'
+    dealno = random.randint(0, len(Deals)-1)
+    string += '\t\t"deals":[ "' + Deals[dealno] + '" ],\n'
+
+    if random.randint(0,1):
+        string += '\t\t"alcohol":"true",\n'
+    else:
+        string += '\t\t"alcohol":"false",\n'
+    if random.randint(0, 1):
+        string += '\t\t"wheelchair":"true",\n'
+    else:
+        string += '\t\t"wheelchair":"false",\n'
+    if random.randint(0, 1):
+        string += '\t\t"wifi":"true"'
+    else:
+        string += '\t\t"wifi":"false"'
+
+    string += ' }'
     return string
 
 fin = open('Names.txt', 'r')
 for name in fin:
     Names.append(name.strip())
 
-fout = open('restaurant.txt', 'w')
-fout.write("# <Name> <Dietary> <Alcohol> <Wheelchair_Access> <Free_WiFi>\n")
-for i in range(0, 1000):
+fout = open('restaurant.json', 'w')
+fout.write('{ "Restaurants":[')
+first = True
+for i in range(0, 500):
+    if first:
+        first = False
+        fout.write("\n")
+    else:
+        fout.write(",\n")
     name = random.choice(Names)
     corm = random.randint(0,1)
     restaurant = ""
@@ -72,6 +87,6 @@ for i in range(0, 1000):
     for j in range(0, num_diet):
         diet[random.randint(0, 9)] = True
     fout.write(genString(name, restaurant, diet))
-
+fout.write('\n]}\n')
 fin.close()
 fout.close()
