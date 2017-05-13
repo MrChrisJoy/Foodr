@@ -6,9 +6,39 @@
     <script type="text/javascript" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/template.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/foodr.css') }}">
     <title>Foodr</title>
 </head>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#"><i class="fa fa-cutlery" aria-hidden="true"></i> Foodr</a>
+
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="col-sm-3 col-md-3">
+        <form class="navbar-form" role="search"  action="/search" method="get">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="q">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+    </div>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+
     <div class="row affix-row">
         <div class="col-sm-3 col-md-2 affix-sidebar">
             <div class="sidebar-nav">
@@ -25,11 +55,6 @@
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
           <ul class="nav navbar-nav" id="sidenav01">
             <li class="active">
-              <a href="#" data-toggle="collapse" data-target="#toggleDemo0" data-parent="#sidenav01" class="collapsed">
-              <h4>
-                  <h3 style="margin: 0 auto;"><i class="fa fa-cutlery" aria-hidden="true"></i></span> Foodr</h3>
-              <br>
-              </h4>
               </a>
               <div class="collapse" id="toggleDemo0" style="height: 0px;">
                 <ul class="nav nav-list">
@@ -67,8 +92,6 @@
             <li><a href="/restaurants/"><span class="glyphicon glyphicon-lock"></span> Restaurants</a></li>
             <li><a href="/deals/"><span class="glyphicon glyphicon-calendar"></span> Deals<span class="badge pull-right">42</span></a></li>
             <li><a href="/saved/"><span class="glyphicon glyphicon-cog"></span> Saved Items</a></li>
-            <li><a href="/saved/restaurants/"><span class="glyphicon glyphicon-cog"></span> Saved restaurants</a></li>
-            <li><a href="/saved/deals/"><span class="glyphicon glyphicon-cog"></span> Saved Deals</a></li>
           </ul>
           </div><!--/.nav-collapse -->
         </div>

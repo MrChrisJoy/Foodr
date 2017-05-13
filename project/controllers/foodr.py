@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+import os, json
 from project import app
 from flask import render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
+
+local_data = os.path.join(app.static_folder, 'data/restaurant.json')
 
 DEBUG_TB_INTERCEPT_REDIRECTS = False
 class CreateForm(FlaskForm):
@@ -12,7 +15,13 @@ class CreateForm(FlaskForm):
 
 @app.route('/')
 def start():
-    return render_template('foodr/index.html')
+    restaurants = json.load(open(local_data))
+    return render_template('foodr/index.html', restaurants=restaurants)
+
+@app.route('/search')
+def search():
+	query = request.args.get('q')
+	return render_template('foodr/search.html', query=query)
 
 @app.route('/restaurants/')
 def restaurants():
