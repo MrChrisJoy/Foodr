@@ -1,12 +1,21 @@
 # -*- coding: utf-8 -*-
-import os, json
+import os, json, Restaurant
 from project import app
 from flask import render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
 
+Restaurants = []
 local_data = os.path.join(app.static_folder, 'data/restaurant.json')
+with open(local_data) as f:
+    lines = json.load(f)
+    data = lines["Restaurants"]
+    for r in data:
+        Restaurants.append(
+            Restaurant.Restaurant(str(r["name"]), str(" ".join(r["dietary"])).split(" "),
+                                  str(" ".join(r["deals"])).split(','), str(r["alcohol"]), str(r["wheelchair"]),
+                                  str(r["wifi"])))
 
 DEBUG_TB_INTERCEPT_REDIRECTS = False
 class CreateForm(FlaskForm):
@@ -20,8 +29,8 @@ def start():
 
 @app.route('/search')
 def search():
-	query = request.args.get('q')
-	return render_template('foodr/search.html', query=query)
+    query = request.args.get('q')
+    return render_template('foodr/search.html', query=query)
 
 @app.route('/restaurants/')
 def restaurants():
