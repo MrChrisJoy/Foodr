@@ -1,11 +1,14 @@
 {% extends "layout/layout_foodr.html" %}
 {% block body %}
 
-<div style="margin-top: 40px">
-{% for result in restaurants %}
+<div>
+<h1>{{ count }} results found for "{{ query }}"</h1><br>
+
+{% for result in results %}
     <div class="card-pod">
         <div class="card">
             <div class="card-image">
+                <img class="img-responsive" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{ lat }},%20{{ long }}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
             </div>
             <div class="card-content">
                 <b>{{result.name}}</b>
@@ -23,6 +26,6 @@
         </div>
     </div>
 {% endfor %}
-<div>
 
+</div>
 {% endblock %}

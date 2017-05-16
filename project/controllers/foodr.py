@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os, json, Restaurant
+import os, json, Restaurant, random
 from project import app
 from flask import render_template, request
 from flask_wtf import FlaskForm
@@ -40,7 +40,7 @@ def search():
                 count = count + 1
                 results.append(r)
 
-    return render_template('foodr/search.html', query=query, results=results, count=count)
+    return render_template('foodr/search.html', query=query, results=results, count=count, lat=150+random.random()/100, long=150+random.random()/100+100)
 
 
 
