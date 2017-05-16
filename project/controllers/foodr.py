@@ -30,10 +30,15 @@ def search():
     # linear search: append restaruants that contains the query
     results = []
     count = 0
-    for r in Restaurants:
-        if (query in r.name) | (query in r.dietary):
-            count = count + 1
-            results.append(r)
+    if query != "":
+        # iterate over restaurant elements
+        for r in Restaurants:
+            # obtain lower case dietary & deals elements
+            dietary = [x.lower() for x in r.dietary]
+            deals = [x.lower() for x in r.deals]
+            if (query.lower() in r.name.lower()) | (query in dietary) | (query in deals):
+                count = count + 1
+                results.append(r)
 
     return render_template('foodr/search.html', query=query, results=results, count=count)
 
