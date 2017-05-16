@@ -68,7 +68,7 @@ def filter_diet(arg):
 def bubble_sort(direction, field):
     for i in range(len(Restaurants)):
         swapped = False
-        for j in range(1, len(Restaurants)):
+        for j in range(len(Restaurants)):
             comp = compare(Restaurants[i], Restaurants[j], field)
             if (direction == "Descending" and comp > 0) or (direction == "Ascending" and comp < 0):
                 Restaurants[i], Restaurants[j] = Restaurants[j], Restaurants[i]
