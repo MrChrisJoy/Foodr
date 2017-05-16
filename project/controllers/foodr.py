@@ -17,39 +17,56 @@ with open(local_data) as f:
                                   str(" ".join(r["deals"])).split(','), str(r["alcohol"]), str(r["wheelchair"]),
                                   str(r["wifi"])))
 
-DEBUG_TB_INTERCEPT_REDIRECTS = False
-class CreateForm(FlaskForm):
-    text = StringField('name', validators=[DataRequired()])
-
 
 @app.route('/')
 def start():
-    restaurants = json.load(open(local_data))
-    return render_template('foodr/index.html', restaurants=restaurants)
+    query = request.args.get('q')
+    return render_template('foodr/index.html', query=query, restaurants=Restaurants)
 
 @app.route('/search')
 def search():
     query = request.args.get('q')
-    return render_template('foodr/search.html', query=query)
+
+    # linear search: append restaruants that contains the query
+    results = []
+    count = 0
+    for r in Restaurants:
+        if (query in r.name) | (query in r.dietary):
+            count = count + 1
+            results.append(r)
+
+    return render_template('foodr/search.html', query=query, results=results, count=count)
+
+
+
+
+
+
 
 @app.route('/restaurants/')
 def restaurants():
-    return render_template('foodr/restaurants.html')
+    query = request.args.get('q')
+    return render_template('foodr/restaurants.html', query=query)
 
 @app.route('/deals/')
 def deals():
-    return render_template('foodr/deals.html')
+    query = request.args.get('q')
+    return render_template('foodr/deals.html', query=query)
 
 @app.route('/saved/')
 def saved():
-    return render_template('foodr/saved.html')
+    query = request.args.get('q')
+    return render_template('foodr/saved.html', query=query)
 
 @app.route('/saved/restaurants/')
 def saved_restaurants():
-    return render_template('foodr/saved_restaurants.html')
+    query = request.args.get('q')
+    return render_template('foodr/saved_restaurants.html', query=query)
+
 @app.route('/saved/deals/')
 def saved_deals():
-    return render_template('foodr/saved_deals.html')
+    query = request.args.get('q')
+    return render_template('foodr/saved_deals.html', query=query)
 
 
 # @app.route('/print', methods=['GET', 'POST'])

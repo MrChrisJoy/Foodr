@@ -2,161 +2,26 @@
 {% block body %}
 
 
-{{ restaurants }}
-<div class="card-pod">
-    <div class="card">
-        <div class="card-image">
-        </div>
-        <div class="card-content">
-            <b>Deal Name  </b>
-            <br><b>Restaurant  </b>
-            <br><b>Price  </b>
-            <br><b>Description  </b>
-            <br>
-        </div>
-        <div class="card-action">
-            <a href="#" class="btn btn-info" role="button">View Deal</a>
-            <a href="#" class="btn btn-primary" role="button">Save Deal</a>
-        </div>
-    </div>
-</div>
-
-<div class="card-pod">
-    <div class="card">
-        <div class="card-image">
-        </div>
-        <div class="card-content">
-            <b>Restaurant Name  </b>
-            <br><b>Location  </b>
-            <br><b>Price  </b>
-            <br><b>Description  </b>
-            <br>
-        </div>
-        <div class="card-action">
-            <a href="#" class="btn btn-info" role="button">View Restaurant</a>
-            <a href="#" class="btn btn-primary" role="button">Save Restaurant</a>
+{% for result in restaurants %}
+    <div class="card-pod">
+        <div class="card">
+            <div class="card-image">
+            </div>
+            <div class="card-content">
+                <b>{{result.name}}</b>
+                <br><b>{{result.dietary}}  </b>
+                <br><b>{{result.deals}}  </b>
+                <br><b>Serves Alcohol: {{result.alcohol}}  </b>
+                <br><b>Has Wifi: {{result.wifi}}  </b>
+                <br><b>Wheelchair Access: {{result.wheelchair}}  </b>
+                <br>
+            </div>
+            <div class="card-action">
+                <a href="#" class="btn btn-info" role="button">View Deal</a>
+                <a href="#" class="btn btn-primary" role="button">Save Deal</a>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="card-pod">
-    <div class="card">
-        <div class="card-image">
-        </div>
-        <div class="card-content">
-            <b>Restaurant Name  </b>
-            <br><b>Restaurant  </b>
-            <br><b>Price  </b>
-            <br><b>Description  </b>
-            <br>
-        </div>
-        <div class="card-action">
-            <a href="#" class="btn btn-info" role="button">View Restaurant</a>
-            <a href="#" class="btn btn-primary" role="button">Save Restaurant</a>
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card-pod">
-    <div class="card">
-        <div class="card-image">
-        </div>
-        <div class="card-content">
-            <b>Restaurant Name  </b>
-            <br><b>Restaurant  </b>
-            <br><b>Price  </b>
-            <br><b>Description  </b>
-            <br>
-        </div>
-        <div class="card-action">
-            <a href="#" class="btn btn-info" role="button">View Restaurant</a>
-            <a href="#" class="btn btn-primary" role="button">Save Restaurant</a>
-        </div>
-    </div>
-</div>
-
-
-<div class="card-pod">
-    <div class="card">
-        <div class="card-image">
-        </div>
-        <div class="card-content">
-            <b>Restaurant Name  </b>
-            <br><b>Restaurant  </b>
-            <br><b>Price  </b>
-            <br><b>Description  </b>
-            <br>
-        </div>
-        <div class="card-action">
-            <a href="#" class="btn btn-info" role="button">View Restaurant</a>
-            <a href="#" class="btn btn-primary" role="button">Save Restaurant</a>
-        </div>
-    </div>
-</div>
-
-
-<div class="card-pod">
-    <div class="card">
-        <div class="card-image">
-        </div>
-        <div class="card-content">
-            <b>Restaurant Name  </b>
-            <br><b>Restaurant  </b>
-            <br><b>Price  </b>
-            <br><b>Description  </b>
-            <br>
-        </div>
-        <div class="card-action">
-            <a href="#" class="btn btn-info" role="button">View Restaurant</a>
-            <a href="#" class="btn btn-primary" role="button">Save Restaurant</a>
-        </div>
-    </div>
-</div>
-
-
-<div class="card-pod">
-    <div class="card">
-        <div class="card-image">
-        </div>
-        <div class="card-content">
-            <b>Restaurant Name  </b>
-            <br><b>Restaurant  </b>
-            <br><b>Price  </b>
-            <br><b>Description  </b>
-            <br>
-        </div>
-        <div class="card-action">
-            <a href="#" class="btn btn-info" role="button">View Restaurant</a>
-            <a href="#" class="btn btn-primary" role="button">Save Restaurant</a>
-        </div>
-    </div>
-</div>
-
-
-<div class="card-pod">
-    <div class="card">
-        <div class="card-image">
-        </div>
-        <div class="card-content">
-            <b>Restaurant Name  </b>
-            <br><b>Restaurant  </b>
-            <br><b>Price  </b>
-            <br><b>Description  </b>
-            <br>
-        </div>
-        <div class="card-action">
-            <a href="#" class="btn btn-info" role="button">View Restaurant</a>
-            <a href="#" class="btn btn-primary" role="button">Save Restaurant</a>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
+{% endfor %}
 
 {% endblock %}
