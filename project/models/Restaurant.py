@@ -3,6 +3,9 @@ class Restaurant:
         self.name = name
         self.dietary = dietary
         self.deals = deals
+        self.bookmark
+
+
         if alcohol == "true":
             self.alcohol = True
         else:

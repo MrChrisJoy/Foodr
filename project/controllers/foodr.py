@@ -6,7 +6,11 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
 
+# Global Data Stores
 Restaurants = []
+
+
+# load restaruants from
 local_data = os.path.join(app.static_folder, 'data/restaurant.json')
 with open(local_data) as f:
     lines = json.load(f)
