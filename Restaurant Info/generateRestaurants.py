@@ -59,7 +59,7 @@ def genString(name, restaurant, diet):
         print lng
     else:
         # else retry with only name
-        url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + name + " Restaraunt"
+        url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + name + " Restaurant"
         print "retrying: " + url
         response = urllib.urlopen(url)
         data = json.loads(response.read())
