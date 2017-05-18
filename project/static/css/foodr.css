@@ -67,3 +67,8 @@
 }
 
 
+.img-crop {
+  position: absolute;
+  height: 200px;
+  overflow: hidden;
+}

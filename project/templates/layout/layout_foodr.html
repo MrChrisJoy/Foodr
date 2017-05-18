@@ -19,7 +19,7 @@
 </head>
 <body>
   <header class="cd-main-header">
-    <a href="/" class="cd-logo"><img src="{{ url_for('static', filename='img/cd-logo.svg') }}" alt="Logo"></a>
+    <a href="/" class="cd-logo"><img src="{{ url_for('static', filename='img/cd-logo.png') }}" alt="Logo"></a>
 
     <div class="cd-search is-hidden">
       <form  action="/search" method="get">
@@ -54,7 +54,7 @@
     <nav class="cd-side-nav">
       <ul>
         <li class="cd-label">Main</li>
-        <li class="has-children overview">
+<!--         <li class="has-children overview">
           <a href="#0">Overview</a>
           <ul>
             <li><a href="#0">All Data</a></li>
@@ -62,30 +62,23 @@
             <li><a href="#0">Category 2</a></li>
           </ul>
         </li>
-        <li class="has-children notifications active">
-          <a href="#0">Notifications<span class="count">3</span></a>
+ -->        <li class="has-children overview active">
+          <a href="/">Restaurants & Deals<span class="count">3</span></a>
 
           <ul>
-            <li><a href="#0">All Notifications</a></li>
-            <li><a href="#0">Friends</a></li>
-            <li><a href="#0">Other</a></li>
-          </ul>
-        </li>
-
-        <li class="has-children comments">
-          <a href="#0">Comments</a>
-
-          <ul>
-            <li><a href="#0">All Comments</a></li>
-            <li><a href="#0">Edit Comment</a></li>
-            <li><a href="#0">Delete Comment</a></li>
+            <li><a href="/">Nearby Deals</a></li>
+            <li><a href="/restaurants/">Restaurants</a></li>
+            <li><a href="/deals/">Deals</a></li>
           </ul>
         </li>
       </ul>
 
       <ul>
-        <li class="cd-label">Secondary</li>
-        <li class="has-children bookmarks">
+        <li class="cd-label">Bookmarked Stuff</li>
+        <li class="overview"><a href="/">Saved Restaurants</a></li>
+        <li class="overview"><a href="/">Saved Deals</a></li>
+  </ul>
+<!--         <li class="has-children bookmarks">
           <a href="#0">Bookmarks</a>
 
           <ul>
@@ -117,7 +110,7 @@
       <ul>
         <li class="cd-label">Action</li>
         <li class="action-btn"><a href="#0">+ Button</a></li>
-      </ul>
+      </ul> -->
     </nav>
 
     <div class="content-wrapper">

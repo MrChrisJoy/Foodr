@@ -1,10 +1,11 @@
 class Restaurant:
-    def __init__(self, name, dietary, deals, alcohol, wheelchair, wifi):
+    def __init__(self, name, lng, lat, dietary, deals, alcohol, wheelchair, wifi):
         self.name = name
         self.dietary = dietary
         self.deals = deals
-        self.bookmark
-
+        # long and lat date for seach and images
+        self.lng = lng
+        self.lat = lat
 
         if alcohol == "true":
             self.alcohol = True
@@ -19,6 +20,7 @@ class Restaurant:
         else:
             self.wifi = False
 
+
     def get_field(self, field):
         if field == "name":
             return self.name
@@ -26,6 +28,10 @@ class Restaurant:
             return self.dietary
         if field == "deals":
             return self.deals
+        if field == "lng":
+            return self.lng
+        if field == "lat":
+            return self.lat
         if field == "alcohol":
             return self.alcohol
         if field == "wheelchair":

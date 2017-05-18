@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import os, json, Restaurant, random
+import os, json, random
+import Restaurant
 from project import app
 from flask import render_template, request
 from flask_wtf import FlaskForm
@@ -10,14 +11,21 @@ from wtforms.validators import DataRequired
 Restaurants = []
 
 
-# load restaruants from
+# load restaruants from static json data using the restaraunts model
 local_data = os.path.join(app.static_folder, 'data/restaurant.json')
 with open(local_data) as f:
     lines = json.load(f)
     data = lines["Restaurants"]
+
     for r in data:
+        lng = 0
+        lat = 0
+        if ("lng" in r) & ("lat" in r):
+            lng = r['lng']
+            lat = r['lat']
+
         Restaurants.append(
-            Restaurant.Restaurant(str(r["name"]), str(" ".join(r["dietary"])).split(" "),
+            Restaurant.Restaurant(str(r["name"]), str(lng), str(lat), str(" ".join(r["dietary"])).split(" "),
                                   str(" ".join(r["deals"])).split(','), str(r["alcohol"]), str(r["wheelchair"]),
                                   str(r["wifi"])))
 
@@ -55,7 +63,7 @@ def search():
 @app.route('/restaurants/')
 def restaurants():
     query = request.args.get('q')
-    return render_template('foodr/restaurants.html', query=query)
+    return render_template('foodr/index.html', query=query, restaurants=Restaurants)
 
 @app.route('/deals/')
 def deals():

@@ -1,4 +1,5 @@
 import random
+import urllib, json
 
 Dietary = ["Halal", "Kosher", "Vegan", "Vegetarian",
            "Lactose intolerant", "Gluten free", "Peanut allergy",
@@ -41,6 +42,35 @@ def genString(name, restaurant, diet):
             first = False
             string += '"' + Dietary[i] + '"'
     string += ' ],\n'
+
+
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + name + " " + restaurant
+    print "trying: " + url
+    response = urllib.urlopen(url)
+    data = json.loads(response.read())
+
+    print data["status"]
+    if (data["status"] != "ZERO_RESULTS"):
+        lat = data["results"][0]["geometry"]["location"]["lat"]
+        lng = data["results"][0]["geometry"]["location"]["lng"]
+        string += '\t\t"lng":'+str(lng)+',\n'
+        string += '\t\t"lat":'+str(lat)+',\n'
+        print lat
+        print lng
+    else:
+        # else retry with only name
+        url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + name + " Restaraunt"
+        print "retrying: " + url
+        response = urllib.urlopen(url)
+        data = json.loads(response.read())
+        if (data["status"] == "OK"):
+            lat = data["results"][0]["geometry"]["location"]["lat"]
+            lng = data["results"][0]["geometry"]["location"]["lng"]
+            string += '\t\t"lng":'+str(lng)+',\n'
+            string += '\t\t"lat":'+str(lat)+',\n'
+            print lat
+            print lng
+
 
     dealno = random.randint(0, len(Deals)-1)
     string += '\t\t"deals":[ "' + Deals[dealno] + '" ],\n'
