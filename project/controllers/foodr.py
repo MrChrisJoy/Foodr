@@ -10,7 +10,6 @@ from wtforms.validators import DataRequired
 # Global Data Stores
 Restaurants = []
 
-
 # load restaruants from static json data using the restaraunts model
 local_data = os.path.join(app.static_folder, 'data/restaurant.json')
 with open(local_data) as f:
@@ -18,16 +17,7 @@ with open(local_data) as f:
     data = lines["Restaurants"]
 
     for r in data:
-        lng = 0
-        lat = 0
-        if ("lng" in r) & ("lat" in r):
-            lng = r['lng']
-            lat = r['lat']
-
-        Restaurants.append(
-            Restaurant.Restaurant(str(r["name"]), str(lng), str(lat), str(" ".join(r["dietary"])).split(" "),
-                                  str(" ".join(r["deals"])).split(','), str(r["alcohol"]), str(r["wheelchair"]),
-                                  str(r["wifi"])))
+        Restaurants.append(Restaurant.Restaurant(r['name'], r['lng'], r['lat'], r['rating'], r['vicinity'], r['type'], r['cuisine'], str(r['alcohol']).lower(), str(r['wheelchair']).lower(), str(r['wifi']).lower()))
 
 
 @app.route('/')
@@ -38,24 +28,38 @@ def start():
 @app.route('/search')
 def search():
     query = request.args.get('q')
-
     # linear search: append restaruants that contains the query
     results = []
     count = 0
     if query != "":
+        querys = query.split(" ")
         # iterate over restaurant elements
-        for r in Restaurants:
-            # obtain lower case dietary & deals elements
-            dietary = [x.lower() for x in r.dietary]
-            deals = [x.lower() for x in r.deals]
-            if (query.lower() in r.name.lower()) | (query in dietary) | (query in deals):
-                count = count + 1
-                results.append(r)
+        for q in querys:
+            for r in Restaurants:
+                # RESULT RANKING CONDITIONS PRIORITY (TODO: come up with a better way)
+                if (q.lower() in r.name.lower()) & (q in r.cuisine) & (q.lower() in r.vicinity.lower()):
+                    count = count + 1
+                    results.insert(0, r)
+                elif ((q.lower() in r.name.lower()) & (q.lower() in r.vicinity.lower())) | (q in r.cuisine):
+                    # prevent duplicated results
+                    if r not in results:
+                        count = count + 1
+                        results.append(r)
+                elif ((q.lower() in r.name.lower()) & (q in r.cuisine)) | (q.lower() in r.vicinity.lower()):
+                    if r not in results:
+                        count = count + 1
+                        results.append(r)
+                elif (q.lower() in r.name.lower()) | ((q in r.cuisine) & (q.lower() in r.vicinity.lower())):
+                    if r not in results:
+                        count = count + 1
+                        results.append(r)
+                elif (q.lower() in r.name.lower()) | (q in r.cuisine) | (q.lower() in r.vicinity.lower()):
+                    if r not in results:
+                        count = count + 1
+                        results.append(r)
+
 
     return render_template('foodr/search.html', query=query, results=results, count=count, lat=150+random.random()/100, long=150+random.random()/100+100)
-
-
-
 
 
 

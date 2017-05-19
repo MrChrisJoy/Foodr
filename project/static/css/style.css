@@ -213,8 +213,8 @@ Header
 
 .cd-search {
   position: relative;
-  margin: 1.2em 5% 0.6em;
-}
+/*  margin: 1.2em 5% 0.6em;
+*/}
 .cd-search.is-hidden {
   opacity: 0;
 }
@@ -236,7 +236,6 @@ Header
 }
 .cd-search input {
   padding-left: 32px;
-  width: 200%;
   height: 36px;
   border: none;
   border-radius: .25em;

@@ -3,26 +3,33 @@
 
 <div style="margin-top: 40px">
 {% for result in restaurants %}
-    <div class="card-pod">
-        <div class="card">
-            <div class="card-image">
-                <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
-            </div>
-            <div class="card-content">
-                <b>{{result.name}}</b>
-                <br><b>{{result.dietary}}  </b>
-                <br><b>{{result.deals}}  </b>
-                <br><b>Serves Alcohol: {{result.alcohol}}  </b>
-                <br><b>Has Wifi: {{result.wifi}}  </b>
-                <br><b>Wheelchair Access: {{result.wheelchair}}  </b>
-                <br>
-            </div>
-            <div class="card-action">
-                <a href="#" class="btn btn-info" role="button">View Details</a>
-                <a href="#" class="btn btn-primary" role="button">Bookmark</a>
-            </div>
+<div class="card-pod">
+    <div class="card">
+        <center><h3>{{result.name}}</h3></center>
+        <div class="card-image img-crop-cont">
+            <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
+            <span  class="card-title" style="padding: 10px">
+                {% if result.alcohol == 'true' %}
+                <i class="fa fa-glass fa-lg" aria-hidden="true"></i>
+                {% endif %}
+                {% if result.wifi == 'true' %}
+                <i class="fa fa-wifi fa-lg" aria-hidden="true"></i>
+                {% endif %}
+                {% if result.wheelchair == 'true' %}
+                <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>
+                {% endif %}
+            </span>
         </div>
+        <div class="card-content">
+            <br><b>{{result.vicinity}}  </b>
+        </div>
+        <div class="card-action"><center>
+            <a href="/unlike/{{result.name}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <a href="/view/{{result.name}}" class="btn btn-info" role="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+            <a href="/like/{{result.name}}" class="btn-success btn-circle btn-xl" role="button"><span>&#x2764;</span></a>
+        </center></div>
     </div>
+</div>
 {% endfor %}
 <div>
 
