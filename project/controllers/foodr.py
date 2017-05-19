@@ -59,7 +59,7 @@ def search():
                         results.append(r)
 
 
-    return render_template('foodr/search.html', query=query, results=results, count=count, lat=150+random.random()/100, long=150+random.random()/100+100)
+    return render_template('foodr/search.html', query=query, results=results, count=count)
 
 
 
