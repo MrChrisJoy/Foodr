@@ -45,8 +45,8 @@ def main():
         data = lines["Restaurants"]
         for r in data:
             Restaurants.append(Restaurant(str(r["name"]), str(" ".join(r["dietary"])).split(" "), str(" ".join(r["deals"])).split(','), str(r["alcohol"]), str(r["wheelchair"]), str(r["wifi"])))
-    bubble_sort("Ascending", "name")
-    f = filter_diet(["Halal", "Vegan", "Kosher"])
+    quick_sort(Restaurants, "Ascending", "name", 0, len(Restaurants))
+    f = filter_diet([])
     for r in f:
         print r.to_string()
 
@@ -76,6 +76,30 @@ def bubble_sort(direction, field):
         if not swapped:
             return
 
+def partition(arr, direction, field, low, high):
+    pivot = low
+    i = low+1
+    while i < high:
+        comp = compare(arr[i], arr[pivot], field)
+        if (direction == "Descending" and comp > 0) or (direction == "Ascending" and comp < 0):
+            stor = arr[i]
+            arr[i] = arr[i-1]
+            back = i - 1
+            while back > pivot:
+                arr[back+1] = arr[back]
+                back = back-1
+            arr[pivot+1] = arr[pivot]
+            arr[pivot] = stor
+            pivot = pivot+1
+        i += 1
+    return pivot
+
+
+def quick_sort(arr, direction, field, low, high):
+    if (high - low) > 1:
+        pivot = partition(arr, direction, field, low, high)
+        quick_sort(arr, direction, field, low, pivot)
+        quick_sort(arr, direction, field, pivot + 1, high)
 
 def compare(left, right, field):
     if left.get_field(field) < right.get_field(field):
