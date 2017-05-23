@@ -37,32 +37,28 @@ def search():
         for q in querys:
             for r in Restaurants:
                 # RESULT RANKING CONDITIONS PRIORITY (TODO: come up with a better way)
-                if (q.lower() in r.name.lower()) & (q in r.cuisine) & (q.lower() in r.vicinity.lower()):
+                if (q.lower() in r.name.lower()) and (q in r.cuisine) and (q.lower() in r.vicinity.lower()):
                     count = count + 1
                     results.insert(0, r)
-                elif ((q.lower() in r.name.lower()) & (q.lower() in r.vicinity.lower())) | (q in r.cuisine):
+                elif ((q.lower() in r.name.lower()) and (q.lower() in r.vicinity.lower())) or (q in r.cuisine):
                     # prevent duplicated results
                     if r not in results:
                         count = count + 1
                         results.append(r)
-                elif ((q.lower() in r.name.lower()) & (q in r.cuisine)) | (q.lower() in r.vicinity.lower()):
+                elif ((q.lower() in r.name.lower()) and (q in r.cuisine)) or (q.lower() in r.vicinity.lower()):
                     if r not in results:
                         count = count + 1
                         results.append(r)
-                elif (q.lower() in r.name.lower()) | ((q in r.cuisine) & (q.lower() in r.vicinity.lower())):
+                elif (q.lower() in r.name.lower()) or ((q in r.cuisine) and (q.lower() in r.vicinity.lower())):
                     if r not in results:
                         count = count + 1
                         results.append(r)
-                elif (q.lower() in r.name.lower()) | (q in r.cuisine) | (q.lower() in r.vicinity.lower()):
+                elif (q.lower() in r.name.lower()) or (q in r.cuisine) or (q.lower() in r.vicinity.lower()):
                     if r not in results:
                         count = count + 1
                         results.append(r)
-
 
     return render_template('foodr/search.html', query=query, results=results, count=count)
-
-
-
 
 @app.route('/restaurants/')
 def restaurants():
