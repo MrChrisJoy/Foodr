@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/foodr.css') }}"> <!-- Resource style -->
   <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script> <!-- Modernizr -->
 
-  <title>Foodr | Fine Food Finder</title>
+      <title>Foodr | Fine Food Finder</title>
 </head>
 <body>
   <header class="cd-main-header">
@@ -72,12 +72,34 @@
           </ul>
         </li>
       </ul>
+      <ul>
+        <li class="cd-label">Filter</li>
 
+{#          <div class="dropdown">#}
+{#            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">#}
+{#            Cuisine#}
+{#            <span class="caret"></span>#}
+{#            </button>#}
+{#            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">#}
+{#            <li><a href="#">Indian</a></li>#}
+{#            <li><a href="#">Chinese</a></li>#}
+{#            <li><a href="#">American</a></li>#}
+{#            <li role="separator" class="divider"></li>#}
+{#            <li><a href="#">Separated link</a></li>#}
+{#            </ul>#}
+{#          </div>#}
+{##}
+{#          <div class="btn-group btn-group-justified" role="group" aria-label="...">#}
+{#            <button type="button" class="btn btn-default">No</button>#}
+{#            <button type="button" class="btn btn-default">Either</button>#}
+{#            <button type="button" class="btn btn-default">Yes</button>#}
+{#          </div>#}
+      </ul>
       <ul>
         <li class="cd-label">Bookmarked Stuff</li>
         <li class="overview"><a href="/">Saved Restaurants</a></li>
         <li class="overview"><a href="/">Saved Deals</a></li>
-  </ul>
+      </ul>
 <!--         <li class="has-children bookmarks">
           <a href="#0">Bookmarks</a>
 
