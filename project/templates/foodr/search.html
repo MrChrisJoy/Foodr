@@ -26,9 +26,9 @@
                 <br><b>{{result.vicinity}}  </b>
             </div>
             <div class="card-action"><center>
-                <a href="/unlike/{{result.name}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>
-                <a href="/view/{{result.name}}" class="btn btn-info" role="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
-                <a href="/like/{{result.name}}" class="btn-success btn-circle btn-xl" role="button"><span>&#x2764;</span></a>
+                <a href="/unlike?r={{result}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>
+                <a href="/view?r={{result}}" class="btn btn-info" role="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                <a href="/like?r={{result}}" class="btn-success btn-circle btn-xl" role="button"><span>&#x2764;</span></a>
             </center></div>
         </div>
     </div>
