@@ -9,6 +9,7 @@ from wtforms.validators import DataRequired
 
 # Global Data Stores
 Restaurants = []
+Liked = []
 
 # load restaruants from static json data using the restaraunts model
 local_data = os.path.join(app.static_folder, 'data/restaurant.json')
@@ -37,60 +38,45 @@ def search():
         for q in querys:
             for r in Restaurants:
                 # RESULT RANKING CONDITIONS PRIORITY (TODO: come up with a better way)
-                if (q.lower() in r.name.lower()) and (q in r.cuisine) and (q.lower() in r.vicinity.lower()):
+                if (q.lower() in r.name.lower()) & (q in r.cuisine) & (q.lower() in r.vicinity.lower()):
                     count = count + 1
                     results.insert(0, r)
-                elif ((q.lower() in r.name.lower()) and (q.lower() in r.vicinity.lower())) or (q in r.cuisine):
+                elif ((q.lower() in r.name.lower()) & (q.lower() in r.vicinity.lower())) | (q in r.cuisine):
                     # prevent duplicated results
                     if r not in results:
                         count = count + 1
                         results.append(r)
-                elif ((q.lower() in r.name.lower()) and (q in r.cuisine)) or (q.lower() in r.vicinity.lower()):
+                elif ((q.lower() in r.name.lower()) & (q in r.cuisine)) | (q.lower() in r.vicinity.lower()):
                     if r not in results:
                         count = count + 1
                         results.append(r)
-                elif (q.lower() in r.name.lower()) or ((q in r.cuisine) and (q.lower() in r.vicinity.lower())):
+                elif (q.lower() in r.name.lower()) | ((q in r.cuisine) & (q.lower() in r.vicinity.lower())):
                     if r not in results:
                         count = count + 1
                         results.append(r)
-                elif (q.lower() in r.name.lower()) or (q in r.cuisine) or (q.lower() in r.vicinity.lower()):
+                elif (q.lower() in r.name.lower()) | (q in r.cuisine) | (q.lower() in r.vicinity.lower()):
                     if r not in results:
                         count = count + 1
                         results.append(r)
+
 
     return render_template('foodr/search.html', query=query, results=results, count=count)
 
-@app.route('/advsearch')
-def advSearch():
-    queryCuisine = request.args.get('c')
-    queryVicinity = request.args.get('v')
-    queryRating = request.args.get('r')
-    queryType = request.args.get('t')
-    queryAlcohol = request.args.get('a')
-    queryWheelchair = request.args.get('wh')
-    queryWifi = request.args.get("wi")
+Liked = []
 
-    results = []
-    results.append([])
-    for r in Restaurants:
-        count = -1
-        if (queryCuisine in r.cuisine):
-            count = count + 1
-        if (queryVicinity > r.vicinity):
-            count = count + 1
-        if (queryRating < r.rating):
-            count = count + 1
-        if (queryType == r.type):
-            count = count + 1
-        if (queryAlcohol == r.alcohol):
-            count = count + 1
-        if (queryWheelchair == r.wheelchair):
-            count = count + 1
-        if (queryWifi == r.wifi):
-            count = count + 1
-        if(count > -1):
-            results[count].append(r)
-    return render_template('foodr/advsearch.html')
+@app.route('/like')
+def like():
+    r = request.args.get('r')
+    Liked.append(r)
+    return render_template('foodr/saved_restaurants.html', liked=Liked)
+
+@app.route('/dislike')
+def dislike():
+    r = request.args.get('r')
+    Liked.remove(r)
+    return render_template('foodr/saved_restaurants.html')
+
+
 
 @app.route('/restaurants/')
 def restaurants():
@@ -110,7 +96,7 @@ def saved():
 @app.route('/saved/restaurants/')
 def saved_restaurants():
     query = request.args.get('q')
-    return render_template('foodr/saved_restaurants.html', query=query)
+    return render_template('foodr/saved_restaurants.html', liked=Liked, query=query)
 
 @app.route('/saved/deals/')
 def saved_deals():
