@@ -9,6 +9,15 @@ from wtforms.validators import DataRequired
 
 # Global Data Stores
 Restaurants = []
+Cuisines = ["American", "Arabian", "Australian", "Chinese", "Eastern European", "French",
+            "Greek", "Indian", "Italian", "Japanese", "Korean", "Lebanese", "Malaysian",
+            "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Oriental", "Pakistani",
+            "Portuguese", "Scandinavian", "Singaporean", "Spanish", "Sri Lankan", "Thai",
+            "Turkish", "Vietnamese", "Breakfast", "Brunch", "Lunch", "Dinner", "Dessert", "BBQ",
+            "Bubble Tea", "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
+            "Fish and Chips", "Frozen Yogurt",  "Grill", "Healthy Food", "Ice Cream", "Juice",
+            "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Pub Food", "Ramen", "Sandwich", "Seafood",
+            "Soul Food", "Steakhouse", "Sushi Train", "Tapas", "Tea House", "Teppanyaki", "Teriyaki", "Yum Cha"]
 
 # load restaruants from static json data using the restaraunts model
 local_data = os.path.join(app.static_folder, 'data/restaurant.json')
@@ -23,7 +32,7 @@ with open(local_data) as f:
 @app.route('/')
 def start():
     query = request.args.get('q')
-    return render_template('foodr/index.html', query=query, restaurants=Restaurants)
+    return render_template('foodr/index.html', query=query, restaurants=Restaurants, cuisines=Cuisines)
 
 @app.route('/search')
 def search():
