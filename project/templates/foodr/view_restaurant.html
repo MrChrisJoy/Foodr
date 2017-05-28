@@ -1,0 +1,159 @@
+{% extends "layout/layout_foodr.html" %}
+{% block body %}
+<style type="text/css">
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
+}
+
+#map_wrapper {
+    height: 500px;
+}
+
+#map_canvas {
+    width: 100%;
+    height: 100%;
+}
+</style>
+<script>
+$(document).ready(function() {
+
+});
+jQuery(function($) {
+    // Asynchronously Load the map API
+    var script = document.createElement('script');
+    script.src = "//maps.googleapis.com/maps/api/js?callback=initialize&key=AIzaSyA-n7RuOh4jWhdOP-zkty2_DhbkdxEPrQ0";
+    document.body.appendChild(script);
+});
+
+function initialize() {
+    var map;
+    var bounds = new google.maps.LatLngBounds();
+    var mapOptions = {
+        streetViewControl: false,
+        mapTypeId: 'roadmap',
+        styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#00ADEF"},{"visibility":"on"}]}]
+    };
+
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    map.setTilt(45);
+
+    var icon = {
+        url: 'http://www.myiconfinder.com/uploads/iconsets/256-256-a5485b563efc4511e0cd8bd04ad0fe9e.png', // url
+        scaledSize: new google.maps.Size(80, 80), // scaled size
+        origin: new google.maps.Point(0,0), // origin
+        anchor: new google.maps.Point(0, 0) // anchor
+    };
+
+    // Multiple Markers
+    var markers = [
+        ['{{result.name}}', {{result.lat}},{{result.lng}}],
+    ];
+
+    // Info Window Content
+    var infoWindowContent = [
+        ['<div class="info_content">' +
+        '<h3>London Eye</h3>' +
+        '<p>The London Eye is a giant Ferris wheel situated on the banks of the River Thames. The entire structure is 135 metres (443 ft) tall and the wheel has a diameter of 120 metres (394 ft).</p>' +        '</div>'],
+        ['<div class="info_content">' +
+        '<h3>Palace of Westminster</h3>' +
+        '<p>The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its tenants.</p>' +
+        '</div>']
+    ];
+
+    // Display multiple markers on a map
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+    // Loop through our array of markers & place each one on the map
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: markers[i][0],
+            icon: icon
+        });
+
+        // Allow each marker to have an info window
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infoWindow.setContent(infoWindowContent[i][0]);
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+
+        // Automatically center the map fitting all markers on the screen
+        map.fitBounds(bounds);
+    }
+
+    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+        this.setZoom(18);
+        google.maps.event.removeListener(boundsListener);
+    });
+
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="content-wrapper">
+    <br><h1 style="font-size:40px">{{result.name}}</h1><br><br>
+    <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
+
+    <br><br><br>
+    {% if result.alcohol == 'true' %}
+    <i class="fa fa-glass fa-lg" aria-hidden="true"></i>
+    {% endif %}
+    {% if result.wifi == 'true' %}
+    <i class="fa fa-wifi fa-lg" aria-hidden="true"></i>
+    {% endif %}
+    {% if result.wheelchair == 'true' %}
+    <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>
+    {% endif %}
+    <br><br>
+    <b> {{result.vicinity}}  </b><br><br>
+
+<!--     {% for photo in result.photos %}
+        {{photo}}
+    {% endfor %}
+ -->
+
+    {% for cuisine in result.cuisines %}
+        {{cuisine}}
+    {% endfor %}
+
+
+
+</div>
+
+
+
+<div id="map_wrapper">
+    <div id="map_canvas" class="mapping"></div>
+</div>
+
+{% endblock %}

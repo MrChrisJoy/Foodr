@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+<!-- Latest compiled and minified CSS -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Resource style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}"> <!-- CSS reset -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Resource style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/foodr.css') }}"> <!-- Resource style -->
+  <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script> <!-- Modernizr -->
+
+      <title>Foodr | Fine Food Finder</title>
+</head>
+<body>
+  <header class="cd-main-header">
+    <a href="/" class="cd-logo"><img src="{{ url_for('static', filename='img/cd-logo.png') }}" alt="Logo"></a>
+
+    <div class="cd-search is-hidden">
+      <form  action="/search" method="get">
+        <input name="q" type="search" placeholder="Search..." value="{% if query != None %}{{query}}{% endif %}">
+      </form>
+    </div> <!-- cd-search -->
+
+    <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+    <nav class="cd-nav">
+      <ul class="cd-top-nav">
+<!--         <li><a href="#0">Tour</a></li>
+        <li><a href="#0">Support</a></li>
+ -->        <li class="has-children account">
+          <a href="#0">
+            <img src="{{ url_for('static', filename='img/cd-avatar.png') }}" alt="avatar">
+            Account
+          </a>
+
+          <ul>
+
+            <li><a href="#0">My Account</a></li>
+            <li><a href="#0">Edit Account</a></li>
+            <li><a href="#0">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header> <!-- .cd-main-header -->
+
+  <main class="cd-main-content">
+    <nav class="cd-side-nav">
+      <ul>
+        <li class="cd-label">Main</li>
+<!--         <li class="has-children overview">
+          <a href="#0">Overview</a>
+          <ul>
+            <li><a href="#0">All Data</a></li>
+            <li><a href="#0">Category 1</a></li>
+            <li><a href="#0">Category 2</a></li>
+          </ul>
+        </li>
+ -->        <li class="has-children overview active">
+          <a href="/">Restaurants & Deals<span class="count">3</span></a>
+
+          <ul>
+            <li><a href="/">Nearby Deals</a></li>
+            <li><a href="/restaurants/">Restaurants</a></li>
+            <li><a href="/deals/">Deals</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul>
+        <li class="cd-label">Filter</li>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Cuisine
+        </button>
+      </ul>
+      <ul>
+        <li class="cd-label">Bookmarked Stuff</li>
+        <li class="overview"><a href="/saved/restaurants/">Saved Restaurants</a></li>
+        <li class="overview"><a href="/saved/deals/">Saved Deals</a></li>
+      </ul>
+<!--         <li class="has-children bookmarks">
+          <a href="#0">Bookmarks</a>
+
+          <ul>
+            <li><a href="#0">All Bookmarks</a></li>
+            <li><a href="#0">Edit Bookmark</a></li>
+            <li><a href="#0">Import Bookmark</a></li>
+          </ul>
+        </li>
+        <li class="has-children images">
+          <a href="#0">Images</a>
+
+          <ul>
+            <li><a href="#0">All Images</a></li>
+            <li><a href="#0">Edit Image</a></li>
+          </ul>
+        </li>
+
+        <li class="has-children users">
+          <a href="#0">Users</a>
+
+          <ul>
+            <li><a href="#0">All Users</a></li>
+            <li><a href="#0">Edit User</a></li>
+            <li><a href="#0">Add User</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul>
+        <li class="cd-label">Action</li>
+        <li class="action-btn"><a href="#0">+ Button</a></li>
+      </ul> -->
+    </nav>
+
+    {% block body %}{% endblock %}
+  </main> <!-- .cd-main-content -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cuisine</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {% for cuisine in cuisines %}
+            <h4>{{ cuisine }}</h4>
+            <label class="switch">
+                <input type="checkbox" checked>
+                <div class="slider round"></div>
+            </label>
+          {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/jquery-2.1.4.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.menu-aim.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script> <!-- Resource jQuery -->
+</body>
+</html>

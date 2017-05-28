@@ -1,0 +1,37 @@
+{% extends "layout/layout_foodr.html" %}
+{% block body %}
+<div class="content-wrapper">
+
+    <br><br><br><h3 style="font-size: 35px; font-weight: bold">MY RESTAURANTS</h3><br>
+
+    {% for result in liked %}
+        <div class="card-pod">
+            <div class="card">
+                <center><h3>{{result.name}}</h3></center>
+                <div class="card-image img-crop-cont" style="display: inline-block">
+                    <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
+                    <span  class="card-title" style="padding: 10px">
+                        {% if result.alcohol == 'true' %}
+                        <i class="fa fa-glass fa-lg" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if result.wifi == 'true' %}
+                        <i class="fa fa-wifi fa-lg" aria-hidden="true"></i>
+                        {% endif %}
+                        {% if result.wheelchair == 'true' %}
+                        <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>
+                        {% endif %}
+                    </span>
+                </div>
+                <div class="card-content">
+                    <br><b> {{result.vicinity}}  </b><br><br>
+                </div>
+                <div class="card-action"><center>
+                    <a href="/dislike?r={{result.id}}&callback={{url}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>
+                    <a href="/view?r={{result.id}}" class="btn btn-info" role="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                    <a href="/unlike?r={{result.id}}&callback={{url}}" class="btn-warning btn-circle btn-xl" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </center></div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
