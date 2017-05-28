@@ -80,6 +80,11 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Cuisine
         </button>
+        <!-- Rating -->
+        <form method="post" action="/advsearch">
+            <label for="points">Rating</label>
+            <input type="range" name="points" id="points" value="2.5" min="1" max="5">
+        </form>
       </ul>
       <ul>
         <li class="cd-label">Bookmarked Stuff</li>
@@ -139,10 +144,12 @@
       <div class="modal-body">
           {% for cuisine in cuisines %}
             <h4>{{ cuisine }}</h4>
+            <form  action="/advsearch" method="get">
             <label class="switch">
-                <input type="checkbox" checked>
+                <input name="c" type="checkbox" value="{{cuisine}}" checked>
                 <div class="slider round"></div>
             </label>
+            </form>q
           {% endfor %}
       </div>
       <div class="modal-footer">

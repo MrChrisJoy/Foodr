@@ -54,6 +54,7 @@ def search():
                 if q.lower() in r.name.lower():
                     relevance = relevance + 1
                 for cuisine in r.cuisines:
+
                     if q.lower() == cuisine.lower():
                         relevance = relevance + 1
                 if q.lower() in r.vicinity.lower():
@@ -74,10 +75,11 @@ def search():
 #             resultsfalse += [r]
 #     return resultstrue + resultsfalse
 
+
 @app.route('/advsearch')
 def advSearch():
     queryCuisine = request.args.get('c')
-    queryVicinity = request.args.get('v')
+    # queryVicinity = request.args.get('v')
     queryRating = request.args.get('r')
     queryType = request.args.get('t')
     queryAlcohol = request.args.get('a')
@@ -86,26 +88,25 @@ def advSearch():
 
     results = [[] for x in xrange(16)]
     count = 0
-    #results.append([])
     for r in Restaurants:
         relevance = -1
-        for restCuisine in r.cuisines:
+        for restCuisine in r.cuisine:
             for cuisine in queryCuisine:
                 if cuisine == restCuisine:
                     relevance = relevance + 1
-        if queryVicinity > r.vicinity:
+        # if (queryVicinity > r.vicinity):
+        #     relevance = relevance + 1
+        if (queryRating < r.rating):
             relevance = relevance + 1
-        if queryRating < r.rating:
+        if (queryType == r.type):
             relevance = relevance + 1
-        if queryType == r.type:
+        if (queryAlcohol == r.alcohol):
             relevance = relevance + 1
-        if queryAlcohol == r.alcohol:
+        if (queryWheelchair == r.wheelchair):
             relevance = relevance + 1
-        if queryWheelchair == r.wheelchair:
+        if (queryWifi == r.wifi):
             relevance = relevance + 1
-        if queryWifi == r.wifi:
-            relevance = relevance + 1
-        if count > -1:
+        if(count > -1):
             results[relevance].append(r)
             count = count + 1
     results.reverse()
