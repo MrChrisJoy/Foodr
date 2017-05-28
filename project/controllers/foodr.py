@@ -42,7 +42,6 @@ def search():
     query = request.args.get('q')
     #linear search: append restaurants that contains the query
     results = [[] for x in xrange(26*9)]
-    results.append([])
     count = 0
     if query != "":
         querys = query.split(" ")
@@ -52,7 +51,7 @@ def search():
             for q in querys:
                 if q.lower() in r.name.lower():
                     relevance = relevance + 1
-                for cuisine in r.cuisine:
+                for cuisine in r.cuisines:
                     if q.lower() == cuisine.lower():
                         relevance = relevance + 1
                 if q.lower() in r.vicinity.lower():
@@ -63,11 +62,15 @@ def search():
     results.reverse()
     return render_template('foodr/search.html', query=query, results=results, count=count)
 
-def filterBoolean(field):
-    results = []
-    for r in Restaurants:
-        if
-
+# def filterBoolean(field):
+#     resultstrue = []
+#     resultsfalse = []
+#     for r in Restaurants:
+#         if r.getField(field):
+#             resultstrue += [r]
+#         else:
+#             resultsfalse += [r]
+#     return resultstrue + resultsfalse
 
 @app.route('/advsearch')
 def advSearch():
@@ -81,10 +84,10 @@ def advSearch():
 
     results = [[] for x in xrange(16)]
     count = 0
-    results.append([])
+    #results.append([])
     for r in Restaurants:
         relevance = -1
-        for restCuisine in r.cuisine:
+        for restCuisine in r.cuisines:
             for cuisine in queryCuisine:
                 if cuisine == restCuisine:
                     relevance = relevance + 1
