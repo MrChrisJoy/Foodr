@@ -87,8 +87,13 @@ def advSearch():
     queryAlcohol = request.args.get('a')
     queryWheelchair = request.args.get('wh')
     queryWifi = request.args.get("wi")
-
-    print "queryRating: ", queryRating, "\n"
+    queryByo = request.args.get("b")
+    queryPets = request.args.get("pe")
+    queryCard = request.args.get("ca")
+    queryMusic = request.args.get("m")
+    queryTv = request.args.get("tv")
+    queryParking = request.args.get("pa")
+    queryPhotos = request.args.get("ph")
 
     results = []
     count = 0
@@ -106,6 +111,21 @@ def advSearch():
             relevant = False
         if queryWifi and r.wifi.lower() == "false":
             relevant = False
+        # if queryByo and r.byo.lower() == "false":
+        #     relevant = False
+        # if queryPets and r.pets.lower() == "false":
+        #     relevant = False
+        # if queryCard and r.card.lower() == "false":
+        #     relevant = False
+        # if queryMusic and r.music.lower() == "false":
+        #     relevant = False
+        # if queryTv and r.tv.lower() == "false":
+        #     relevant = False
+        # if queryParking and r.parking.lower() == "false":
+        #     relevant = False
+        # if queryPhotos and r.photos.lower() == "false":
+        #     relevant = False
+
         if relevant:
             results.append(r)
             print r.alcohol, r.wifi, r.wheelchair, "\n"
