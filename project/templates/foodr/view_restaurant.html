@@ -112,7 +112,7 @@ function initialize() {
     <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference={{result.photos[0]}}&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
   </div>
   <div class="col-6 col-md-5">
-    <i class="fa fa-star fa-lg" aria-hidden="true"></i> is rated {{result.rating}}. <br><br>
+    <i class="fa fa-star fa-lg" aria-hidden="true"></i> is rated {{result.rating}} / 5. <br><br>
 
     {% if result.alcohol == 'true' %}
     <i class="fa fa-glass fa-lg" aria-hidden="true"></i> serves alcohol. <br><br>
@@ -124,15 +124,34 @@ function initialize() {
     <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i> has wheelchair access. <br><br>
     {% endif %}
 
-    {% if result.wheelchair == 'true' %}
-    <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i> has wheelchair access. <br><br>
-    {% endif %}
 
+
+    {% if result.parking == 'true' %}
+    <i class="fa fa-car fa-lg" aria-hidden="true"></i> has free parking. <br><br>
+    {% endif %}
+    {% if result.tv == 'true' %}
+    <i class="fa fa-television fa-lg" aria-hidden="true"></i> offers entertainment. <br><br>
+    {% endif %}
+    {% if result.music == 'true' %}
+    <i class="fa fa-music fa-lg" aria-hidden="true"></i> offers music. <br><br>
+    {% endif %}
+    {% if result.pets == 'true' %}
+    <i class="fa fa-paw fa-lg" aria-hidden="true"></i> allows pets. <br><br>
+    {% endif %}
+    {% if result.byo == 'true' %}
+    <i class="fa fa-glass fa-lg" aria-hidden="true"></i> allows BYO drinks. <br><br>
+    {% endif %}
 
 
     <i class="fa fa-map fa-lg" aria-hidden="true"></i> <b> {{result.vicinity}}  </b><br><br>
     <i class="fa fa-cutlery fa-lg" aria-hidden="true"></i> {% for cuisine in result.cuisines %}
          {{cuisine}}
+    {% endfor %}
+
+    <br><br><br><strong style="font-weight:bold">Opening Times</strong>
+    <br><br>
+    {% for time in result.times %}
+        {{ time }}<br><br>
     {% endfor %}
   </div>
 </div>
