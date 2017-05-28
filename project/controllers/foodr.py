@@ -31,8 +31,8 @@ with open(local_data) as f:
                                       r['vicinity'], r['type'], r['cuisines'], str(r['alcohol']).lower(),
                                       str(r['byo']).lower(), str(r['wheelchair']).lower(), str(r['wifi']).lower(),
                                       str(r['pets']).lower(), str(r['card']).lower(), str(r['music']).lower(),
-                                      str(r['tv']).lower(), str(r['parking']).lower(), r['deals'], r['photos'],
-                                      r['times']))
+                                      str(r['tv']).lower(), str(r['parking']).lower(), r['photos'],
+                                      r['times'], r['deals']))
 
 @app.route('/')
 def start():
