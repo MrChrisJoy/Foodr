@@ -2,5 +2,39 @@
 {% block body %}
 <div class="content-wrapper">
 	<br><br><br><h3 style="font-size: 35px; font-weight: bold">MY DEALS</h3><br>
-</div>
+    <div style="margin-top: 40px">
+    {% for deal in deals.keys() %}
+        {% for result in deals[deal]  %}
+            <div class="card-pod">
+                <div class="card">
+                    <center><h3>{{result.name}}</h3></center>
+                    <div class="card-image img-crop-cont">
+                        <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
+                        <span  class="card-title" style="padding: 10px">
+                            {% if result.alcohol == 'true' %}
+                            <i class="fa fa-glass fa-lg" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if result.wifi == 'true' %}
+                            <i class="fa fa-wifi fa-lg" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if result.wheelchair == 'true' %}
+                            <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="card-content">
+                    </div>
+                    <div class="card-action"><center>
+                        <a href="/unsave_deal?r={{alldeals.index(deal)}}-{{result.id}}&callback={{url}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        <a href="/save_deal?r={{alldeals.index(deal)}}-{{result.id}}&callback={{url}}" class="btn-success btn-circle btn-xl" role="button"><span>&#x2764;</span></a>
+                    </center></div>
+                </div>
+            </div>
+        {% endfor %}
+        {% endfor %}
+        <div>
+    </div>
+
+
+
 {% endblock %}

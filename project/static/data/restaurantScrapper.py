@@ -1,8 +1,8 @@
 import random, urllib, json
 from Restaurant import *
 
-API_KEYS = ["AIzaSyCY6q2yzWI65qMeqShK24h7Ukf6anOJCKY", "AIzaSyApah-iOd4IIOLxbMA_apCuBpI1sPK2bOU",
-            "AIzaSyApF1u1cfUGnTrGmn0yl8sdzBYqoGBigHw"]
+API_KEYS = ["AIzaSyBgblVJRCXipHa--LqaBsfUYN4KExsA7Rk", "AIzaSyBsbWM_MSeTwsID1vFDXQNi6ksrraaxgmc",
+            "AIzaSyBWGb1hoPwvP7w2ZwDhQJty5_wUU2S1Zj0"]
             #"AIzaSyAgEizznGrl4fsrC8Cs_8niV32-TeI17-k", "AIzaSyBtbxbF5dJnKD_hSHPQ_zgbtjzhCtCXiBc"]
 LOCATION = "-33.911751,%20151.223290"
 Types = ["bar", "bakery", "cafe", "restaurant", "meal_takeaway", "meal_delivery"]
@@ -43,9 +43,9 @@ def genRestaurant(ID, name, postcode, lng, lat, rating, vicinity, _type, cuisine
     parking = random.choice([True, False])
 
     deals = []
-    for i in range(5):
+    for i in range(6):
         if random.choice([True, False]):
-            deals.append(random.choice(Deals[i*3:i*3+2]))
+            deals.append(random.choice(Deals[i*3:i*3+3]))
     return Restaurant(ID, name, postcode, lng, lat, rating, vicinity, _type, cuisines, alcohol, byo,
                       wheelchair, wifi, pets, card, music, tv, parking, photos, times, deals)
 
