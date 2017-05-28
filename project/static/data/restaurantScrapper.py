@@ -1,22 +1,19 @@
 import random, urllib, json
 from Restaurant import *
 
-RAYCOLE_GOOGLE_API_KEY = "AIzaSyD4qoVPYOVCFOe-x_8mNGNU8uWka9ygPFw"
-GOOGLE_API_KEY = "AIzaSyAR83M4SW2PeTdIOy4PV54Uwnj403hUJIM"
-GOOGLE_API_KEY2 = "AIzaSyAYiPQqi9bJTIRsqfkkukGTc2YkV2DSQpo"
-GOOGLE_API_KEY3 = "AIzaSyDK5cQw5YPvfCR5N7VcpNnM-bniujOIwog"
-GOOGLE_API_KEY4 = "AIzaSyAGPyFNuvvmWwMa4WDgcfvM38JA4LTCazg"
-GOOGLE_API_KEY5 = "AIzaSyAQ6nhwu94pFu8EkP2pXbYR4gYPpnvGYHM"
+API_KEYS = ["AIzaSyCY6q2yzWI65qMeqShK24h7Ukf6anOJCKY", "AIzaSyApah-iOd4IIOLxbMA_apCuBpI1sPK2bOU",
+            "AIzaSyApF1u1cfUGnTrGmn0yl8sdzBYqoGBigHw"]
+            #"AIzaSyAgEizznGrl4fsrC8Cs_8niV32-TeI17-k", "AIzaSyBtbxbF5dJnKD_hSHPQ_zgbtjzhCtCXiBc"]
 LOCATION = "-33.911751,%20151.223290"
 Types = ["bar", "bakery", "cafe", "restaurant", "meal_takeaway", "meal_delivery"]
 Keywords = ["American", "Arabian", "Australian", "Chinese", "French",
             "Greek", "Indian", "Italian", "Japanese", "Korean", "Lebanese", "Malaysian",
-            "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Oriental", "Pakistani",
+            "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Pakistani",
             "Portuguese", "Scandinavian", "Singaporean", "Spanish", "Sri Lankan", "Thai",
             "Turkish", "Vietnamese", "Breakfast", "Brunch", "Lunch", "Dinner", "Dessert", "BBQ",
-            "Bubble Tea", "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
-            "Fish and Chips", "Frozen Yogurt",  "Grill", "Ice Cream", "Juice",
-            "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Pub Food", "Ramen", "Sandwich", "Seafood",
+            "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
+            "Fish and Chips", "Frozen Yogurt", "Grill", "Ice Cream", "Juice",
+            "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Ramen", "Sandwich", "Seafood",
             "Steakhouse", "Sushi", "Tapas", "Teppanyaki", "Teriyaki", "Yum Cha"]
 Deals = ["$5 off", "$10 off", "$15 off",
          "$5 off if you spend over $20", "$5 off if you spend over $30", "$10 off if you spend over $50",
@@ -113,13 +110,14 @@ def getRestaurants():
         for Keyword in Keywords:
             print("searching: " + Type + " " + Keyword.lower())
             print('--------------------------')
-            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + LOCATION + "&radius=10500&type=" + Type + "&keyword=" + Keyword.lower() + "&key=" + GOOGLE_API_KEY3
+            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + LOCATION + "&radius=10500&type=" + Type + "&keyword=" + Keyword.lower() + "&key=" + API_KEYS[ID % 3]
             response = urllib.urlopen(url)
             data = json.loads(response.read())
-
+            limit = 0
             # iterate over each result pod
             for r in data['results']:
-
+                if limit > 15:
+                    break
                 # check if the restaurant has already been visited
                 if r['name'] not in Visited:
                     # check if rating exists
@@ -129,8 +127,8 @@ def getRestaurants():
                     # add outlet name to visitied list
                     Visited.append(r['name'])
                     # print out data (debugging purposes)
-                    # print(" FOUND: " + r['name'])
-                    detailsURL = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + r["place_id"] + "&review_summary&key=" + GOOGLE_API_KEY5
+                    print(" FOUND: " + r['name'])
+                    detailsURL = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + r["place_id"] + "&review_summary&key=" + API_KEYS[ID % 3]
                     detailsResponse = urllib.urlopen(detailsURL)
                     detailsData = json.loads(detailsResponse.read())
                     photos = getPhotos(detailsData)
@@ -152,11 +150,12 @@ def getRestaurants():
                     cuisine = str(Keyword.encode("utf8"))
                     if len(curr.cuisines) < 5 and cuisine not in curr.cuisines:
                         restaurants[r['name']].cuisines.append(cuisine)
+                limit += 1
     return restaurants
 
 
 def export(restaurants):
-    fout = open('restaurant_new2.json', 'w')
+    fout = open('restaurant_new3.json', 'w')
     fout.write('{ "Restaurants":[')
     for r in restaurants.keys():
         fout.write(writeRestaurant(restaurants[r]))

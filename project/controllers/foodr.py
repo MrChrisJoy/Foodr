@@ -11,13 +11,13 @@ from wtforms.validators import DataRequired
 Restaurants = []
 Keywords = ["American", "Arabian", "Australian", "Chinese", "French",
             "Greek", "Indian", "Italian", "Japanese", "Korean", "Lebanese", "Malaysian",
-            "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Oriental", "Pakistani",
+            "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Pakistani",
             "Portuguese", "Scandinavian", "Singaporean", "Spanish", "Sri Lankan", "Thai",
             "Turkish", "Vietnamese", "Breakfast", "Brunch", "Lunch", "Dinner", "Dessert", "BBQ",
-            "Bubble Tea", "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
-            "Fish and Chips", "Frozen Yogurt",  "Grill", "Ice Cream", "Juice",
-            "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Pub Food", "Ramen", "Sandwich", "Seafood",
-            "Steakhouse", "Sushi", "Tapas", "Tea House", "Teppanyaki", "Teriyaki", "Yum Cha"]
+            "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
+            "Fish and Chips", "Frozen Yogurt", "Grill", "Ice Cream", "Juice",
+            "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Ramen", "Sandwich", "Seafood",
+            "Steakhouse", "Sushi", "Tapas", "Teppanyaki", "Teriyaki", "Yum Cha"]
 Liked = []
 
 # load restaruants from static json data using the restaraunts model
