@@ -32,29 +32,46 @@ Recommended = []
 Deals = {}
 SavedDeals = {}
 DisDeals = {}
-for d in AllDeals:
-    Deals[d] = []
-    SavedDeals[d] = []
-    DisDeals[d] = []
+DisplayDeals = {}
 
-# load restaruants from static json data using the restaraunts model
-local_data = os.path.join(app.static_folder, 'data/restaurant.json')
-with open(local_data) as f:
-    lines = json.load(f)
-    data = lines["Restaurants"]
+def main():
+    for d in AllDeals:
+        Deals[d] = []
+        SavedDeals[d] = []
+        DisDeals[d] = []
 
-    for r in data:
-        rest = Restaurant(r['id'], r['name'], r['postcode'], r['lng'], r['lat'], r['rating'],
-                                      r['vicinity'], r['type'], r['cuisines'], str(r['alcohol']).lower(),
-                                      str(r['byo']).lower(), str(r['wheelchair']).lower(), str(r['wifi']).lower(),
-                                      str(r['pets']).lower(), str(r['card']).lower(), str(r['music']).lower(),
-                                      str(r['tv']).lower(), str(r['parking']).lower(), r['photos'],
-                                      r['times'], r['deals'])
-        Restaurants.append(rest)
-        for d in r['deals']:
-            Deals[d].append(rest)
+    for d in AllDeals:
+        DisplayDeals[d] = []
 
-Restaurants.sort(key=lambda x: x.id)
+    # load restaruants from static json data using the restaraunts model
+    local_data = os.path.join(app.static_folder, 'data/restaurant.json')
+    with open(local_data) as f:
+        lines = json.load(f)
+        data = lines["Restaurants"]
+
+        for r in data:
+            rest = Restaurant(r['id'], r['name'], r['postcode'], r['lng'], r['lat'], r['rating'],
+                                          r['vicinity'], r['type'], r['cuisines'], str(r['alcohol']).lower(),
+                                          str(r['byo']).lower(), str(r['wheelchair']).lower(), str(r['wifi']).lower(),
+                                          str(r['pets']).lower(), str(r['card']).lower(), str(r['music']).lower(),
+                                          str(r['tv']).lower(), str(r['parking']).lower(), r['photos'],
+                                          r['times'], r['deals'])
+            Restaurants.append(rest)
+            for d in r['deals']:
+                Deals[str(d)].append(rest)
+
+    Restaurants.sort(key=lambda x: x.id)
+
+    i = 0
+    while i < 40:
+        d = random.choice(AllDeals)
+        r = random.choice(Deals[d])
+        if r in DisDeals[d] or r in SavedDeals[d]:
+            continue
+        DisplayDeals[d].append(r)
+        i += 1
+
+
 
 def initWeightings():
     w = {}
@@ -176,20 +193,28 @@ def view():
 def save_deal():
     r = request.args.get('r')
     callback = request.args.get('callback')
-    deal, restaurant = str(r).split('-')
-    if Restaurants[int(restaurant)] not in SavedDeals[AllDeals[int(deal)]]:
-        SavedDeals[AllDeals[int(deal)]].append(Restaurants[int(restaurant)])
+    d, rest = str(r).split('-')
+    deal = AllDeals[int(d)]
+    restaurant = Restaurants[int(rest)]
+    if restaurant not in SavedDeals[deal]:
+        SavedDeals[deal].append(restaurant)
+    if restaurant in DisplayDeals[deal]:
+        DisplayDeals[deal].remove(restaurant)
     return redirect('/' + callback)
 
 @app.route('/unsave_deal')
 def unsave_deal():
     r = request.args.get('r')
     callback = request.args.get('callback')
-    deal, restaurant = str(r).split('-')
-    if Restaurants[int(restaurant)] in SavedDeals[AllDeals[int(deal)]]:
-        SavedDeals[AllDeals[int(deal)]].remove(Restaurants[int(restaurant)])
-    if Restaurants[int(restaurant)] not in DisDeals[AllDeals[int(deal)]]:
-        DisDeals[AllDeals[int(deal)]].append(Restaurants[int(restaurant)])
+    d, rest = str(r).split('-')
+    deal = AllDeals[int(d)]
+    restaurant = Restaurants[int(rest)]
+    if restaurant in SavedDeals[deal]:
+        SavedDeals[deal].remove(restaurant)
+    if restaurant not in DisDeals[deal]:
+        DisDeals[deal].append(restaurant)
+    if restaurant in DisplayDeals[deal]:
+        DisplayDeals[deal].remove(restaurant)
     return redirect('/' + callback)
 
 
@@ -238,18 +263,13 @@ def restaurants():
 def deals():
     query = request.args.get('q')
     del Recommended[:]
-    Display = {}
-    for d in AllDeals:
-        Display[d] = []
-    i = 0
-    while i < 40:
+    d = random.choice(AllDeals)
+    r = random.choice(Deals[d])
+    while r in DisDeals[d] or r in SavedDeals[d]:
         d = random.choice(AllDeals)
         r = random.choice(Deals[d])
-        if r in DisDeals[d] or r in SavedDeals[d]:
-            continue
-        Display[d].append(r)
-        i += 1
-    return render_template('foodr/deals.html', deals=Display, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):])
+    DisplayDeals[d].append(r)
+    return render_template('foodr/deals.html', deals=DisplayDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):])
 
 
 @app.route('/saved/')
@@ -282,3 +302,6 @@ def saved_deals():
 #         printer.show_string(form.text.data)
 #         return render_template('printer/index.html')
 #     return render_template('printer/print.html', form=form)
+
+main()
+
