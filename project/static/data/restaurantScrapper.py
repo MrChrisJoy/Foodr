@@ -3,17 +3,18 @@ from Restaurant import *
 
 RAYCOLE_GOOGLE_API_KEY = "AIzaSyD4qoVPYOVCFOe-x_8mNGNU8uWka9ygPFw"
 GOOGLE_API_KEY = "AIzaSyAR83M4SW2PeTdIOy4PV54Uwnj403hUJIM"
+GOOGLE_API_KEY2 = "AIzaSyAYiPQqi9bJTIRsqfkkukGTc2YkV2DSQpo"
 LOCATION = "-33.911751,%20151.223290"
-Types = ["bar", "bakery"]#, "cafe", "restaurant", "meal_takeaway", "meal_delivery"]
-Keywords = ["American", "Arabian", "Australian", "Chinese", "Eastern European", "French"]
-            # "Greek", "Indian", "Italian", "Japanese", "Korean", "Lebanese", "Malaysian",
-            # "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Oriental", "Pakistani",
-            # "Portuguese", "Scandinavian", "Singaporean", "Spanish", "Sri Lankan", "Thai",
-            # "Turkish", "Vietnamese", "Breakfast", "Brunch", "Lunch", "Dinner", "Dessert", "BBQ",
-            # "Bubble Tea", "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
-            # "Fish and Chips", "Frozen Yogurt",  "Grill", "Healthy Food", "Ice Cream", "Juice",
-            # "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Pub Food", "Ramen", "Sandwich", "Seafood",
-            # "Soul Food", "Steakhouse", "Sushi Train", "Tapas", "Tea House", "Teppanyaki", "Teriyaki", "Yum Cha"]
+Types = ["bar", "bakery", "cafe", "restaurant", "meal_takeaway", "meal_delivery"]
+Keywords = ["American", "Arabian", "Australian", "Chinese", "French",
+            "Greek", "Indian", "Italian", "Japanese", "Korean", "Lebanese", "Malaysian",
+            "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Oriental", "Pakistani",
+            "Portuguese", "Scandinavian", "Singaporean", "Spanish", "Sri Lankan", "Thai",
+            "Vietnamese", "Breakfast", "Brunch", "Lunch", "Dinner", "Dessert", "BBQ",
+            "Bubble Tea", "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
+            "Fish and Chips", "Frozen Yogurt",  "Grill", "Ice Cream", "Juice",
+            "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Pub Food", "Ramen", "Sandwich", "Seafood",
+            "Steakhouse", "Sushi", "Tapas", "Tea House", "Teppanyaki", "Teriyaki", "Yum Cha"]
 Deals = ["$5 off", "$10 off", "$15 off",
          "$5 off if you spend over $20", "$5 off if you spend over $30", "$10 off if you spend over $50",
          "Free drink with any meal", "Free drink with any purchase", "Free drink if you spend over $10",
@@ -42,7 +43,7 @@ def genRestaurant(ID, name, postcode, lng, lat, rating, vicinity, _type, cuisine
 
 def writeRestaurant(r):
     result = '\t{\n'
-    result += '\t\t"id": ' + str(r.ID) + ',\n'
+    result += '\t\t"id": ' + str(r.id) + ',\n'
     result += '\t\t"name": "' + r.name + '",\n'
     result += '\t\t"postcode": '+r.postcode+',\n'
     result += '\t\t"lng": '+r.lng+',\n'
@@ -61,7 +62,7 @@ def writeRestaurant(r):
 
 def getPostcode(name):
 
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + name
+    url = "https://maps.googleapis.com/maps/api/geocode/json?key=" + GOOGLE_API_KEY2 + "&address=" + name
     response = urllib.urlopen(url)
     data = json.loads(response.read())
     results = data['results']
@@ -85,7 +86,7 @@ def getRestaurants():
         for Keyword in Keywords:
             print("searching: " + Type + " " + Keyword.lower())
             print('--------------------------')
-            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + LOCATION + "&radius=10500&type=" + Type + "&keyword=" + Keyword.lower() + "&key=" + GOOGLE_API_KEY
+            url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + LOCATION + "&radius=10500&type=" + Type + "&keyword=" + Keyword.lower() + "&key=" + GOOGLE_API_KEY2
             response = urllib.urlopen(url)
             data = json.loads(response.read())
 
