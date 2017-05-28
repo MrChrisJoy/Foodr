@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}"> <!-- CSS reset -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Resource style -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/foodr.css') }}"> <!-- Resource style -->
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/BunnyFavicon.png') }}">
   <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script> <!-- Modernizr -->
 
       <title>Foodr | Fine Food Finder</title>
@@ -64,27 +65,25 @@
             <li><a href="#0">Category 2</a></li>
           </ul>
         </li>
- -->        <li class="has-children overview active">
-          <a href="/">Restaurants & Deals<span class="count">3</span></a>
+ -->        <li class="has-children overview active" style="text-decoration: none;">
+          <a >Restaurants & Deals<span class="count">3</span></a>
 
           <ul>
-            <li><a href="/">Nearby Deals</a></li>
-            <li><a href="/restaurants/">Restaurants</a></li>
-            <li><a href="/deals/">Deals</a></li>
+            <li><a href="/">Recommended Restaurants</a></li>
+            <li><a href="/restaurants/">All Restaurants</a></li>
+            <li><a href="/nearby-deals/">Nearby Deals</a></li>
+            <li><a href="/deals/">Recommended Deals</a></li>
           </ul>
         </li>
       </ul>
       <ul>
-        <li class="cd-label">Filter</li>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Cuisine
-        </button>
+        <li class="cd-label">Filtering</li>
+        <li class="action-btn" data-toggle="modal" data-target="#typeModal"><a href="#0">Advanced Search</a></li>
       </ul>
       <ul>
-        <li class="cd-label">Bookmarked Stuff</li>
-        <li class="overview"><a href="/saved/restaurants/">Saved Restaurants</a></li>
-        <li class="overview"><a href="/saved/deals/">Saved Deals</a></li>
+        <li class="cd-label">Bookmarked Items</li>
+        <li class="overview"><a href="/saved/restaurants/">My Restaurants</a></li>
+        <li class="overview"><a href="/saved/deals/">My Deals</a></li>
       </ul>
 <!--         <li class="has-children bookmarks">
           <a href="#0">Bookmarks</a>
@@ -124,32 +123,211 @@
     {% block body %}{% endblock %}
   </main> <!-- .cd-main-content -->
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<style>
+.btn {
+    border: none;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius:8px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.btn1 {
+  background-color: #62A0E6;
+  color: white;
+  width: 100%;
+}
+
+.btn1:hover {
+  background-color: white;
+  color: black;
+  padding: 10px 26px;
+  border: 2px solid #62A0E6;
+}
+
+.dropdown-menu {
+    width: 100%;
+
+}
+
+.container {
+    width: 100%;
+}
+</style>
+
+<script type="javascript">
+    var options = [];
+
+$( '.dropdown-menu a' ).on( 'click', function( event ) {
+
+   var $target = $( event.currentTarget ),
+       val = $target.attr( 'data-value' ),
+       $inp = $target.find( 'input' ),
+       idx;
+
+   if ( ( idx = options.indexOf( val ) ) > -1 ) {
+      options.splice( idx, 1 );
+      setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
+   } else {
+      options.push( val );
+      setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+   }
+
+   $( event.target ).blur();
+
+   console.log( options );
+   return false;
+});
+</script>
+
+<div class="modal fade" id="typeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cuisine</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Filtering</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          {% for cuisine in cuisines %}
-            <h4>{{ cuisine }}</h4>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <div class="slider round"></div>
+      <br/>
+        <form action="/advsearch" method="get">
+        <!-- Build your select: -->
+        <div class="container">
+        <select name="c" class="btn btn1 selectpicker">
+            <option selected>Cuisine</option>
+            {% for cuisine in cuisines %}
+                <option value="{{ cuisine }}">{{ cuisine }}</option>
+            {% endfor %}
+        </select>
+        </div>
+      <br>
+      <div class="container">
+        <select name="t" class="btn btn1 selectpicker">
+            <option selected>Type</option>
+            {% for type in types %}
+                <option value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select>
+      </div>
+      <br>
+      <div class="container">
+        <select name="r" class="btn btn1 selectpicker">
+            <option selected>Rating</option>
+            <option value="0.5">0.5</option>
+            <option value="1.0">1.0</option>
+            <option value="1.5">1.5</option>
+            <option value="2.0">2.0</option>
+            <option value="2.5">2.5</option>
+            <option value="3.0">3.0</option>
+            <option value="3.5">3.5</option>
+            <option value="4.0">4.0</option>
+            <option value="4.5">4.5</option>
+            <option value="5.0">5.0</option>
+        </select>
+      </div>
+      <br><br><br>
+        <div class="row">
+          <div class="col-6 col-sm-6"">
+            Serves Alcohol
+            <label class="switch switch1" style="float: right;">
+              <input name="a" type="checkbox" value="True">
+              <div class="slider round"></div>
             </label>
-          {% endfor %}
-      </div>
+          </div>
+          <div class="col-6 col-sm-6"">
+            Has Wifi
+            <label class="switch switch1" style="float: right;">
+              <input name="wi" type="checkbox" value="True">
+              <div class="slider round"></div>
+            </label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-6 col-sm-6">
+            Wheelchair Access
+            <label class="switch switch1" style="float: right;">
+              <input name="wh" type="checkbox" value="True">
+              <div class="slider round"></div>
+            </label>
+          </div>
+          <div class="col-6 col-sm-6">
+            Allows BYO
+            <label class="switch switch1" style="float: right;">
+              <input name="b" type="checkbox" value="True">
+              <div class="slider round"></div>
+            </label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-6 col-sm-6">
+            Allows Pets
+            <label class="switch switch1" style="float: right;">
+              <input name="pe" type="checkbox" value="True">
+              <div class="slider round"></div>
+            </label>
+          </div>
+          <div class="col-6 col-sm-6">
+            Accepts Card
+            <label class="switch switch1" style="float: right;">
+              <input name="ca" type="checkbox" value="True">
+              <div class="slider round"></div>
+            </label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-6 col-sm-6">
+            Plays Music
+            <label class="switch switch1" style="float: right;">
+              <input name="m" type="checkbox" value="True">
+              <div class="slider round"></div>
+            </label>
+          </div>
+          <div class="col-6 col-sm-6">
+            Has TV
+            <label class="switch switch1" style="float: right;">
+              <input name="tv" type="checkbox" value="True">
+              <div class="slider round"></div>
+            </label>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-6 col-sm-6">
+            Has Parking
+            <label class="switch switch1" style="float: right;">
+              <input name="pa" type="checkbox" value="True">
+              <div class="slider round"></div>
+          </label>
+          </div>
+<!--           <div class="col-6 col-sm-6">
+            Has Photos
+            <label class="switch switch1" style="float: right;">
+              <input name="ph" type="checkbox" value="True">
+              <div class="slider round"></div>
+            </label>
+          </div>
+ -->        </div>
+        <br>
+        <br>
+        <br>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Search</button>
       </div>
+        </form>
     </div>
   </div>
 </div>
+
+
+
 <script src="{{ url_for('static', filename='js/jquery-2.1.4.js') }}"></script>
 <script src="{{ url_for('static', filename='js/jquery.menu-aim.js') }}"></script>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script> <!-- Resource jQuery -->

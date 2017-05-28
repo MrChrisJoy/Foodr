@@ -7,9 +7,9 @@
         {% for result in deals[deal]  %}
             <div class="card-pod">
                 <div class="card">
-                    <center><h3>{{result.name}}</h3></center>
-                    <div class="card-image img-crop-cont">
-                        <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
+                    <center><h3>{{deal}} - {{result.name}}</h3></center>
+                    <div class="card-image img-crop-cont" style="height:200px;">
+                        <img class="img-responsive img-crop"  style="overflow:none" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference={{result.photos[0]}}&key=AIzaSyB-lCP58PXNJOjJ-l24qz_8nlxif9BQBB4">
                         <span  class="card-title" style="padding: 10px">
                             {% if result.alcohol == 'true' %}
                             <i class="fa fa-glass fa-lg" aria-hidden="true"></i>
@@ -20,6 +20,24 @@
                             {% if result.wheelchair == 'true' %}
                             <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>
                             {% endif %}
+                            {% if result.parking == 'true' %}
+                            <i class="fa fa-car fa-lg" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if result.tv == 'true' %}
+                            <i class="fa fa-television fa-lg" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if result.music == 'true' %}
+                            <i class="fa fa-music fa-lg" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if result.pets == 'true' %}
+                            <i class="fa fa-paw fa-lg" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if result.card == 'true' %}
+                            <i class="fa fa-credit-card fa-lg" aria-hidden="true"></i>
+                            {% endif %}
+                            {% if result.byo == 'true' %}
+                            <i class="fa fa-hand-lizard-o fa-credit-card" aria-hidden="true"></i>
+                            {% endif %}
                         </span>
                     </div>
                     <div class="card-content">
@@ -29,8 +47,7 @@
                         <a href="/save_deal?r={{alldeals.index(deal)}}-{{result.id}}&callback={{url}}" class="btn-success btn-circle btn-xl" role="button"><span>&#x2764;</span></a>
                     </center></div>
                 </div>
-            </div>
-        {% endfor %}
+            </div>        {% endfor %}
         {% endfor %}
         <div>
     </div>

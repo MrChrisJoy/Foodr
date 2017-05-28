@@ -128,6 +128,7 @@ def applyWeight(weights):
 
 @app.route('/')
 def start():
+    callback = request.args.get('callback')
     query = request.args.get('q')
     Weightings = fillWeightings()
     applyWeight(Weightings)
@@ -144,11 +145,12 @@ def start():
                 break
             if r not in Liked and r not in Disliked and r not in Recommended:
                 Recommended.append(r)
-    return render_template('foodr/index.html', query=query, restaurants=Recommended, cuisines=Cuisines)
+    return render_template('foodr/index.html', query=query, restaurants=Recommended, cuisines=Cuisines, url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/search')
 def search():
+    callback = request.args.get('callback')
     query = request.args.get('q')
     # linear search: append restaurants that contains the query
     results = [[] for x in xrange(26 * 9)]
@@ -168,6 +170,8 @@ def search():
                             relevance += 1
                     if q.lower() in r.vicinity.lower():
                         relevance += 1
+                    if q.lower() in r.toString('deals').lower():
+                        relevance += 1
                 if relevance > -1:
                     results[relevance].append(r)
                     count = count + 1
@@ -179,14 +183,104 @@ def search():
 
     results.reverse()
     return render_template('foodr/search.html', query=query, results=results, count=count,
-                           url=request.url[len(request.url_root):])
+                           url=request.url[len(request.url_root):], types=Types)
+
+
+
+@app.route('/advsearch')
+def advSearch():
+    queryCuisine = request.args.get('c')
+    # queryVicinity = request.args.get('v')
+    queryRating = request.args.get('r')
+    queryType = request.args.get('t')
+    queryAlcohol = request.args.get('a')
+    queryWheelchair = request.args.get('wh')
+    queryWifi = request.args.get("wi")
+    queryByo = request.args.get("b")
+    queryPets = request.args.get("pe")
+    queryCard = request.args.get("ca")
+    queryMusic = request.args.get("m")
+    queryTv = request.args.get("tv")
+    queryParking = request.args.get("pa")
+    queryPhotos = request.args.get("ph")
+
+    results = []
+    count = 0
+    for r in Restaurants:
+        relevant = True
+        if not(queryCuisine == "Cuisine") and (queryCuisine not in r.cuisines):
+            relevant = False
+        if not(queryRating == "Rating") and (float(queryRating) > float(r.rating)):
+            relevant = False
+        if not(queryType == "Type") and not(queryType == r.type):
+            relevant = False
+        if queryAlcohol and r.alcohol.lower() == "false":
+            relevant = False
+        if queryWheelchair and r.wheelchair.lower() == "false":
+            relevant = False
+        if queryWifi and r.wifi.lower() == "false":
+            relevant = False
+        if queryByo and r.byo.lower() == "false":
+            relevant = False
+        if queryPets and r.pets.lower() == "false":
+            relevant = False
+        if queryCard and r.card.lower() == "false":
+            relevant = False
+        if queryMusic and r.music.lower() == "false":
+            relevant = False
+        if queryTv and r.tv.lower() == "false":
+            relevant = False
+        if queryParking and r.parking.lower() == "false":
+            relevant = False
+
+        if relevant:
+            results.append(r)
+            print r.alcohol, r.wifi, r.wheelchair, "\n"
+            count = count + 1
+
+    # print "cuisine: ", queryCuisine, "\n"
+    # print "rating: ", queryRating, "\n"
+    # print "type: ", queryType, "\n"
+    # print "alcohol: ", queryAlcohol, "\n"
+    # print "wheelchair: ", queryWheelchair, "\n"
+    # print "wifi: ", queryWifi, "\n"
+    #
+    # results = [[] for x in xrange(16)]
+    # count = 0
+    # results.append([])
+    # for r in Restaurants:
+    #     relevance = -1
+    #     for restCuisine in r.cuisine:
+    #         if queryCuisine == restCuisine:
+    #             relevance = relevance + 1
+    #     if (not queryRating or (0.5 <= float(queryRating) <= 5) and (float(queryRating) <= float(r.rating))):
+    #         relevance = relevance + int(r.rating)
+    #     if (queryType == r.type):
+    #         relevance = relevance + 1
+    #     if (not queryAlcohol or (queryAlcohol and r.alcohol == 'true')):
+    #         relevance = relevance + 1
+    #     if (queryWheelchair == r.wheelchair):
+    #         relevance = relevance + 1
+    #     if (queryWifi == r.wifi):
+    #         relevance = relevance + 1
+    #     if relevance > -1:
+    #         results[relevance].append(r)
+    #         count = count + 1
+    # results.reverse()
+    # # i = 0
+    # # while i <= 16:
+    # #     for result in results[i]:
+    # #         print "row ", i, ": ", result.name, " cuisine: ", result.cuisine, " type: ", result.type, " alcohol: ", result.alcohol, " wifi: ", result.wifi, " wheelchair: ", result.wheelchair, "\n"
+    # #     i = i + 1
+    return render_template('foodr/advsearch.html', results=results, count=count, restaurants=Restaurants,
+                               cuisines=Cuisines, types=Types)
 
 
 @app.route('/view')
 def view():
     r = request.args.get('r')
     return render_template('foodr/view_restaurant.html', result=Restaurants[int(r)], title=Restaurants[int(r)].name,
-                           url=request.url[len(request.url_root):])
+                           url=request.url[len(request.url_root):], callback=request.args.get('callback'), types=Types)
 
 
 @app.route('/save_deal')
@@ -256,7 +350,7 @@ def restaurants():
     query = request.args.get('q')
     del Recommended[:]
     return render_template('foodr/index.html', query=query, restaurants=Restaurants,
-                           url=request.url[len(request.url_root):])
+                           url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/deals/')
@@ -269,14 +363,14 @@ def deals():
         d = random.choice(AllDeals)
         r = random.choice(Deals[d])
     DisplayDeals[d].append(r)
-    return render_template('foodr/deals.html', deals=DisplayDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):])
+    return render_template('foodr/deals.html', deals=DisplayDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/saved/')
 def saved():
     query = request.args.get('q')
     del Recommended[:]
-    return render_template('foodr/saved.html', query=query, url=request.url[len(request.url_root):])
+    return render_template('foodr/saved.html', query=query, url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/saved/restaurants/')
@@ -284,14 +378,14 @@ def saved_restaurants():
     query = request.args.get('q')
     del Recommended[:]
     return render_template('foodr/saved_restaurants.html', liked=Liked, query=query,
-                           url=request.url[len(request.url_root):])
+                           url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/saved/deals/')
 def saved_deals():
     query = request.args.get('q')
     del Recommended[:]
-    return render_template('foodr/saved_deals.html', deals=SavedDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):])
+    return render_template('foodr/saved_deals.html', deals=SavedDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):], types=Types)
 
 # @app.route('/print', methods=['GET', 'POST'])
 # def printer():

@@ -2,6 +2,7 @@
 {% block body %}
 
 <div class="content-wrapper">
+    <br><br><br><h3 style="font-size: 35px; font-weight: bold">RECOMMENDED RESTAURANTS</h3>
     <div style="margin-top: 40px">
     {% for result in restaurants %}
     <div class="card-pod">
@@ -19,17 +20,33 @@
                     {% if result.wheelchair == 'true' %}
                     <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>
                     {% endif %}
+                    {% if result.parking == 'true' %}
+                    <i class="fa fa-car fa-lg" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if result.tv == 'true' %}
+                    <i class="fa fa-television fa-lg" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if result.music == 'true' %}
+                    <i class="fa fa-music fa-lg" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if result.pets == 'true' %}
+                    <i class="fa fa-paw fa-lg" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if result.card == 'true' %}
+                    <i class="fa fa-paw fa-credit-card" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if result.byo == 'true' %}
+                    <i class="fa fa-hand-lizard-o fa-credit-card" aria-hidden="true"></i>
+                    {% endif %}
                 </span>
             </div>
-            <div class="card-content">
-                <br><b>{{result.vicinity}}  </b>
-                <br><b>{{result.toString('deals')}}  </b>
-                <br><b>{{result.toString('cuisines')}}</b>
-                <br><b>{{result.postcode}}  </b>
+            <div class="card-content" style="padding: 10px">
+                <br><center> {{result.vicinity}}  </center>
+                <br><b> <strong style="font-weight: bold">Cuisines:</strong> {{result.toString('cuisines')}}  </b>
             </div>
             <div class="card-action"><center>
                 <a href="/dislike?r={{result.id}}&callback={{url}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>
-                <a href="/view?r={{result.id}}" class="btn btn-info" role="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                <a href="/view?r={{result.id}}&callback={{url}}" class="btn btn-info" role="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                 <a href="/like?r={{result.id}}&callback={{url}}" class="btn-success btn-circle btn-xl" role="button"><span>&#x2764;</span></a>
             </center></div>
         </div>
