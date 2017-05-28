@@ -64,7 +64,7 @@ def search():
 @app.route('/advsearch')
 def advSearch():
     queryCuisine = request.args.get('c')
-    queryVicinity = request.args.get('v')
+    # queryVicinity = request.args.get('v')
     queryRating = request.args.get('r')
     queryType = request.args.get('t')
     queryAlcohol = request.args.get('a')
@@ -80,8 +80,8 @@ def advSearch():
             for cuisine in queryCuisine:
                 if cuisine == restCuisine:
                     relevance = relevance + 1
-        if (queryVicinity > r.vicinity):
-            relevance = relevance + 1
+        # if (queryVicinity > r.vicinity):
+        #     relevance = relevance + 1
         if (queryRating < r.rating):
             relevance = relevance + 1
         if (queryType == r.type):

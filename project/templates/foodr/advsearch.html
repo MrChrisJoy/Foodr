@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "layout/layout_foodr.html" %}
+{% block body %}
 
-</body>
-</html>
+<div>
+<h1>{{ count }} results found </h1><br>
+
+{% for sorted in results %}
+{% for result in sorted %}
+    <div class="card-pod">
+        <div class="card">
+            <center><h3>{{result.name}}</h3></center>
+            <div class="card-image img-crop-cont">
+                <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
+                <span  class="card-title" style="padding: 10px">
+                    {% if result.alcohol == 'true' %}
+                    <i class="fa fa-glass fa-lg" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if result.wifi == 'true' %}
+                    <i class="fa fa-wifi fa-lg" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if result.wheelchair == 'true' %}
+                    <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i>
+                    {% endif %}
+                </span>
+            </div>
+            <div class="card-content">
+                <br><b>{{result.vicinity}}  </b>
+            </div>
+            <div class="card-action"><center>
+                <a href="/unlike?r={{result}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>
+                <a href="/view?r={{result}}" class="btn btn-info" role="button"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                <a href="/like?r={{result}}" class="btn-success btn-circle btn-xl" role="button"><span>&#x2764;</span></a>
+            </center></div>
+        </div>
+    </div>
+{% endfor %}
+{% endfor %}
+
+</div>
+{% endblock %}
