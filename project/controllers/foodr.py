@@ -40,7 +40,7 @@ def search():
     query = request.args.get('q')
     # linear search: append restaruants that contains the query
     results = []
-    #results.append()
+    results.append()
     count = 0
     if query != "":
         querys = query.split(" ")
@@ -68,41 +68,60 @@ def search():
                     if r not in results:
                         count = count + 1
                         results.append(r)
-
-
+    # query = request.args.get('q')
+    # #linear search: append restaurants that contains the query
+    # results = []
+    # results.append([])
+    # count = 0
+    # if query != "":
+    #     querys = query.split(" ")
+    #     for r in Restaurants:
+    #         #iterate through each restaurant and check for priority according to query
+    #         relevance = -1
+    #         for q in querys:
+    #             if q.lower() in r.name.lower():
+    #                 relevance = relevance + 1
+    #             if q.lower() in r.cuisine:
+    #                 relevance = relevance + 1
+    #             if q.lower() in r.vicinity.lower():
+    #                 relevance = relevance + 1
+    #         if relevance > -1:
+    #             results[relevance].append(r)
+    #             count = count + 1
+    # results[::-1]
     return render_template('foodr/search.html', query=query, results=results, count=count)
 
-@app.route('/advsearch')
-def advSearch():
-    queryCuisine = request.args.get('c')
-    queryVicinity = request.args.get('v')
-    queryRating = request.args.get('r')
-    queryType = request.args.get('t')
-    queryAlcohol = request.args.get('a')
-    queryWheelchair = request.args.get('wh')
-    queryWifi = request.args.get("wi")
-
-    results = []
-    results.append([])
-    for r in Restaurants:
-        count = -1
-        if (queryCuisine in r.cuisine):
-            count = count + 1
-        if (queryVicinity > r.vicinity):
-            count = count + 1
-        if (queryRating < r.rating):
-            count = count + 1
-        if (queryType == r.type):
-            count = count + 1
-        if (queryAlcohol == r.alcohol):
-            count = count + 1
-        if (queryWheelchair == r.wheelchair):
-            count = count + 1
-        if (queryWifi == r.wifi):
-            count = count + 1
-        if(count > -1):
-            results[count].append(r)
-    return render_template('foodr/advsearch.html')
+# @app.route('/advsearch')
+# def advSearch():
+#     queryCuisine = request.args.get('c')
+#     queryVicinity = request.args.get('v')
+#     queryRating = request.args.get('r')
+#     queryType = request.args.get('t')
+#     queryAlcohol = request.args.get('a')
+#     queryWheelchair = request.args.get('wh')
+#     queryWifi = request.args.get("wi")
+#
+#     results = []
+#     results.append([])
+#     for r in Restaurants:
+#         count = -1
+#         if (queryCuisine in r.cuisine):
+#             count = count + 1
+#         if (queryVicinity > r.vicinity):
+#             count = count + 1
+#         if (queryRating < r.rating):
+#             count = count + 1
+#         if (queryType == r.type):
+#             count = count + 1
+#         if (queryAlcohol == r.alcohol):
+#             count = count + 1
+#         if (queryWheelchair == r.wheelchair):
+#             count = count + 1
+#         if (queryWifi == r.wifi):
+#             count = count + 1
+#         if(count > -1):
+#             results[count].append(r)
+#     return render_template('foodr/advsearch.html')
 
 Liked = []
 
