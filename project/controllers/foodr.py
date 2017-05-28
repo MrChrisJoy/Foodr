@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os, json, random
-import Restaurant
+from Restaurant import *
 from project import app
 from flask import render_template, request
 from flask_wtf import FlaskForm
@@ -27,7 +27,9 @@ with open(local_data) as f:
     data = lines["Restaurants"]
 
     for r in data:
-        Restaurants.append(Restaurant.Restaurant(r['name'], r['lng'], r['lat'], r['rating'], r['vicinity'], r['type'], r['cuisine'], str(r['alcohol']).lower(), str(r['wheelchair']).lower(), str(r['wifi']).lower()))
+        Restaurants.append(Restaurant(r['id'], r['name'], r['postcode'], r['lng'], r['lat'], r['rating'],
+                                      r['vicinity'], r['type'], ", ".join([str(x) for x in r['cuisines']]), str(r['alcohol']).lower(),
+                                      str(r['wheelchair']).lower(), str(r['wifi']).lower(), ", ".join([str(x) for x in r['deals']])))
 
 
 @app.route('/')
@@ -67,7 +69,6 @@ def search():
                     if r not in results:
                         count = count + 1
                         results.append(r)
-
 
     return render_template('foodr/search.html', query=query, results=results, count=count)
 
