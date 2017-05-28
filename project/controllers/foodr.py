@@ -39,6 +39,7 @@ def start():
 def search():
     query = request.args.get('q')
     #linear search: append restaurants that contains the query
+    results = [[] for x in xrange(26*9)]
     results.append([])
     count = 0
     if query != "":
