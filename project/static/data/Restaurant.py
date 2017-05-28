@@ -28,6 +28,8 @@ class Restaurant:
         if field in ["deals", "cuisines"]:
             return ", ".join(var)
         if field == "times":
+            if var == []:
+                return "Opening Times Unavailable."
             return ",\n".join(var)
         return var
 
