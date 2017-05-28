@@ -9,13 +9,16 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Resource style -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}"> <!-- CSS reset -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> <!-- Resource style -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/foodr.css') }}"> <!-- Resource style -->
   <script src="{{ url_for('static', filename='js/modernizr.js') }}"></script> <!-- Modernizr -->
+  <script src="{{ url_for('static', filename='js/jquery-2.1.4.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.menu-aim.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script> <!-- Resource jQuery -->
+
 
       <title>Foodr | Fine Food Finder</title>
 </head>
@@ -74,17 +77,10 @@
           </ul>
         </li>
       </ul>
+
       <ul>
-        <li class="cd-label">Filter</li>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Cuisine
-        </button>
-        <!-- Rating -->
-        <form method="post" action="/advsearch">
-            <label for="points">Rating</label>
-            <input type="range" name="points" id="points" value="2.5" min="1" max="5">
-        </form>
+        <li class="cd-label">Filtering</li>
+        <li class="action-btn" data-toggle="modal" data-target="#typeModal"><a href="#0">Advanced Search</a></li>
       </ul>
       <ul>
         <li class="cd-label">Bookmarked Stuff</li>
@@ -130,37 +126,163 @@
       {% block body %}{% endblock %}
     </div> <!-- .content-wrapper -->
   </main> <!-- .cd-main-content -->
+<style>
+.btn {
+    border: none;
+    padding: 12px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius:8px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+.btn1 {
+  background-color: #62A0E6;
+  color: white;
+  width: 100%;
+}
+
+.btn1:hover {
+  background-color: white;
+  color: black;
+  padding: 10px 26px;
+  border: 2px solid #62A0E6;
+}
+
+.dropdown-menu {
+    width: 100%;
+
+}
+
+.container {
+    width: 100%;
+}
+</style>
+
+<script type="javascript">
+    var options = [];
+
+$( '.dropdown-menu a' ).on( 'click', function( event ) {
+
+   var $target = $( event.currentTarget ),
+       val = $target.attr( 'data-value' ),
+       $inp = $target.find( 'input' ),
+       idx;
+
+   if ( ( idx = options.indexOf( val ) ) > -1 ) {
+      options.splice( idx, 1 );
+      setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
+   } else {
+      options.push( val );
+      setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+   }
+
+   $( event.target ).blur();
+
+   console.log( options );
+   return false;
+});
+</script>
+
+<div class="modal fade" id="typeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cuisine</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Filtering</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          {% for cuisine in cuisines %}
-            <h4>{{ cuisine }}</h4>
-            <form  action="/advsearch" method="get">
-            <label class="switch">
-                <input name="c" type="checkbox" value="{{cuisine}}" checked>
-                <div class="slider round"></div>
-            </label>
-            </form>q
-          {% endfor %}
+      <br/>
+        <form action="/advsearch" method="get">
+        <!-- Build your select: -->
+        <div class="container">
+        <select name="c" class="btn btn1 selectpicker">
+            <option selected>Cuisine</option>
+            {% for cuisine in cuisines %}
+                <option value="{{ cuisine }}">{{ cuisine }}</option>
+            {% endfor %}
+        </select>
+        </div>
+      <br>
+      <div class="container">
+        <select name="t" class="btn btn1 selectpicker">
+            <option selected>Type</option>
+            {% for type in types %}
+                <option value="{{ type }}">{{ type }}</option>
+            {% endfor %}
+        </select>
       </div>
+      <br>
+      <div class="container">
+        <select name="r" class="btn btn1 selectpicker">
+            <option selected>Rating</option>
+            <option selected>Rating</option>
+            <option value="0.5">0.5</option>
+            <option value="1.0">1.0</option>
+            <option value="1.5">1.5</option>
+            <option value="2.0">2.0</option>
+            <option value="2.5">2.5</option>
+            <option value="3.0">3.0</option>
+            <option value="3.5">3.5</option>
+            <option value="4.0">4.0</option>
+            <option value="4.5">4.5</option>
+            <option value="5.0">5.0</option>
+        </select>
+      </div>
+      <br><br><br>
+      Serves Alcohol
+      <label class="switch switch1" style="float: right;">
+              <input name="a" type="checkbox" value="True">
+              <div class="slider round"></div>
+      </label>
+      <br><br><br>
+      Has Wifi
+          <label class="switch switch1" style="float: right;">
+              <input name="wi" type="checkbox" value="True">
+              <div class="slider round"></div>
+          </label>
+      <br><br><br>
+      Wheelchair Access
+          <label class="switch switch1" style="float: right;">
+              <input name="wh" type="checkbox" value="True">
+              <div class="slider round"></div>
+          </label>
+        <br>
+        <br>
+        <br>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Search</button>
       </div>
+        </form>
     </div>
   </div>
 </div>
-<script src="{{ url_for('static', filename='js/jquery-2.1.4.js') }}"></script>
-<script src="{{ url_for('static', filename='js/jquery.menu-aim.js') }}"></script>
-<script src="{{ url_for('static', filename='js/main.js') }}"></script> <!-- Resource jQuery -->
+
 </body>
 </html>
+
+
+<!--
+<div class="container">
+      <div class="dropdown">
+          <button class="btn btn1 dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Type
+          <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          {% for type in types %}
+              <li><a href="#">{{ type }}</a></li>
+              <label class="switch switch1" style="float: right;">
+              <input name="t[]" type="checkbox" value="type" checked>
+              <div class="slider round"></div>
+              </label>
+          {% endfor %}
+          </ul>
+      </div>
+      </div>
+-->

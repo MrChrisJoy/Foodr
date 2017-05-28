@@ -4,8 +4,7 @@
 <div>
 <h1>{{ count }} results found </h1><br>
 
-{% for sorted in results %}
-{% for result in sorted %}
+{% for result in results %}
     <div class="card-pod">
         <div class="card">
             <center><h3>{{result.name}}</h3></center>
@@ -33,7 +32,6 @@
             </center></div>
         </div>
     </div>
-{% endfor %}
 {% endfor %}
 
 </div>

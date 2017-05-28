@@ -733,14 +733,14 @@ Sidebar
 
 -----------*/
 
-.modal-dialog{
-  overflow-y: initial !important
-}
+/*.modal-dialog{*/
+  /*overflow-y: initial !important*/
+/*}*/
 
-.modal-body{
-  height: 250px;
-  overflow-y: auto;
-}
+/*.modal-body{*/
+  /*height: 250px;*/
+  /*overflow-y: auto;*/
+/*}*/
 
 /* -----------
 
@@ -753,6 +753,11 @@ Sidebar
   display: inline-block;
   width: 60px;
   height: 34px;
+}
+
+.switch1 {
+  position: relative;
+  margin-left: 10%;
 }
 
 .switch input {display:none;}
@@ -793,13 +798,4 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }

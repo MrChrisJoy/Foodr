@@ -18,6 +18,7 @@ Cuisines = ["American", "Arabian", "Australian", "Chinese", "Eastern European", 
             "Fish and Chips", "Frozen Yogurt",  "Grill", "Healthy Food", "Ice Cream", "Juice",
             "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Pub Food", "Ramen", "Sandwich", "Seafood",
             "Soul Food", "Steakhouse", "Sushi Train", "Tapas", "Tea House", "Teppanyaki", "Teriyaki", "Yum Cha"]
+Types = ["bar", "bakery", "cafe", "restaurant", "meal_takeaway", "meal_delivery"]
 Liked = []
 
 # load restaruants from static json data using the restaraunts model
@@ -33,7 +34,7 @@ with open(local_data) as f:
 @app.route('/')
 def start():
     query = request.args.get('q')
-    return render_template('foodr/index.html', query=query, restaurants=Restaurants, cuisines=Cuisines)
+    return render_template('foodr/index.html', query=query, restaurants=Restaurants, cuisines=Cuisines, types=Types)
 
 @app.route('/search')
 def search():
@@ -59,7 +60,8 @@ def search():
                 results[relevance].append(r)
                 count = count + 1
     results.reverse()
-    return render_template('foodr/search.html', query=query, results=results, count=count)
+    return render_template('foodr/search.html', query=query, results=results, count=count, restaurants=Restaurants,
+                           cuisines=Cuisines, types=Types)
 
 @app.route('/advsearch')
 def advSearch():
@@ -71,32 +73,65 @@ def advSearch():
     queryWheelchair = request.args.get('wh')
     queryWifi = request.args.get("wi")
 
-    results = [[] for x in xrange(16)]
+    print "queryRating: ", queryRating, "\n"
+
+    results = []
     count = 0
-    results.append([])
     for r in Restaurants:
-        relevance = -1
-        for restCuisine in r.cuisine:
-            for cuisine in queryCuisine:
-                if cuisine == restCuisine:
-                    relevance = relevance + 1
-        # if (queryVicinity > r.vicinity):
-        #     relevance = relevance + 1
-        if (queryRating < r.rating):
-            relevance = relevance + 1
-        if (queryType == r.type):
-            relevance = relevance + 1
-        if (queryAlcohol == r.alcohol):
-            relevance = relevance + 1
-        if (queryWheelchair == r.wheelchair):
-            relevance = relevance + 1
-        if (queryWifi == r.wifi):
-            relevance = relevance + 1
-        if(count > -1):
-            results[relevance].append(r)
+        relevant = True
+        if not(queryCuisine == "Cuisine") and (queryCuisine not in r.cuisine):
+            relevant = False
+        if not(queryRating == "Rating") and (float(queryRating) > float(r.rating)):
+            relevant = False
+        if not(queryType == "Type") and not(queryType == r.type):
+            relevant = False
+        if queryAlcohol and r.alcohol.lower() == "false":
+            relevant = False
+        if queryWheelchair and r.wheelchair.lower() == "false":
+            relevant = False
+        if queryWifi and r.wifi.lower() == "false":
+            relevant = False
+        if relevant:
+            results.append(r)
+            print r.alcohol, r.wifi, r.wheelchair, "\n"
             count = count + 1
-    results.reverse()
-    return render_template('foodr/advsearch.html')
+
+    # print "cuisine: ", queryCuisine, "\n"
+    # print "rating: ", queryRating, "\n"
+    # print "type: ", queryType, "\n"
+    # print "alcohol: ", queryAlcohol, "\n"
+    # print "wheelchair: ", queryWheelchair, "\n"
+    # print "wifi: ", queryWifi, "\n"
+    #
+    # results = [[] for x in xrange(16)]
+    # count = 0
+    # results.append([])
+    # for r in Restaurants:
+    #     relevance = -1
+    #     for restCuisine in r.cuisine:
+    #         if queryCuisine == restCuisine:
+    #             relevance = relevance + 1
+    #     if (not queryRating or (0.5 <= float(queryRating) <= 5) and (float(queryRating) <= float(r.rating))):
+    #         relevance = relevance + int(r.rating)
+    #     if (queryType == r.type):
+    #         relevance = relevance + 1
+    #     if (not queryAlcohol or (queryAlcohol and r.alcohol == 'true')):
+    #         relevance = relevance + 1
+    #     if (queryWheelchair == r.wheelchair):
+    #         relevance = relevance + 1
+    #     if (queryWifi == r.wifi):
+    #         relevance = relevance + 1
+    #     if relevance > -1:
+    #         results[relevance].append(r)
+    #         count = count + 1
+    # results.reverse()
+    # # i = 0
+    # # while i <= 16:
+    # #     for result in results[i]:
+    # #         print "row ", i, ": ", result.name, " cuisine: ", result.cuisine, " type: ", result.type, " alcohol: ", result.alcohol, " wifi: ", result.wifi, " wheelchair: ", result.wheelchair, "\n"
+    # #     i = i + 1
+    return render_template('foodr/advsearch.html', results=results, count=count, restaurants=Restaurants,
+                               cuisines=Cuisines, types=Types)
 
 Liked = []
 
