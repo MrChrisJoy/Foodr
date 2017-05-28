@@ -7,6 +7,7 @@
     <div class="card">
         <center><h3>{{result.name}}</h3></center>
         <div class="card-image img-crop-cont">
+
         <!--    <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
         -->    <span  class="card-title" style="padding: 10px">
                 {% if result.alcohol == 'true' %}
@@ -22,6 +23,8 @@
         </div>
         <div class="card-content">
             <br><b>{{result.vicinity}}  </b>
+            <br><b>{{result.deals}}  </b>
+            <br><b>{{result.cuisines}}  </b>
         </div>
         <div class="card-action"><center>
             <a href="/unlike?r={{result}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>

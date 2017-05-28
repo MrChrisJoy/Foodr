@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os, json, random
-import Restaurant
+from Restaurant import *
 from project import app
 from flask import render_template, request
 from flask_wtf import FlaskForm
@@ -9,15 +9,15 @@ from wtforms.validators import DataRequired
 
 # Global Data Stores
 Restaurants = []
-Cuisines = ["American", "Arabian", "Australian", "Chinese", "Eastern European", "French",
+Cuisines = ["American", "Arabian", "Australian", "Chinese", "French",
             "Greek", "Indian", "Italian", "Japanese", "Korean", "Lebanese", "Malaysian",
-            "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Oriental", "Pakistani",
+            "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Pakistani",
             "Portuguese", "Scandinavian", "Singaporean", "Spanish", "Sri Lankan", "Thai",
             "Turkish", "Vietnamese", "Breakfast", "Brunch", "Lunch", "Dinner", "Dessert", "BBQ",
-            "Bubble Tea", "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
-            "Fish and Chips", "Frozen Yogurt",  "Grill", "Healthy Food", "Ice Cream", "Juice",
-            "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Pub Food", "Ramen", "Sandwich", "Seafood",
-            "Soul Food", "Steakhouse", "Sushi Train", "Tapas", "Tea House", "Teppanyaki", "Teriyaki", "Yum Cha"]
+            "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
+            "Fish and Chips", "Frozen Yogurt", "Grill", "Ice Cream", "Juice",
+            "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Ramen", "Sandwich", "Seafood",
+            "Steakhouse", "Sushi", "Tapas", "Teppanyaki", "Teriyaki", "Yum Cha"]
 Types = ["bar", "bakery", "cafe", "restaurant", "meal_takeaway", "meal_delivery"]
 Liked = []
 
@@ -28,8 +28,12 @@ with open(local_data) as f:
     data = lines["Restaurants"]
 
     for r in data:
-        Restaurants.append(Restaurant.Restaurant(r['name'], r['lng'], r['lat'], r['rating'], r['vicinity'], r['type'], r['cuisine'], str(r['alcohol']).lower(), str(r['wheelchair']).lower(), str(r['wifi']).lower()))
-
+        Restaurants.append(Restaurant(r['id'], r['name'], r['postcode'], r['lng'], r['lat'], r['rating'],
+                                      r['vicinity'], r['type'], r['cuisines'], str(r['alcohol']).lower(),
+                                      str(r['byo']).lower(), str(r['wheelchair']).lower(), str(r['wifi']).lower(),
+                                      str(r['pets']).lower(), str(r['card']).lower(), str(r['music']).lower(),
+                                      str(r['tv']).lower(), str(r['parking']).lower(), r['photos'],
+                                       r['times'], r['deals']))
 
 @app.route('/')
 def start():
@@ -41,7 +45,6 @@ def search():
     query = request.args.get('q')
     #linear search: append restaurants that contains the query
     results = [[] for x in xrange(26*9)]
-    results.append([])
     count = 0
     if query != "":
         querys = query.split(" ")
@@ -51,7 +54,8 @@ def search():
             for q in querys:
                 if q.lower() in r.name.lower():
                     relevance = relevance + 1
-                for cuisine in r.cuisine:
+                for cuisine in r.cuisines:
+
                     if q.lower() == cuisine.lower():
                         relevance = relevance + 1
                 if q.lower() in r.vicinity.lower():
@@ -62,6 +66,17 @@ def search():
     results.reverse()
     return render_template('foodr/search.html', query=query, results=results, count=count, restaurants=Restaurants,
                            cuisines=Cuisines, types=Types)
+
+# def filterBoolean(field):
+#     resultstrue = []
+#     resultsfalse = []
+#     for r in Restaurants:
+#         if r.getField(field):
+#             resultstrue += [r]
+#         else:
+#             resultsfalse += [r]
+#     return resultstrue + resultsfalse
+
 
 @app.route('/advsearch')
 def advSearch():
@@ -173,14 +188,3 @@ def saved_restaurants():
 def saved_deals():
     query = request.args.get('q')
     return render_template('foodr/saved_deals.html', query=query)
-
-
-# @app.route('/print', methods=['GET', 'POST'])
-# def printer():
-#     form = CreateForm(request.form)
-#     if request.method == 'POST' and form.validate():
-#         from project.models.Printer import Printer
-#         printer = Printer()
-#         printer.show_string(form.text.data)
-#         return render_template('printer/index.html')
-#     return render_template('printer/print.html', form=form)
