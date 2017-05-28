@@ -4,7 +4,8 @@
 <div>
 <h1>{{ count }} results found for "{{ query }}"</h1><br>
 
-{% for result in results %}
+{% for sorted in results %}
+{% for result in sorted %}
     <div class="card-pod">
         <div class="card">
             <center><h3>{{result.name}}</h3></center>
@@ -32,6 +33,7 @@
             </center></div>
         </div>
     </div>
+{% endfor %}
 {% endfor %}
 
 </div>
