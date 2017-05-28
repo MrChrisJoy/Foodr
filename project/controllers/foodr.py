@@ -8,7 +8,6 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 # Global Data Stores
-Restaurants = []
 Types = ["bar", "bakery", "cafe", "restaurant", "meal_takeaway", "meal_delivery"]
 Cuisines = ["American", "Arabian", "Australian", "Chinese", "French",
             "Greek", "Indian", "Italian", "Japanese", "Korean", "Lebanese", "Malaysian",
@@ -19,9 +18,24 @@ Cuisines = ["American", "Arabian", "Australian", "Chinese", "French",
             "Fish and Chips", "Frozen Yogurt", "Grill", "Ice Cream", "Juice",
             "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Ramen", "Sandwich", "Seafood",
             "Steakhouse", "Sushi", "Tapas", "Teppanyaki", "Teriyaki", "Yum Cha"]
+AllDeals = ["$5 off", "$10 off", "$15 off",
+            "$5 off if you spend over $20", "$5 off if you spend over $30", "$10 off if you spend over $50",
+             "Free drink with any meal", "Free drink with any purchase", "Free drink if you spend over $10",
+             "Buy one get one free", "2 for 1", "Buy two get one free",
+             "All you can eat for $20pp", "All you can eat for $25pp", "All you can eat for $30pp",
+            "10% off", "15% off", "20% off"]
+
+Restaurants = []
 Liked = []
 Disliked = []
 Recommended = []
+Deals = {}
+SavedDeals = {}
+DisDeals = {}
+for d in AllDeals:
+    Deals[d] = []
+    SavedDeals[d] = []
+    DisDeals[d] = []
 
 # load restaruants from static json data using the restaraunts model
 local_data = os.path.join(app.static_folder, 'data/restaurant.json')
@@ -30,12 +44,15 @@ with open(local_data) as f:
     data = lines["Restaurants"]
 
     for r in data:
-        Restaurants.append(Restaurant(r['id'], r['name'], r['postcode'], r['lng'], r['lat'], r['rating'],
+        rest = Restaurant(r['id'], r['name'], r['postcode'], r['lng'], r['lat'], r['rating'],
                                       r['vicinity'], r['type'], r['cuisines'], str(r['alcohol']).lower(),
                                       str(r['byo']).lower(), str(r['wheelchair']).lower(), str(r['wifi']).lower(),
                                       str(r['pets']).lower(), str(r['card']).lower(), str(r['music']).lower(),
                                       str(r['tv']).lower(), str(r['parking']).lower(), r['photos'],
-                                      r['times'], r['deals']))
+                                      r['times'], r['deals'])
+        Restaurants.append(rest)
+        for d in r['deals']:
+            Deals[d].append(rest)
 
 Restaurants.sort(key=lambda x: x.id)
 
@@ -155,6 +172,27 @@ def view():
                            url=request.url[len(request.url_root):])
 
 
+@app.route('/save_deal')
+def save_deal():
+    r = request.args.get('r')
+    callback = request.args.get('callback')
+    deal, restaurant = str(r).split('-')
+    if Restaurants[int(restaurant)] not in SavedDeals[AllDeals[int(deal)]]:
+        SavedDeals[AllDeals[int(deal)]].append(Restaurants[int(restaurant)])
+    return redirect('/' + callback)
+
+@app.route('/unsave_deal')
+def unsave_deal():
+    r = request.args.get('r')
+    callback = request.args.get('callback')
+    deal, restaurant = str(r).split('-')
+    if Restaurants[int(restaurant)] in SavedDeals[AllDeals[int(deal)]]:
+        SavedDeals[AllDeals[int(deal)]].remove(Restaurants[int(restaurant)])
+    if Restaurants[int(restaurant)] not in DisDeals[AllDeals[int(deal)]]:
+        DisDeals[AllDeals[int(deal)]].append(Restaurants[int(restaurant)])
+    return redirect('/' + callback)
+
+
 @app.route('/like')
 def like():
     r = request.args.get('r')
@@ -200,7 +238,18 @@ def restaurants():
 def deals():
     query = request.args.get('q')
     del Recommended[:]
-    return render_template('foodr/deals.html', query=query, url=request.url[len(request.url_root):])
+    Display = {}
+    for d in AllDeals:
+        Display[d] = []
+    i = 0
+    while i < 40:
+        d = random.choice(AllDeals)
+        r = random.choice(Deals[d])
+        if r in DisDeals[d] or r in SavedDeals[d]:
+            continue
+        Display[d].append(r)
+        i += 1
+    return render_template('foodr/deals.html', deals=Display, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):])
 
 
 @app.route('/saved/')
@@ -222,7 +271,7 @@ def saved_restaurants():
 def saved_deals():
     query = request.args.get('q')
     del Recommended[:]
-    return render_template('foodr/saved_deals.html', query=query, url=request.url[len(request.url_root):])
+    return render_template('foodr/saved_deals.html', deals=SavedDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):])
 
 # @app.route('/print', methods=['GET', 'POST'])
 # def printer():
