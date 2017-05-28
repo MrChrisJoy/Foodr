@@ -22,6 +22,7 @@ class Restaurant:
         self.photos = photos
         self.times = times
         self.deals = deals
+        self.weight = 0
 
     def toString(self, field):
         var = self.getField(field)
@@ -76,3 +77,5 @@ class Restaurant:
             return self.photos
         if field == "times":
             return self.times
+        if field == "weight":
+            return self.weight
