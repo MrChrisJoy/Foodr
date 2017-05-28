@@ -9,15 +9,15 @@ from wtforms.validators import DataRequired
 
 # Global Data Stores
 Restaurants = []
-Cuisines = ["American", "Arabian", "Australian", "Chinese", "Eastern European", "French",
+Keywords = ["American", "Arabian", "Australian", "Chinese", "French",
             "Greek", "Indian", "Italian", "Japanese", "Korean", "Lebanese", "Malaysian",
             "Middle eastern", "Mediterranean", "Mexican", "Moroccan", "Oriental", "Pakistani",
             "Portuguese", "Scandinavian", "Singaporean", "Spanish", "Sri Lankan", "Thai",
             "Turkish", "Vietnamese", "Breakfast", "Brunch", "Lunch", "Dinner", "Dessert", "BBQ",
             "Bubble Tea", "Burgers", "Charcoal Chicken", "Coffee", "Drink", "Dumplings", "Fast Food",
-            "Fish and Chips", "Frozen Yogurt",  "Grill", "Healthy Food", "Ice Cream", "Juice",
+            "Fish and Chips", "Frozen Yogurt",  "Grill", "Ice Cream", "Juice",
             "Kebabs", "Noodles", "Pastry", "Pho", "Pizza", "Pub Food", "Ramen", "Sandwich", "Seafood",
-            "Soul Food", "Steakhouse", "Sushi Train", "Tapas", "Tea House", "Teppanyaki", "Teriyaki", "Yum Cha"]
+            "Steakhouse", "Sushi", "Tapas", "Tea House", "Teppanyaki", "Teriyaki", "Yum Cha"]
 Liked = []
 
 # load restaruants from static json data using the restaraunts model
@@ -28,9 +28,11 @@ with open(local_data) as f:
 
     for r in data:
         Restaurants.append(Restaurant(r['id'], r['name'], r['postcode'], r['lng'], r['lat'], r['rating'],
-                                      r['vicinity'], r['type'], ", ".join([str(x) for x in r['cuisines']]), str(r['alcohol']).lower(),
-                                      str(r['wheelchair']).lower(), str(r['wifi']).lower(), ", ".join([str(x) for x in r['deals']])))
-
+                                      r['vicinity'], r['type'], r['cuisines'], str(r['alcohol']).lower(),
+                                      str(r['byo']).lower(), str(r['wheelchair']).lower(), str(r['wifi']).lower(),
+                                      str(r['pets']).lower(), str(r['card']).lower(), str(r['music']).lower(),
+                                      str(r['tv']).lower(), str(r['parking']).lower(), r['deals'], r['photos'],
+                                      r['times']))
 
 @app.route('/')
 def start():

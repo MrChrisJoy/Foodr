@@ -1,9 +1,9 @@
 class Restaurant:
-    def __init__(self, ID, name, postcode, lng, lat, rating, vicinity, _type, cuisines, alcohol, wheelchair, wifi, deals):
+    def __init__(self, ID, name, postcode, lng, lat, rating, vicinity, _type, cuisines, alcohol, byo,
+                 wheelchair, wifi, pets, card, music, tv, parking, photos, times, deals):
         self.id = ID
         self.name = name
         self.postcode = postcode
-        # long and lat date for seach and images
         self.lng = lng
         self.lat = lat
         self.vicinity = vicinity
@@ -11,8 +11,16 @@ class Restaurant:
         self.cuisines = cuisines
         self.type = _type
         self.alcohol = alcohol
+        self.byo = byo
         self.wheelchair = wheelchair
         self.wifi = wifi
+        self.pets = pets
+        self.card = card
+        self.music = music
+        self.tv = tv
+        self.parking = parking
+        self.photos = photos
+        self.times = times
         self.deals = deals
 
 
@@ -37,9 +45,25 @@ class Restaurant:
             return self.type
         if field == "alcohol":
             return self.alcohol
+        if field == "byo":
+            return self.byo
         if field == "wheelchair":
             return self.wheelchair
         if field == "wifi":
             return self.wifi
+        if field == "pets":
+            return self.pets
+        if field == "card":
+            return self.card
+        if field == "music":
+            return self.music
+        if field == "tv":
+            return self.tv
+        if field == "parking":
+            return self.parking
         if field == "deals":
             return self.deals
+        if field == "photos":
+            return self.photos
+        if field == "times":
+            return self.times
