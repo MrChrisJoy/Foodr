@@ -23,6 +23,13 @@ class Restaurant:
         self.times = times
         self.deals = deals
 
+    def toString(self, field):
+        var = self.getField(field)
+        if field in ["deals", "cuisines"]:
+            return ", ".join(var)
+        if field == "times":
+            return ",\n".join(var)
+        return var
 
     def getField(self, field):
         if field == "id":
