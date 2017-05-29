@@ -9,7 +9,7 @@
             <div class="card">
                 <center><h3>{{result.name}}</h3></center>
                 <div class="card-image img-crop-cont" style="display: inline-block">
-                    <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
+                    <img class="img-responsive img-crop" src="https://maps.googleapis.com/maps/api/streetview?size=800x400&location={{result.lat}},%20{{result.lng}}&heading=151.78&pitch=-0.76&key=">
                     <span  class="card-title" style="padding: 10px">
                         {% if result.alcohol == 'true' %}
                         <i class="fa fa-glass fa-lg" aria-hidden="true"></i>
@@ -40,8 +40,9 @@
                         {% endif %}
                     </span>
                 </div>
-                <div class="card-content">
+                <div class="card-content" style="padding: 10px">
                     <br><b> {{result.vicinity}}  </b><br><br>
+                    <br><b> <strong style="font-weight: bold">Tags:</strong> {{result.toString('cuisines')}}  </b><br><br>
                 </div>
                 <div class="card-action"><center>
                     <a href="/dislike?r={{result.id}}&callback={{url}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>

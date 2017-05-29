@@ -33,14 +33,15 @@ Deals = {}
 SavedDeals = {}
 DisDeals = {}
 DisplayDeals = {}
+NearbyDeals = {}
+LOGGED_IN = False
 
 def main():
     for d in AllDeals:
         Deals[d] = []
         SavedDeals[d] = []
         DisDeals[d] = []
-
-    for d in AllDeals:
+        NearbyDeals[d] = []
         DisplayDeals[d] = []
 
     # load restaruants from static json data using the restaraunts model
@@ -60,17 +61,25 @@ def main():
             for d in r['deals']:
                 Deals[str(d)].append(rest)
 
-    Restaurants.sort(key=lambda x: x.id)
-
-    i = 0
-    while i < 40:
-        d = random.choice(AllDeals)
-        r = random.choice(Deals[d])
-        if r in DisDeals[d] or r in SavedDeals[d]:
-            continue
-        DisplayDeals[d].append(r)
-        i += 1
-
+	Restaurants.sort(key=lambda x: x.id)
+	i = 0
+	while i < 40:
+		d = random.choice(AllDeals)
+		r = random.choice(Deals[d])
+		if r in DisDeals[d] or r in SavedDeals[d]:
+		    continue
+		DisplayDeals[d].append(r)
+		i += 1
+	i = 0
+	postcode = 2010
+	while i < 20:
+		d = random.choice(AllDeals)
+		r = random.choice(Deals[d])
+		while r in DisDeals[d] or r in SavedDeals[d] or abs(int(r.postcode) - postcode) > 5:
+		    d = random.choice(AllDeals)
+		    r = random.choice(Deals[d])
+		NearbyDeals[d].append(r)
+		i += 1
 
 
 def initWeightings():
@@ -128,264 +137,343 @@ def applyWeight(weights):
 
 @app.route('/')
 def start():
-    callback = request.args.get('callback')
-    query = request.args.get('q')
-    Weightings = fillWeightings()
-    applyWeight(Weightings)
-    weighted = [x for x in Restaurants]
-    if len(Liked) + len(Disliked) == 0:
-        random.shuffle(weighted)
-    weighted.sort(key=lambda x: -x.weight)
-    for r in Recommended:
-        if r.weight < -5:
-            Recommended.remove(r)
-    if len(Recommended) < 40:
-        for r in weighted:
-            if len(Recommended) >= 40:
-                break
-            if r not in Liked and r not in Disliked and r not in Recommended:
-                Recommended.append(r)
-    return render_template('foodr/index.html', query=query, restaurants=Recommended, cuisines=Cuisines, url=request.url[len(request.url_root):], types=Types)
+	print LOGGED_IN
+	if LOGGED_IN == False:
+		return redirect('/login')
+	callback = request.args.get('callback')
+	query = request.args.get('q')
+	Weightings = fillWeightings()
+	applyWeight(Weightings)
+	weighted = [x for x in Restaurants]
+	if len(Liked) + len(Disliked) == 0:
+	    random.shuffle(weighted)
+	weighted.sort(key=lambda x: -x.weight)
+	for r in Recommended:
+	    if r.weight < -5:
+	        Recommended.remove(r)
+	if len(Recommended) < 40:
+	    for r in weighted:
+	        if len(Recommended) >= 40:
+	            break
+	        if r not in Liked and r not in Disliked and r not in Recommended:
+	            Recommended.append(r)
+	return render_template('foodr/index.html', query=query, restaurants=Recommended, cuisines=Cuisines, url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/search')
 def search():
-    callback = request.args.get('callback')
-    query = request.args.get('q')
-    # linear search: append restaurants that contains the query
-    results = [[] for x in xrange(26 * 9)]
-    results.append([])
-    count = 0
-    if query != "":
-        querys = query.split(" ")
-        for r in Restaurants:
-            if r not in Liked and r not in Disliked:
-                # iterate through each restaurant and check for priority according to query
-                relevance = -1
-                for q in querys:
-                    if q.lower() in r.name.lower():
-                        relevance += 1
-                    for cuisine in r.cuisines:
-                        if q.lower() == cuisine.lower():
-                            relevance += 1
-                    if q.lower() in r.vicinity.lower():
-                        relevance += 1
-                    if q.lower() in r.toString('deals').lower():
-                        relevance += 1
-                if relevance > -1:
-                    results[relevance].append(r)
-                    count = count + 1
-    # i = 0
-    # while i < 26*9:
-    # 	for j in results[i]:
-    # 		print "row ", i, " : ", j.name
-    # 	i += 1
+	if LOGGED_IN == False:
+		return redirect('/login')
 
-    results.reverse()
-    return render_template('foodr/search.html', query=query, results=results, count=count,
-                           url=request.url[len(request.url_root):], types=Types)
+	callback = request.args.get('callback')
+	query = request.args.get('q')
+	# linear search: append restaurants that contains the query
+	results = [[] for x in xrange(26 * 9)]
+	results.append([])
+	count = 0
+	if query != "":
+	    querys = query.split(" ")
+	    for r in Restaurants:
+	        if r not in Liked and r not in Disliked:
+	            # iterate through each restaurant and check for priority according to query
+	            relevance = -1
+	            for q in querys:
+	                if q.lower() in r.name.lower():
+	                    relevance += 1
+	                for cuisine in r.cuisines:
+	                    if q.lower() == cuisine.lower():
+	                        relevance += 1
+	                if q.lower() in r.vicinity.lower():
+	                    relevance += 1
+	                if q.lower() in r.toString('deals').lower():
+	                    relevance += 1
+	            if relevance > -1:
+	                results[relevance].append(r)
+	                count = count + 1
+	# i = 0
+	# while i < 26*9:
+	# 	for j in results[i]:
+	# 		print "row ", i, " : ", j.name
+	# 	i += 1
+
+	results.reverse()
+	return render_template('foodr/search.html', query=query, results=results, count=count,
+	                       url=request.url[len(request.url_root):], types=Types)
 
 
 
 @app.route('/advsearch')
 def advSearch():
-    queryCuisine = request.args.get('c')
-    # queryVicinity = request.args.get('v')
-    queryRating = request.args.get('r')
-    queryType = request.args.get('t')
-    queryAlcohol = request.args.get('a')
-    queryWheelchair = request.args.get('wh')
-    queryWifi = request.args.get("wi")
-    queryByo = request.args.get("b")
-    queryPets = request.args.get("pe")
-    queryCard = request.args.get("ca")
-    queryMusic = request.args.get("m")
-    queryTv = request.args.get("tv")
-    queryParking = request.args.get("pa")
-    queryPhotos = request.args.get("ph")
+	if LOGGED_IN == False:
+		return redirect('/login')
 
-    results = []
-    count = 0
-    for r in Restaurants:
-        relevant = True
-        if not(queryCuisine == "Cuisine") and (queryCuisine not in r.cuisines):
-            relevant = False
-        if not(queryRating == "Rating") and (float(queryRating) > float(r.rating)):
-            relevant = False
-        if not(queryType == "Type") and not(queryType == r.type):
-            relevant = False
-        if queryAlcohol and r.alcohol.lower() == "false":
-            relevant = False
-        if queryWheelchair and r.wheelchair.lower() == "false":
-            relevant = False
-        if queryWifi and r.wifi.lower() == "false":
-            relevant = False
-        if queryByo and r.byo.lower() == "false":
-            relevant = False
-        if queryPets and r.pets.lower() == "false":
-            relevant = False
-        if queryCard and r.card.lower() == "false":
-            relevant = False
-        if queryMusic and r.music.lower() == "false":
-            relevant = False
-        if queryTv and r.tv.lower() == "false":
-            relevant = False
-        if queryParking and r.parking.lower() == "false":
-            relevant = False
+	queryCuisine = request.args.get('c')
+	# queryVicinity = request.args.get('v')
+	queryRating = request.args.get('r')
+	queryType = request.args.get('t')
+	queryAlcohol = request.args.get('a')
+	queryWheelchair = request.args.get('wh')
+	queryWifi = request.args.get("wi")
+	queryByo = request.args.get("b")
+	queryPets = request.args.get("pe")
+	queryCard = request.args.get("ca")
+	queryMusic = request.args.get("m")
+	queryTv = request.args.get("tv")
+	queryParking = request.args.get("pa")
+	queryPhotos = request.args.get("ph")
 
-        if relevant:
-            results.append(r)
-            print r.alcohol, r.wifi, r.wheelchair, "\n"
-            count = count + 1
+	results = []
+	count = 0
+	for r in Restaurants:
+	    relevant = True
+	    if not(queryCuisine == "Cuisine") and (queryCuisine not in r.cuisines):
+	        relevant = False
+	    if not(queryRating == "Rating") and (float(queryRating) > float(r.rating)):
+	        relevant = False
+	    if not(queryType == "Type") and not(queryType == r.type):
+	        relevant = False
+	    if queryAlcohol and r.alcohol.lower() == "false":
+	        relevant = False
+	    if queryWheelchair and r.wheelchair.lower() == "false":
+	        relevant = False
+	    if queryWifi and r.wifi.lower() == "false":
+	        relevant = False
+	    if queryByo and r.byo.lower() == "false":
+	        relevant = False
+	    if queryPets and r.pets.lower() == "false":
+	        relevant = False
+	    if queryCard and r.card.lower() == "false":
+	        relevant = False
+	    if queryMusic and r.music.lower() == "false":
+	        relevant = False
+	    if queryTv and r.tv.lower() == "false":
+	        relevant = False
+	    if queryParking and r.parking.lower() == "false":
+	        relevant = False
 
-    # print "cuisine: ", queryCuisine, "\n"
-    # print "rating: ", queryRating, "\n"
-    # print "type: ", queryType, "\n"
-    # print "alcohol: ", queryAlcohol, "\n"
-    # print "wheelchair: ", queryWheelchair, "\n"
-    # print "wifi: ", queryWifi, "\n"
-    #
-    # results = [[] for x in xrange(16)]
-    # count = 0
-    # results.append([])
-    # for r in Restaurants:
-    #     relevance = -1
-    #     for restCuisine in r.cuisine:
-    #         if queryCuisine == restCuisine:
-    #             relevance = relevance + 1
-    #     if (not queryRating or (0.5 <= float(queryRating) <= 5) and (float(queryRating) <= float(r.rating))):
-    #         relevance = relevance + int(r.rating)
-    #     if (queryType == r.type):
-    #         relevance = relevance + 1
-    #     if (not queryAlcohol or (queryAlcohol and r.alcohol == 'true')):
-    #         relevance = relevance + 1
-    #     if (queryWheelchair == r.wheelchair):
-    #         relevance = relevance + 1
-    #     if (queryWifi == r.wifi):
-    #         relevance = relevance + 1
-    #     if relevance > -1:
-    #         results[relevance].append(r)
-    #         count = count + 1
-    # results.reverse()
-    # # i = 0
-    # # while i <= 16:
-    # #     for result in results[i]:
-    # #         print "row ", i, ": ", result.name, " cuisine: ", result.cuisine, " type: ", result.type, " alcohol: ", result.alcohol, " wifi: ", result.wifi, " wheelchair: ", result.wheelchair, "\n"
-    # #     i = i + 1
-    return render_template('foodr/advsearch.html', results=results, count=count, restaurants=Restaurants,
-                               cuisines=Cuisines, types=Types)
+	    if relevant:
+	        results.append(r)
+	        print r.alcohol, r.wifi, r.wheelchair, "\n"
+	        count = count + 1
+
+	# print "cuisine: ", queryCuisine, "\n"
+	# print "rating: ", queryRating, "\n"
+	# print "type: ", queryType, "\n"
+	# print "alcohol: ", queryAlcohol, "\n"
+	# print "wheelchair: ", queryWheelchair, "\n"
+	# print "wifi: ", queryWifi, "\n"
+	#
+	# results = [[] for x in xrange(16)]
+	# count = 0
+	# results.append([])
+	# for r in Restaurants:
+	#     relevance = -1
+	#     for restCuisine in r.cuisine:
+	#         if queryCuisine == restCuisine:
+	#             relevance = relevance + 1
+	#     if (not queryRating or (0.5 <= float(queryRating) <= 5) and (float(queryRating) <= float(r.rating))):
+	#         relevance = relevance + int(r.rating)
+	#     if (queryType == r.type):
+	#         relevance = relevance + 1
+	#     if (not queryAlcohol or (queryAlcohol and r.alcohol == 'true')):
+	#         relevance = relevance + 1
+	#     if (queryWheelchair == r.wheelchair):
+	#         relevance = relevance + 1
+	#     if (queryWifi == r.wifi):
+	#         relevance = relevance + 1
+	#     if relevance > -1:
+	#         results[relevance].append(r)
+	#         count = count + 1
+	# results.reverse()
+	# # i = 0
+	# # while i <= 16:
+	# #     for result in results[i]:
+	# #         print "row ", i, ": ", result.name, " cuisine: ", result.cuisine, " type: ", result.type, " alcohol: ", result.alcohol, " wifi: ", result.wifi, " wheelchair: ", result.wheelchair, "\n"
+	# #     i = i + 1
+	return render_template('foodr/advsearch.html', results=results, count=count, restaurants=Restaurants,
+	                           cuisines=Cuisines, types=Types)
 
 
 @app.route('/view')
 def view():
-    r = request.args.get('r')
-    return render_template('foodr/view_restaurant.html', result=Restaurants[int(r)], title=Restaurants[int(r)].name,
-                           url=request.url[len(request.url_root):], callback=request.args.get('callback'), types=Types)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	r = request.args.get('r')
+	return render_template('foodr/view_restaurant.html', result=Restaurants[int(r)], title=Restaurants[int(r)].name,
+	                       url=request.url[len(request.url_root):], callback=request.args.get('callback'), types=Types)
 
 
 @app.route('/save_deal')
 def save_deal():
-    r = request.args.get('r')
-    callback = request.args.get('callback')
-    d, rest = str(r).split('-')
-    deal = AllDeals[int(d)]
-    restaurant = Restaurants[int(rest)]
-    if restaurant not in SavedDeals[deal]:
-        SavedDeals[deal].append(restaurant)
-    if restaurant in DisplayDeals[deal]:
-        DisplayDeals[deal].remove(restaurant)
-    return redirect('/' + callback)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	r = request.args.get('r')
+	callback = request.args.get('callback')
+	d, rest = str(r).split('-')
+	deal = AllDeals[int(d)]
+	restaurant = Restaurants[int(rest)]
+	if restaurant not in SavedDeals[deal]:
+	    SavedDeals[deal].append(restaurant)
+	if restaurant in DisplayDeals[deal]:
+	    DisplayDeals[deal].remove(restaurant)
+	return redirect('/' + callback)
 
 @app.route('/unsave_deal')
 def unsave_deal():
-    r = request.args.get('r')
-    callback = request.args.get('callback')
-    d, rest = str(r).split('-')
-    deal = AllDeals[int(d)]
-    restaurant = Restaurants[int(rest)]
-    if restaurant in SavedDeals[deal]:
-        SavedDeals[deal].remove(restaurant)
-    if restaurant not in DisDeals[deal]:
-        DisDeals[deal].append(restaurant)
-    if restaurant in DisplayDeals[deal]:
-        DisplayDeals[deal].remove(restaurant)
-    return redirect('/' + callback)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	r = request.args.get('r')
+	callback = request.args.get('callback')
+	d, rest = str(r).split('-')
+	deal = AllDeals[int(d)]
+	restaurant = Restaurants[int(rest)]
+	if restaurant in SavedDeals[deal]:
+	    SavedDeals[deal].remove(restaurant)
+	if restaurant not in DisDeals[deal]:
+	    DisDeals[deal].append(restaurant)
+	if restaurant in DisplayDeals[deal]:
+	    DisplayDeals[deal].remove(restaurant)
+	return redirect('/' + callback)
 
 
 @app.route('/like')
 def like():
-    r = request.args.get('r')
-    callback = request.args.get('callback')
-    if Restaurants[int(r)] not in Liked:
-        Liked.append(Restaurants[int(r)])
-    if Restaurants[int(r)] in Recommended:
-        Recommended.remove(Restaurants[int(r)])
-    return redirect('/' + callback)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	r = request.args.get('r')
+	callback = request.args.get('callback')
+	if Restaurants[int(r)] not in Liked:
+	    Liked.append(Restaurants[int(r)])
+	if Restaurants[int(r)] in Recommended:
+	    Recommended.remove(Restaurants[int(r)])
+	return redirect('/' + callback)
 
 
 @app.route('/unlike')
 def unlike():
-    r = request.args.get('r')
-    callback = request.args.get('callback')
-    if Restaurants[int(r)] in Liked:
-        Liked.remove(Restaurants[int(r)])
-    return redirect('/' + callback)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	r = request.args.get('r')
+	callback = request.args.get('callback')
+	if Restaurants[int(r)] in Liked:
+	    Liked.remove(Restaurants[int(r)])
+	return redirect('/' + callback)
 
 
 @app.route('/dislike')
 def dislike():
-    r = request.args.get('r')
-    callback = request.args.get('callback')
-    if Restaurants[int(r)] not in Disliked:
-        Disliked.append(Restaurants[int(r)])
-    if Restaurants[int(r)] in Liked:
-        Liked.remove(Restaurants[int(r)])
-    if Restaurants[int(r)] in Recommended:
-        Recommended.remove(Restaurants[int(r)])
-    return redirect('/' + callback)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	r = request.args.get('r')
+	callback = request.args.get('callback')
+	if Restaurants[int(r)] not in Disliked:
+	    Disliked.append(Restaurants[int(r)])
+	if Restaurants[int(r)] in Liked:
+	    Liked.remove(Restaurants[int(r)])
+	if Restaurants[int(r)] in Recommended:
+	    Recommended.remove(Restaurants[int(r)])
+	return redirect('/' + callback)
 
 
 @app.route('/restaurants/')
 def restaurants():
-    query = request.args.get('q')
-    del Recommended[:]
-    return render_template('foodr/index.html', query=query, restaurants=Restaurants,
-                           url=request.url[len(request.url_root):], types=Types)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	query = request.args.get('q')
+	del Recommended[:]
+	return render_template('foodr/index.html', query=query, restaurants=Restaurants,
+	                       url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/deals/')
 def deals():
-    query = request.args.get('q')
-    del Recommended[:]
-    d = random.choice(AllDeals)
-    r = random.choice(Deals[d])
-    while r in DisDeals[d] or r in SavedDeals[d]:
-        d = random.choice(AllDeals)
-        r = random.choice(Deals[d])
-    DisplayDeals[d].append(r)
-    return render_template('foodr/deals.html', deals=DisplayDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):], types=Types)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	query = request.args.get('q')
+	del Recommended[:]
+	d = random.choice(AllDeals)
+	r = random.choice(Deals[d])
+	while r in DisDeals[d] or r in SavedDeals[d]:
+	    d = random.choice(AllDeals)
+	    r = random.choice(Deals[d])
+	DisplayDeals[d].append(r)
+	return render_template('foodr/deals.html', deals=DisplayDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):], types=Types)
+
+
+@app.route('/nearby-deals/')
+def near_deals():
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	query = request.args.get('q')
+	del Recommended[:]
+	postcode = 2010
+	d = random.choice(AllDeals)
+	r = random.choice(Deals[d])
+	while r in DisDeals[d] or r in SavedDeals[d] or abs(int(r.postcode) - postcode) > 5:
+	    d = random.choice(AllDeals)
+	    r = random.choice(Deals[d])
+	NearbyDeals[d].append(r)
+	return render_template('foodr/neardeals.html', deals=NearbyDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/saved/')
 def saved():
-    query = request.args.get('q')
-    del Recommended[:]
-    return render_template('foodr/saved.html', query=query, url=request.url[len(request.url_root):], types=Types)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	query = request.args.get('q')
+	del Recommended[:]
+	return render_template('foodr/saved.html', query=query, url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/saved/restaurants/')
 def saved_restaurants():
-    query = request.args.get('q')
-    del Recommended[:]
-    return render_template('foodr/saved_restaurants.html', liked=Liked, query=query,
-                           url=request.url[len(request.url_root):], types=Types)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	query = request.args.get('q')
+	del Recommended[:]
+	return render_template('foodr/saved_restaurants.html', liked=Liked, query=query,
+	                       url=request.url[len(request.url_root):], types=Types)
 
 
 @app.route('/saved/deals/')
 def saved_deals():
-    query = request.args.get('q')
-    del Recommended[:]
-    return render_template('foodr/saved_deals.html', deals=SavedDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):], types=Types)
+	if LOGGED_IN == False:
+		return redirect('/login')
+
+	query = request.args.get('q')
+	del Recommended[:]
+	return render_template('foodr/saved_deals.html', deals=SavedDeals, alldeals=AllDeals, query=query, url=request.url[len(request.url_root):], types=Types)
+
+
+@app.route('/login')
+def login():
+    return render_template('foodr/login.html')
+
+@app.route('/login_now')
+def login_now():
+	global LOGGED_IN
+	LOGGED_IN = True
+	print 'dsadasdsadas'
+	return redirect('/')
+
+
+@app.route('/logout')
+def logout():
+	global LOGGED_IN
+	LOGGED_IN = False
+	return redirect('/login')
+
 
 # @app.route('/print', methods=['GET', 'POST'])
 # def printer():

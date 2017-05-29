@@ -2,7 +2,7 @@
 {% block body %}
 
 <div class="content-wrapper">
-    <br><br><br><h3 style="font-size: 35px; font-weight: bold">RECOMMENDED DEALS</h3>
+    <br><br><br><h3 style="font-size: 35px; font-weight: bold">NEARBY DEALS</h3>
     <div style="margin-top: 40px">
     {% for deal in deals.keys() %}
         {% for result in deals[deal]  %}
@@ -10,7 +10,7 @@
                 <div class="card">
                     <center><h3>{{deal}} - {{result.name}}</h3></center>
                     <div class="card-image img-crop-cont" style="height:200px;">
-                        <img class="img-responsive img-crop"  style="overflow:none" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference={{result.photos[0]}}&key=AIzaSyBJQfhMjdmiA8B1RdbbAK-J8shWQ1m8z9c">
+                        <img class="img-responsive img-crop"  style="overflow:none" src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference={{result.photos[0]}}&key=AIzaSyCD2fnUQ0M2bpn5raGxkEQQ6KEgIw9FyW4">
                         <span  class="card-title" style="padding: 10px">
                             {% if result.alcohol == 'true' %}
                             <i class="fa fa-glass fa-lg" aria-hidden="true"></i>

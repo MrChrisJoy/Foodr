@@ -109,7 +109,11 @@ function initialize() {
 
 <div class="row">
   <div class="col col-md-7">
-    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference={{result.photos[0]}}&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o">
+    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference={{result.photos[0]}}&key=AIzaSyCD2fnUQ0M2bpn5raGxkEQQ6KEgIw9FyW4">
+    <br>
+    <br>
+   <a href="/dislike?r={{result.id}}&callback={{url}}" class="btn-danger btn-circle btn-xl" role="button"><i class="fa fa-times" aria-hidden="true"></i></a>
+    <a href="/like?r={{result.id}}&callback={{url}}" class="btn-success btn-circle btn-xl" role="button"><span>&#x2764;</span></a>
   </div>
   <div class="col-6 col-md-5">
     <i class="fa fa-star fa-lg" aria-hidden="true"></i> is rated {{result.rating}} / 5. <br><br>
@@ -123,8 +127,6 @@ function initialize() {
     {% if result.wheelchair == 'true' %}
     <i class="fa fa-wheelchair fa-lg" aria-hidden="true"></i> has wheelchair access. <br><br>
     {% endif %}
-
-
 
     {% if result.parking == 'true' %}
     <i class="fa fa-car fa-lg" aria-hidden="true"></i> has free parking. <br><br>
@@ -172,7 +174,7 @@ function initialize() {
     </div>
     <div class="row">
     {% for photo in result.photos %}
-        <div class="image-block col-sm-4" style="background: url(https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference={{photo}}&key=AIzaSyCZzuj9pQRMvWeDpUC1CruEaY1HuEvI53o) no-repeat center top;background-size:cover;">
+        <div class="image-block col-sm-4" style="background: url(https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference={{photo}}&key=AIzaSyCD2fnUQ0M2bpn5raGxkEQQ6KEgIw9FyW4) no-repeat center top;background-size:cover;">
         </div>
     {% endfor %}
 
